@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Background -->
+  <rect width="400" height="500" fill="#1e293b"/>
+
+  <!-- Header Bar -->
+  <rect x="0" y="0" width="400" height="60" fill="rgba(14, 165, 233, 0.9)"/>
+  <text x="20" y="40" font-size="18" font-weight="bold" fill="white">
+    Puzzle Challenge
+  </text>
+  <text x="380" y="40" font-size="16" fill="white" text-anchor="end" font-weight="bold">
+    ⏱ 45s
+  </text>
+
+  <!-- Puzzle Area -->
+  <rect x="20" y="80" width="360" height="200" rx="8" fill="rgba(14, 165, 233, 0.1)" stroke="#0ea5e9" stroke-width="2"/>
+
+  <!-- Puzzle Title -->
+  <text x="200" y="110" font-size="16" font-weight="bold" fill="#0ea5e9" text-anchor="middle">
+    Binary Sequence
+  </text>
+
+  <!-- Puzzle Content -->
+  <g font-family="monospace" font-size="24" fill="#10b981" text-anchor="middle">
+    <text x="200" y="160">01010110</text>
+    <text x="200" y="200">10101010</text>
+    <text x="200" y="240">???????</text>
+  </g>
+
+  <!-- Answer Options -->
+  <text x="20" y="320" font-size="12" font-weight="bold" fill="#94a3b8">
+    OPTIONS
+  </text>
+
+  <!-- Option A -->
+  <rect x="20" y="330" width="170" height="40" rx="6" fill="rgba(14, 165, 233, 0.2)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="105" y="360" font-size="14" fill="#0ea5e9" text-anchor="middle" font-weight="bold">
+    A: 11010101
+  </text>
+
+  <!-- Option B -->
+  <rect x="210" y="330" width="170" height="40" rx="6" fill="rgba(14, 165, 233, 0.2)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="295" y="360" font-size="14" fill="#0ea5e9" text-anchor="middle" font-weight="bold">
+    B: 01010101
+  </text>
+
+  <!-- Option C -->
+  <rect x="20" y="380" width="170" height="40" rx="6" fill="rgba(10, 200, 120, 0.3)" stroke="#10b981" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="105" y="410" font-size="14" fill="#10b981" text-anchor="middle" font-weight="bold">
+    C: 11001100
+  </text>
+
+  <!-- Option D -->
+  <rect x="210" y="380" width="170" height="40" rx="6" fill="rgba(14, 165, 233, 0.2)" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="295" y="410" font-size="14" fill="#0ea5e9" text-anchor="middle" font-weight="bold">
+    D: 10101010
+  </text>
+</svg>

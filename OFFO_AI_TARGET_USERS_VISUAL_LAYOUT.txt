@@ -1,0 +1,297 @@
+================================================================================
+                  OFFO AI TARGET USERS SECTION - VISUAL LAYOUT
+================================================================================
+
+DESKTOP VIEW (5-Column Grid)
+================================================================================
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│                                                                          │
+│                      BUILT FOR YOUR WORKFLOW                             │
+│                                                                          │
+│   OFFO AI adapts to your business needs. Whether you're automating      │
+│   operations, advising teams, or scaling your output, we have a         │
+│   solution tailored to your workflow.                                   │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐  │
+│  │          │  │          │  │          │  │          │  │          │  │
+│  │🏢Blue   │  │🚀Purple │  │🔧Orange │  │💼Pink   │  │👥Green  │  │
+│  │          │  │          │  │          │  │          │  │          │  │
+│  │ Small &  │  │ Startup  │  │ Engineer │  │ Agencies │  │Enterprise│  │
+│  │ Medium   │  │ Founders │  │  Teams   │  │ & Free.  │  │Depart.   │  │
+│  │Businesses│  │          │  │          │  │          │  │          │  │
+│  │          │  │          │  │          │  │          │  │          │  │
+│  │Need      │  │Want      │  │Diagnos.  │  │Use OFFO  │  │HR, ops,  │  │
+│  │simple    │  │advisory, │  │docs,     │  │AI to     │  │finance   │  │
+│  │automation│  │planning  │  │testing   │  │magnify   │  │teams     │  │
+│  │without   │  │support,  │  │copilots. │  │output &  │  │needing   │  │
+│  │hiring.   │  │copilots. │  │          │  │manage    │  │automation│  │
+│  │          │  │          │  │          │  │clients.  │  │          │  │
+│  │          │  │          │  │          │  │          │  │          │  │
+│  └──────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘  │
+│                                                                          │
+│   ← Hover: Icon scales, card lifts, gradient appears, border changes →  │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  ┌────────────────────────────────────────────────────────────────────┐ │
+│  │                                                                    │ │
+│  │ One Platform, Endless Possibilities: No matter your role or       │ │
+│  │ industry, OFFO AI brings AI-powered automation, advisory, and     │ │
+│  │ optimization to every workflow. Start simple and scale as your    │ │
+│  │ needs grow.                                                       │ │
+│  │                                                                    │ │
+│  └────────────────────────────────────────────────────────────────────┘ │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+
+TABLET VIEW (2-Column Grid)
+================================================================================
+
+┌──────────────────────────────────────────────────────┐
+│                                                      │
+│          BUILT FOR YOUR WORKFLOW                     │
+│                                                      │
+│ OFFO AI adapts to your business needs. Whether      │
+│ you're automating operations, advising teams, or    │
+│ scaling your output, we have a solution tailored    │
+│ to your workflow.                                   │
+│                                                      │
+├──────────────────────────────────────────────────────┤
+│                                                      │
+│ ┌──────────────────┬──────────────────┐              │
+│ │ 🏢 Small &      │ 🚀 Startup       │              │
+│ │    Medium       │    Founders      │              │
+│ │    Businesses   │                  │              │
+│ │                 │ Want advisory,   │              │
+│ │ Need simple     │ planning support │              │
+│ │ automation      │ and copilots.    │              │
+│ │ without hiring. │                  │              │
+│ ├──────────────────┼──────────────────┤              │
+│ │ 🔧 Engineering   │ 💼 Agencies &   │              │
+│ │    Teams        │    Freelancers  │              │
+│ │                 │                  │              │
+│ │ Diagnostics,    │ Use OFFO AI to   │              │
+│ │ documentation,  │ magnify output   │              │
+│ │ testing         │ and manage       │              │
+│ │ copilots.       │ clients.         │              │
+│ ├──────────────────┴──────────────────┤              │
+│ │ 👥 Enterprise Departments           │              │
+│ │                                     │              │
+│ │ HR, operations, finance teams       │              │
+│ │ needing repetitive workflow         │              │
+│ │ automation.                         │              │
+│ └─────────────────────────────────────┘              │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+
+
+MOBILE VIEW (1-Column Grid)
+================================================================================
+
+┌───────────────────────────────────────┐
+│                                       │
+│   BUILT FOR YOUR WORKFLOW             │
+│                                       │
+│ OFFO AI adapts to your business      │
+│ needs. Whether you're automating     │
+│ operations, advising teams, or       │
+│ scaling your output, we have a       │
+│ solution tailored to your workflow.  │
+│                                       │
+├───────────────────────────────────────┤
+│                                       │
+│ ┌─────────────────────────────────┐  │
+│ │  🏢 Small & Medium Businesses   │  │
+│ │                                 │  │
+│ │ Need simple automation without  │  │
+│ │ hiring a tech team.             │  │
+│ └─────────────────────────────────┘  │
+│                                       │
+│ ┌─────────────────────────────────┐  │
+│ │  🚀 Startup Founders            │  │
+│ │                                 │  │
+│ │ Want advisory, planning support │  │
+│ │ and operational copilots.       │  │
+│ └─────────────────────────────────┘  │
+│                                       │
+│ ┌─────────────────────────────────┐  │
+│ │  🔧 Engineering Teams           │  │
+│ │                                 │  │
+│ │ Diagnostics, documentation      │  │
+│ │ drafting, testing copilots.     │  │
+│ └─────────────────────────────────┘  │
+│                                       │
+│ ┌─────────────────────────────────┐  │
+│ │  💼 Agencies & Freelancers      │  │
+│ │                                 │  │
+│ │ Use OFFO AI to magnify output   │  │
+│ │ and manage multiple clients.    │  │
+│ └─────────────────────────────────┘  │
+│                                       │
+│ ┌─────────────────────────────────┐  │
+│ │  👥 Enterprise Departments      │  │
+│ │                                 │  │
+│ │ HR, operations, finance teams   │  │
+│ │ needing repetitive workflow     │  │
+│ │ automation.                     │  │
+│ └─────────────────────────────────┘  │
+│                                       │
+└───────────────────────────────────────┘
+
+
+CARD DETAILS (Close-up View)
+================================================================================
+
+┌─────────────────────────────────────────────┐
+│                                             │
+│  ┌───────────────────────────────────────┐  │
+│  │  ░░░░░ Gradient Icon Background ░░░░░ │  │
+│  │  ░                                   ░ │  │
+│  │  ░         ▓▓ Icon ▓▓              ░  │  │ ← 48×48px gradient
+│  │  ░       (Blue/Purple/Orange/etc)   ░ │  │
+│  │  ░                                   ░ │  │
+│  │  └───────────────────────────────────┘  │  │ ← 32×32px white icon
+│  │                                         │
+│  │  Title: Bold, 18px                      │
+│  │  Small & Medium Businesses              │
+│  │                                         │
+│  │  Description: 14px gray                 │
+│  │  Need simple automation without         │
+│  │  hiring a tech team.                    │
+│  │                                         │
+│  └─────────────────────────────────────────┘  │
+
+HOVER STATE:
+  • Icon: Scale 110% (icon-scale-110)
+  • Shadow: md → lg (hover:shadow-lg)
+  • Card: Lift -1px (hover:-translate-y-1)
+  • Gradient: Opacity 0 → 10% (opacity-10)
+  • Border: gray-200 → indigo-300
+  • Transition: 300ms ease
+
+
+ICON & COLOR MAPPING
+================================================================================
+
+Persona 1: Small & Medium Businesses
+  Icon:      Building2 (business/stability)
+  Gradient:  from-blue-600 to-blue-500
+  Hover:     Indigo accent
+  Message:   Trustworthy, stable, professional
+
+Persona 2: Startup Founders
+  Icon:      Rocket (growth/innovation)
+  Gradient:  from-purple-600 to-purple-500
+  Hover:     Indigo accent
+  Message:   Growth-oriented, ambitious, forward-thinking
+
+Persona 3: Engineering Teams
+  Icon:      Wrench (technical/skilled)
+  Gradient:  from-orange-600 to-orange-500
+  Hover:     Indigo accent
+  Message:   Technical expertise, reliability, precision
+
+Persona 4: Agencies & Freelancers
+  Icon:      Briefcase (professional/business)
+  Gradient:  from-pink-600 to-pink-500
+  Hover:     Indigo accent
+  Message:   Professional, dynamic, creative
+
+Persona 5: Enterprise Departments
+  Icon:      Users (team/collaboration)
+  Gradient:  from-green-600 to-green-500
+  Hover:     Indigo accent
+  Message:   Collaborative, scalable, sustainable
+
+
+RESPONSIVE BREAKPOINTS
+================================================================================
+
+Mobile (< 640px):
+  ▼ 1 Column (grid-cols-1)
+  ▼ Full width cards
+  ▼ 16px padding sides
+  ▼ 24px gap between cards
+  ▼ Icon size: 32px
+
+Tablet (640px - 1024px):
+  ▼ 2 Columns (sm:grid-cols-2)
+  ▼ Auto width cards
+  ▼ 24px padding sides
+  ▼ 24px gap between cards
+  ▼ Icon size: 32px
+
+Desktop (> 1024px):
+  ▼ 5 Columns (lg:grid-cols-5)
+  ▼ Auto width cards
+  ▼ 32px padding sides
+  ▼ 24px gap between cards
+  ▼ Icon size: 32px
+  ▼ Max width: 7xl (80rem)
+
+
+ANIMATION TIMELINE
+================================================================================
+
+User loads page:
+
+Time: 0ms
+  └─ Section enters viewport
+
+Time: 0-200ms
+  ├─ Header fades in with -20px Y offset
+  └─ Slides up to 0 position
+
+Time: 200ms
+  └─ Container animation begins (stagger)
+
+Time: 200-300ms (Card 1)
+  ├─ Fades in (opacity 0 → 1)
+  ├─ Slides down (y: 20 → 0)
+  └─ Settles into position
+
+Time: 300-400ms (Card 2)
+  ├─ Fades in
+  ├─ Slides down
+  └─ Settles
+
+... continues for all 5 cards with 100ms stagger ...
+
+Time: 700ms
+  └─ Info banner slides up from below with fade
+
+Time: 800ms+
+  └─ All animations complete, ready for interaction
+
+
+DARK MODE COLORS
+================================================================================
+
+Light Mode:
+  Background:   White → Gray-50 → White (gradient)
+  Card BG:      White
+  Borders:      Gray-200
+  Text Title:   Gray-900
+  Text Desc:    Gray-600
+  Hover Border: Indigo-300
+
+Dark Mode:
+  Background:   Gray-900 → Gray-900/50 → Gray-900 (gradient)
+  Card BG:      Gray-800
+  Borders:      Gray-800
+  Text Title:   White
+  Text Desc:    Gray-400
+  Hover Border: Indigo-700
+
+Gradient Overlays:
+  Light: Subtle (opacity-10)
+  Dark:  Visible (opacity-10, matches dark palette)
+
+
+================================================================================
+                            END OF LAYOUT GUIDE
+================================================================================

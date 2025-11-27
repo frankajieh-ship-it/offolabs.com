@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="duelBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#duelBg)"/>
+
+  <!-- Divider Line -->
+  <line x1="200" y1="20" x2="200" y2="480" stroke="rgba(14, 165, 233, 0.3)" stroke-width="2" stroke-dasharray="5,5"/>
+
+  <!-- LEFT PLAYER -->
+  <g>
+    <!-- Avatar Circle -->
+    <circle cx="70" cy="60" r="30" fill="#0ea5e9"/>
+    <text x="70" y="70" font-size="24" fill="white" text-anchor="middle" font-weight="bold">👤</text>
+
+    <!-- Name -->
+    <text x="70" y="110" font-size="14" font-weight="bold" fill="white" text-anchor="middle">
+      You
+    </text>
+
+    <!-- Score Box -->
+    <rect x="20" y="130" width="100" height="60" rx="6" fill="rgba(14, 165, 233, 0.2)" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="70" y="150" font-size="12" fill="#94a3b8" text-anchor="middle">SCORE</text>
+    <text x="70" y="175" font-size="24" font-weight="bold" fill="#0ea5e9" text-anchor="middle">+240</text>
+
+    <!-- Progress Bar -->
+    <rect x="20" y="210" width="100" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+    <rect x="20" y="210" width="70" height="6" rx="3" fill="#10b981"/>
+    <text x="70" y="235" font-size="11" fill="#94a3b8" text-anchor="middle">2/5 Solved</text>
+  </g>
+
+  <!-- VS Badge -->
+  <circle cx="200" cy="250" r="25" fill="#f59e0b"/>
+  <text x="200" y="260" font-size="16" font-weight="bold" fill="white" text-anchor="middle">VS</text>
+
+  <!-- RIGHT PLAYER -->
+  <g>
+    <!-- Avatar Circle -->
+    <circle cx="330" cy="60" r="30" fill="#8b5cf6"/>
+    <text x="330" y="70" font-size="24" fill="white" text-anchor="middle" font-weight="bold">🤖</text>
+
+    <!-- Name -->
+    <text x="330" y="110" font-size="14" font-weight="bold" fill="white" text-anchor="middle">
+      AI Rival
+    </text>
+
+    <!-- Score Box -->
+    <rect x="280" y="130" width="100" height="60" rx="6" fill="rgba(139, 92, 246, 0.2)" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="330" y="150" font-size="12" fill="#94a3b8" text-anchor="middle">SCORE</text>
+    <text x="330" y="175" font-size="24" font-weight="bold" fill="#8b5cf6" text-anchor="middle">+198</text>
+
+    <!-- Progress Bar -->
+    <rect x="280" y="210" width="100" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+    <rect x="280" y="210" width="60" height="6" rx="3" fill="#8b5cf6"/>
+    <text x="330" y="235" font-size="11" fill="#94a3b8" text-anchor="middle">1/5 Solved</text>
+  </g>
+
+  <!-- Current Puzzle -->
+  <rect x="20" y="280" width="360" height="120" rx="8" fill="rgba(14, 165, 233, 0.1)" stroke="rgba(14, 165, 233, 0.3)" stroke-width="1.5"/>
+  <text x="200" y="305" font-size="14" font-weight="bold" fill="#0ea5e9" text-anchor="middle">
+    Current Puzzle
+  </text>
+  <text x="200" y="330" font-size="13" fill="#94a3b8" text-anchor="middle">
+    Logic Gate Sequence
+  </text>
+  <text x="200" y="350" font-size="12" fill="#94a3b8" text-anchor="middle">
+    Solve within 60 seconds
+  </text>
+  <text x="200" y="380" font-size="18" font-weight="bold" fill="#10b981" text-anchor="middle">
+    ⏱ Time Remaining: 32s
+  </text>
+
+  <!-- Status Bar -->
+  <rect x="0" y="420" width="400" height="80" fill="rgba(0,0,0,0.3)"/>
+  <text x="200" y="450" font-size="14" fill="white" text-anchor="middle" font-weight="bold">
+    🏆 You're in the Lead!
+  </text>
+  <text x="200" y="475" font-size="12" fill="#94a3b8" text-anchor="middle">
+    Stay focused to maintain your advantage
+  </text>
+</svg>
