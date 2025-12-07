@@ -22,6 +22,10 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
+  // MVP UPGRADE 1: Onboarding State
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [showOnboardingBanner, setShowOnboardingBanner] = useState(true);
+
   // PHASE 2: Search and Filter State
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState<string>('ALL');
@@ -34,6 +38,20 @@ export default function Home() {
     biz_risky: 'Business D - Risky',
     biz_critical: 'Business E - Critical',
   };
+
+  // MVP UPGRADE 1: Check if this is first visit
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('offoOnboarded');
+    if (hasVisited) {
+      setIsFirstVisit(false);
+      setShowOnboardingBanner(false);
+      setIsHowItWorksOpen(false);
+    } else {
+      setIsFirstVisit(true);
+      setShowOnboardingBanner(true);
+      setIsHowItWorksOpen(true); // Expand "How it Works" on first visit
+    }
+  }, []);
 
   useEffect(() => {
     fetchBusinessScores();
@@ -124,6 +142,13 @@ export default function Home() {
     }
   };
 
+  // MVP UPGRADE 1: Dismiss onboarding banner
+  const dismissOnboarding = () => {
+    localStorage.setItem('offoOnboarded', 'true');
+    setShowOnboardingBanner(false);
+    setIsFirstVisit(false);
+  };
+
   // PHASE 2: Filter and Search Logic
   const filteredBusinesses = businesses.filter((business) => {
     // Filter by category
@@ -148,6 +173,39 @@ export default function Home() {
             Comprehensive risk assessment powered by behavioral compliance data
           </p>
         </header>
+
+        {/* MVP UPGRADE 1: Onboarding Banner - First-Time Visitors Only */}
+        {showOnboardingBanner && (
+          <div className="bg-blue-600 text-white rounded-lg shadow-lg p-6 mb-6 border-l-4 border-blue-800">
+            <div className="flex items-start justify-between">
+              <div className="flex items-start flex-1">
+                <div className="flex-shrink-0 mt-1">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="ml-4 flex-1">
+                  <h3 className="text-lg font-bold mb-2">Welcome to OFFO Risk Intelligence!</h3>
+                  <p className="text-blue-50 mb-3">
+                    <strong>Select a business below</strong> to view its current behavioral risk profile and top improvement areas. Each score is calculated in real-time from task completion, training records, and documentation accuracy.
+                  </p>
+                  <p className="text-sm text-blue-100">
+                    💡 Tip: Scroll down to explore "How the Risk Score Works" for methodology details.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={dismissOnboarding}
+                className="ml-4 flex-shrink-0 text-white hover:text-blue-200 transition-colors"
+                aria-label="Dismiss onboarding message"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* How the Score Works - Collapsible Section */}
         <div className="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
@@ -258,6 +316,32 @@ export default function Home() {
                     Converts subjective compliance tasks into quantifiable metrics that drive underwriting and pricing decisions.
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* MVP UPGRADE 2: Real-Time Data Explanation Badge */}
+        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-5 mb-6 shadow-sm">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+            <div className="ml-4 flex-1">
+              <p className="text-sm font-semibold text-gray-900 mb-1">
+                🔍 Real-Time Behavioral Data
+              </p>
+              <p className="text-sm text-gray-700">
+                All scores are calculated from <strong>live compliance data</strong>: task completion logs, training records, and documentation accuracy metrics. Updated continuously as new data arrives.
+              </p>
+            </div>
+            <div className="hidden sm:block ml-4">
+              <div className="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full">
+                LIVE
               </div>
             </div>
           </div>
