@@ -24,7 +24,8 @@ class AuthService {
     // Fetch new token from backend
     try {
       const response = await fetch(`${API_BASE_URL}/auth/token?client_id=demo_client`, {
-        method: 'POST'
+        method: 'POST',
+        signal: AbortSignal.timeout(5000) // 5 second timeout for mobile/offline
       });
 
       if (!response.ok) {
