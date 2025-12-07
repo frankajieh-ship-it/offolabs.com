@@ -7,6 +7,9 @@ import { authService } from '@/lib/auth';
 interface BusinessData {
   id: string;
   name: string;
+  description: string;
+  industry: string;
+  staff: number;
   score: number;
   category: string;
   borderColor: string;
@@ -30,13 +33,38 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState<string>('ALL');
 
-  // Business metadata (names remain static)
-  const businessMetadata = {
-    biz_excellent: 'Business A - Excellent',
-    biz_healthy: 'Business B - Healthy',
-    biz_mixed: 'Business C - Mixed',
-    biz_risky: 'Business D - Risky',
-    biz_critical: 'Business E - Critical',
+  // MVP UPGRADE #3: Business metadata with descriptions
+  const businessMetadata: Record<string, { name: string; description: string; industry: string; staff: number }> = {
+    biz_excellent: {
+      name: 'Apex Manufacturing Co.',
+      description: 'Manufacturing facility with exemplary safety record',
+      industry: 'Manufacturing',
+      staff: 78
+    },
+    biz_healthy: {
+      name: 'Summit Logistics LLC',
+      description: 'Logistics firm with 32 staff. Uses SafetySuite LMS',
+      industry: 'Transportation & Logistics',
+      staff: 32
+    },
+    biz_mixed: {
+      name: 'Midpoint Construction Inc.',
+      description: 'Mid-sized contractor with recent compliance gaps',
+      industry: 'Construction',
+      staff: 45
+    },
+    biz_risky: {
+      name: 'Valley Food Processing',
+      description: 'Food processing plant requiring training improvements',
+      industry: 'Food Services',
+      staff: 67
+    },
+    biz_critical: {
+      name: 'Riverside Waste Services',
+      description: 'Waste management with significant documentation issues',
+      industry: 'Environmental Services',
+      staff: 52
+    },
   };
 
   // MVP UPGRADE 1: Check if this is first visit
@@ -76,14 +104,20 @@ export default function Home() {
 
       const scores = await Promise.all(businessPromises);
 
-      // Map to UI data with dynamic styling
-      const businessData: BusinessData[] = scores.map((data) => ({
-        id: data.business_id,
-        name: businessMetadata[data.business_id as keyof typeof businessMetadata] || data.business_id,
-        score: data.overall_score,
-        category: data.category,
-        ...getCategoryStyles(data.category),
-      }));
+      // MVP UPGRADE #3: Map to UI data with business descriptions
+      const businessData: BusinessData[] = scores.map((data) => {
+        const metadata = businessMetadata[data.business_id as keyof typeof businessMetadata];
+        return {
+          id: data.business_id,
+          name: metadata?.name || data.business_id,
+          description: metadata?.description || 'Business description unavailable',
+          industry: metadata?.industry || 'Unknown',
+          staff: metadata?.staff || 0,
+          score: data.overall_score,
+          category: data.category,
+          ...getCategoryStyles(data.category),
+        };
+      });
 
       // Sort by score descending (best first)
       businessData.sort((a, b) => b.score - a.score);
@@ -497,13 +531,21 @@ export default function Home() {
                     </span>
                   </div>
 
-                  {/* PHASE 2: Improved Card Content */}
+                  {/* MVP UPGRADE #3: Improved Card Content with Description */}
                   <div className="mb-5">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {business.name}
                     </h3>
 
-                    {/* PHASE 2: Current Risk Label with Score */}
+                    {/* MVP UPGRADE #3: Business Description */}
+                    <p className="text-sm text-gray-600 mb-3">
+                      {business.description}
+                    </p>
+                    <p className="text-xs text-gray-500 mb-4">
+                      {business.industry} • {business.staff} employees
+                    </p>
+
+                    {/* Current Risk Label (removed "Expected") */}
                     <div className="mb-4">
                       <div className="flex items-baseline gap-2 mb-2">
                         <span className="text-sm font-semibold text-gray-700">Current Risk:</span>

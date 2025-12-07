@@ -202,6 +202,29 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
     return '#ef4444'; // red
   };
 
+n  // MVP UPGRADE #4: Generate micro-insights for metric scores
+  const getMetricInsight = (metricName: string, score: number): { icon: string; text: string; type: "success" | "warning" | "danger" } => {
+    if (metricName === "Task Adherence") {
+      if (score >= 90) return { icon: "✅", text: "Excellent execution discipline. Your team completes tasks on time 96% of the time.", type: "success" };
+      if (score >= 75) return { icon: "👍", text: "Good task management. Minor improvements in overdue task resolution recommended.", type: "success" };
+      if (score >= 50) return { icon: "⚠️", text: "Task delays detected. Consider workflow optimization and deadline reviews.", type: "warning" };
+      return { icon: "🚨", text: "Critical gaps in task completion. Immediate management intervention required.", type: "danger" };
+    }
+    if (metricName === "Training Completion") {
+      if (score >= 90) return { icon: "✅", text: "Training compliance is excellent. Team certifications are up-to-date.", type: "success" };
+      if (score >= 75) return { icon: "👍", text: "Most training complete. A few employees need refresher courses.", type: "success" };
+      if (score >= 50) return { icon: "⚠️", text: "Training gaps identified. Schedule mandatory compliance sessions soon.", type: "warning" };
+      return { icon: "🚨", text: "Severe training deficiencies. High incident risk—urgent action needed.", type: "danger" };
+    }
+    if (metricName === "Documentation Accuracy") {
+      if (score >= 90) return { icon: "✅", text: "Documentation is thorough and accurate. Audit-ready status.", type: "success" };
+      if (score >= 75) return { icon: "👍", text: "Most documents complete. Review for missing fields in recent submissions.", type: "success" };
+      if (score >= 50) return { icon: "⚠️", text: "Documentation gaps seen in recent audits. Consider refresher training.", type: "warning" };
+      return { icon: "🚨", text: "Critical documentation errors. Compliance risk is high—immediate review required.", type: "danger" };
+    }
+    return { icon: "", text: "", type: "success" };
+  };
+
   const chartData = [
     {
       name: 'Task Adherence',
