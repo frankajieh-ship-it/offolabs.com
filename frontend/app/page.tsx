@@ -218,23 +218,25 @@ export default function Home() {
       <div className="max-w-6xl mx-auto">
         {/* MVP UPGRADE #9: Header with Logo and Timestamp */}
         <header className="mb-8">
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center gap-4">
-              <img 
-                src="/OFFO_logo.png" 
-                alt="OFFO Labs" 
-                className="h-12 w-auto"
-              />
-              <div>
-                <h1 className="text-4xl font-bold text-gray-900">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-4 mb-4">
+            <div className="flex items-center gap-4 flex-1">
+              <Link href="/" className="flex-shrink-0">
+                <img
+                  src="/OFFO_LAB_logo.png"
+                  alt="OFFO LAB Consulting logo"
+                  className="h-16 sm:h-20 w-auto max-w-[100px] sm:max-w-[160px] cursor-pointer hover:opacity-80 transition-opacity"
+                />
+              </Link>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-4xl font-bold text-gray-900">
                   OFFO Risk Intelligence Dashboard
                 </h1>
-                <p className="text-gray-600 text-lg">
+                <p className="text-gray-600 text-sm sm:text-lg">
                   Comprehensive risk assessment powered by behavioral compliance data
                 </p>
               </div>
             </div>
-            <div className="text-sm text-gray-500 text-right">
+            <div className="text-sm text-gray-500 sm:text-right">
               <div className="font-medium">Last updated:</div>
               <div>Just now</div>
             </div>
@@ -714,10 +716,25 @@ export default function Home() {
 
         {/* MVP UPGRADE #9: Sticky Footer with Branding */}
         <footer className="mt-12 pt-6 border-t border-gray-300">
-          <div className="text-center text-sm text-gray-600">
-            <p className="font-medium">
-              Powered by <span className="text-blue-600 font-bold">OFFO Labs</span> Risk Intelligence Engine · v1.0 · <span className="text-red-600">Confidential</span>
-            </p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <img
+                src="/OFFO_LAB_logo.png"
+                alt="OFFO LAB"
+                className="h-8 w-auto opacity-60"
+              />
+              <p className="text-xs text-gray-600">
+                © 2025 <span className="font-semibold">OFFO LAB</span>
+              </p>
+            </div>
+            <div className="text-center sm:text-right">
+              <p className="text-sm text-gray-600 font-medium">
+                Powered by <span className="text-blue-600 font-bold">OFFO LAB</span> Risk Intelligence Engine · v1.0
+              </p>
+              <p className="text-xs text-red-600 font-semibold mt-1">
+                Confidential
+              </p>
+            </div>
           </div>
         </footer>
     </main>
