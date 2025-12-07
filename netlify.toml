@@ -1,0 +1,43 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Redirect all HTTP to HTTPS
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
+# Redirect www to non-www (or vice versa, depending on your preference)
+# Uncomment the one you want:
+
+# Option 1: Redirect www to non-www (www.yourdomain.com → yourdomain.com)
+# [[redirects]]
+#   from = "https://www.yourdomain.com/*"
+#   to = "https://yourdomain.com/:splat"
+#   status = 301
+#   force = true
+
+# Option 2: Redirect non-www to www (yourdomain.com → www.yourdomain.com)
+# [[redirects]]
+#   from = "https://yourdomain.com/*"
+#   to = "https://www.yourdomain.com/:splat"
+#   status = 301
+#   force = true
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Strict-Transport-Security forces HTTPS for 1 year
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Next.js specific settings
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
