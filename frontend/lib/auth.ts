@@ -37,6 +37,12 @@ class AuthService {
       this.tokenExpiry = Date.now() + ((data.expires_in - 60) * 1000);
 
       console.log('[Auth] Token obtained successfully');
+      
+      // Type guard: ensure token is not null before returning
+      if (!this.token) {
+        throw new Error('Token was not set properly');
+      }
+      
       return this.token;
     } catch (error) {
       console.error('[Auth] Token fetch error:', error);
