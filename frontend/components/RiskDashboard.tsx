@@ -202,7 +202,7 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
     return '#ef4444'; // red
   };
 
-n  // MVP UPGRADE #4: Generate micro-insights for metric scores
+  // MVP UPGRADE #4: Generate micro-insights for metric scores
   const getMetricInsight = (metricName: string, score: number): { icon: string; text: string; type: "success" | "warning" | "danger" } => {
     if (metricName === "Task Adherence") {
       if (score >= 90) return { icon: "✅", text: "Excellent execution discipline. Your team completes tasks on time 96% of the time.", type: "success" };
