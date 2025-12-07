@@ -1,15 +1,16 @@
 [build]
   base = "frontend"
-  command = "npm run build 2>&1 | tee build.log"
-  publish = ".next"
+  command = "npm run build"
 
 # Environment variables for build
 [build.environment]
   NODE_VERSION = "18"
-  NPM_FLAGS = "--legacy-peer-deps"
-  NEXT_TELEMETRY_DISABLED = "1"
 
-# Redirect all HTTP to HTTPS
+# Next.js plugin handles the publish directory automatically
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirect all HTTP to HTTPS  
 [[redirects]]
   from = "http://*"
   to = "https://:splat"
@@ -25,9 +26,4 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    # Strict-Transport-Security forces HTTPS for 1 year
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-
-# Next.js specific settings
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
