@@ -87,13 +87,27 @@ export default function Home() {
     fetchBusinessScores();
   }, []);
 
+  // Static demo data fallback for when API is unavailable
+  const getDemoBusinessData = (): BusinessData[] => {
+    return [
+      { id: 'biz_excellent', name: 'Apex Manufacturing Co.', description: 'Manufacturing facility with exemplary safety record', industry: 'Manufacturing', staff: 78, score: 94, category: 'LOW', ...getCategoryStyles('LOW') },
+      { id: 'biz_healthy', name: 'Summit Logistics LLC', description: 'Logistics firm with 32 staff. Uses SafetySuite LMS', industry: 'Transportation & Logistics', staff: 32, score: 87, category: 'LOW', ...getCategoryStyles('LOW') },
+      { id: 'biz_mixed', name: 'Midpoint Construction Inc.', description: 'Mid-sized contractor with recent compliance gaps', industry: 'Construction', staff: 45, score: 68, category: 'MODERATE', ...getCategoryStyles('MODERATE') },
+      { id: 'biz_risky', name: 'Valley Food Processing', description: 'Food processing plant requiring training improvements', industry: 'Food Services', staff: 67, score: 52, category: 'MODERATE', ...getCategoryStyles('MODERATE') },
+      { id: 'biz_critical', name: 'Riverside Waste Services', description: 'Waste management with significant documentation issues', industry: 'Environmental Services', staff: 52, score: 38, category: 'HIGH', ...getCategoryStyles('HIGH') },
+    ];
+  };
+
   const fetchBusinessScores = async () => {
     setLoading(true);
     setError(null);
 
     try {
       // Fetch all business IDs
-      const idsResponse = await fetch(`${API_BASE_URL}/businesses`);
+      const idsResponse = await fetch(`${API_BASE_URL}/businesses`, {
+        signal: AbortSignal.timeout(5000) // 5 second timeout
+      });
+
       if (!idsResponse.ok) throw new Error('Failed to fetch business list');
       const { businesses: businessIds } = await idsResponse.json();
 
@@ -127,7 +141,12 @@ export default function Home() {
       setBusinesses(businessData);
       setLastUpdated(new Date());
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load data');
+      console.warn('[OFFO] API unavailable, using demo data:', err);
+      // Fallback to static demo data for mobile/offline access
+      const demoData = getDemoBusinessData();
+      setBusinesses(demoData);
+      setLastUpdated(new Date());
+      setError(null); // Clear error since we have fallback data
     } finally {
       setLoading(false);
     }
