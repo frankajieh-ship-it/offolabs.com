@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import jsPDF from 'jspdf';
 import { authService } from '@/lib/auth';
 
@@ -550,7 +550,7 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis domain={[0, 100]} />
-            <Tooltip />
+            <RechartsTooltip />
             <Legend />
             <Bar dataKey="score" name="Score">
               {chartData.map((entry, index) => (
@@ -579,7 +579,7 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
                 domain={[0, 100]}
                 tick={{ fontSize: 12 }}
               />
-              <Tooltip
+              <RechartsTooltip
                 contentStyle={{
                   backgroundColor: '#fff',
                   border: '1px solid #ddd',

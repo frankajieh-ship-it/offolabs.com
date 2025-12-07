@@ -1,6 +1,6 @@
 'use client';
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
 interface TrendDataPoint {
   date: string;
@@ -120,7 +120,7 @@ export default function TrendLine30d({ trend }: TrendLine30dProps) {
             stroke="#6b7280"
             style={{ fontSize: '12px' }}
           />
-          <Tooltip content={<CustomTooltip />} />
+          <RechartsTooltip content={<CustomTooltip />} />
 
           {/* Reference lines for risk zones */}
           <ReferenceLine y={80} stroke="#10b981" strokeDasharray="3 3" label={{ value: 'Low Risk', position: 'right', fontSize: 10 }} />
