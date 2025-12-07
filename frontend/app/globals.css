@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 249, 250, 251;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.risk-card {
+  @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+}
+
+.risk-high {
+  @apply text-red-600 bg-red-50 border-red-300;
+}
+
+.risk-moderate {
+  @apply text-yellow-600 bg-yellow-50 border-yellow-300;
+}
+
+.risk-low {
+  @apply text-green-600 bg-green-50 border-green-300;
+}
