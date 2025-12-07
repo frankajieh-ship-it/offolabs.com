@@ -32,6 +32,8 @@ export default function Home() {
   // PHASE 2: Search and Filter State
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState<string>('ALL');
+  // MVP UPGRADE #6: Sort State
+  const [sortBy, setSortBy] = useState<string>('HIGHEST_RISK');
 
   // MVP UPGRADE #3: Business metadata with descriptions
   const businessMetadata: Record<string, { name: string; description: string; industry: string; staff: number }> = {
@@ -183,29 +185,60 @@ export default function Home() {
     setIsFirstVisit(false);
   };
 
-  // PHASE 2: Filter and Search Logic
-  const filteredBusinesses = businesses.filter((business) => {
-    // Filter by category
-    const matchesCategory = filterCategory === 'ALL' || business.category === filterCategory;
+  // PHASE 2 + MVP UPGRADE #6: Filter, Search, and Sort Logic
+  const filteredBusinesses = businesses
+    .filter((business) => {
+      // Filter by category
+      const matchesCategory = filterCategory === 'ALL' || business.category === filterCategory;
 
-    // Filter by search query (name or ID)
-    const matchesSearch = searchQuery === '' ||
-      business.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      business.id.toLowerCase().includes(searchQuery.toLowerCase());
+      // Filter by search query (name or ID)
+      const matchesSearch = searchQuery === '' ||
+        business.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        business.id.toLowerCase().includes(searchQuery.toLowerCase());
 
-    return matchesCategory && matchesSearch;
-  });
+      return matchesCategory && matchesSearch;
+    })
+    .sort((a, b) => {
+      switch (sortBy) {
+        case 'HIGHEST_RISK':
+          return a.score - b.score; // Lower scores = higher risk
+        case 'LOWEST_RISK':
+          return b.score - a.score; // Higher scores = lower risk
+        case 'A_Z':
+          return a.name.localeCompare(b.name);
+        case 'Z_A':
+          return b.name.localeCompare(a.name);
+        default:
+          return 0;
+      }
+    });
 
   return (
     <main className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-6xl mx-auto">
+        {/* MVP UPGRADE #9: Header with Logo and Timestamp */}
         <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            OFFO Risk Intelligence Dashboard
-          </h1>
-          <p className="text-gray-600 text-lg">
-            Comprehensive risk assessment powered by behavioral compliance data
-          </p>
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center gap-4">
+              <img 
+                src="/OFFO_logo.png" 
+                alt="OFFO Labs" 
+                className="h-12 w-auto"
+              />
+              <div>
+                <h1 className="text-4xl font-bold text-gray-900">
+                  OFFO Risk Intelligence Dashboard
+                </h1>
+                <p className="text-gray-600 text-lg">
+                  Comprehensive risk assessment powered by behavioral compliance data
+                </p>
+              </div>
+            </div>
+            <div className="text-sm text-gray-500 text-right">
+              <div className="font-medium">Last updated:</div>
+              <div>Just now</div>
+            </div>
+          </div>
         </header>
 
         {/* MVP UPGRADE 1: Onboarding Banner - First-Time Visitors Only */}
@@ -440,6 +473,20 @@ export default function Home() {
                   <option value="HIGH">High Risk Only</option>
                 </select>
               </div>
+
+              {/* MVP UPGRADE #6: Sort Dropdown */}
+              <div className="sm:w-64">
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                >
+                  <option value="HIGHEST_RISK">Sort: Highest Risk</option>
+                  <option value="LOWEST_RISK">Sort: Lowest Risk</option>
+                  <option value="A_Z">Sort: A-Z</option>
+                  <option value="Z_A">Sort: Z-A</option>
+                </select>
+              </div>
             </div>
           )}
 
@@ -664,6 +711,15 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+        {/* MVP UPGRADE #9: Sticky Footer with Branding */}
+        <footer className="mt-12 pt-6 border-t border-gray-300">
+          <div className="text-center text-sm text-gray-600">
+            <p className="font-medium">
+              Powered by <span className="text-blue-600 font-bold">OFFO Labs</span> Risk Intelligence Engine · v1.0 · <span className="text-red-600">Confidential</span>
+            </p>
+          </div>
+        </footer>
     </main>
   );
 }
