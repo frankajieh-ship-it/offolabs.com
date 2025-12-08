@@ -67,7 +67,7 @@ export default function Home() {
       description: 'Waste management with significant documentation issues',
       industry: 'Environmental Services',
       staff: 52
-    },
+    }
   };
 
   // MVP UPGRADE 1: Check if this is first visit
