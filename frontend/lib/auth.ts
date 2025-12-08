@@ -3,6 +3,7 @@
  *
  * Handles JWT token management and authenticated API requests.
  * Automatically fetches and caches tokens, refreshing when needed.
+ * Includes timeout handling for mobile/offline compatibility.
  */
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
