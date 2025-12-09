@@ -208,7 +208,7 @@ export default function Home() {
   };
 
   // PHASE 2 + MVP UPGRADE #6: Filter, Search, and Sort Logic
-  const filteredBusinesses = businesses
+  const filteredBusinesses = (businesses
     .filter((business) => {
       // Filter by category
       const matchesCategory = filterCategory === 'ALL' || business.category === filterCategory;
@@ -233,7 +233,7 @@ export default function Home() {
         default:
           return 0;
       }
-    });
+    }));
 
   const scrollToDashboard = () => {
     const dashboardSection = document.getElementById('dashboard-preview');
