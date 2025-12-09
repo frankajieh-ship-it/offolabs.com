@@ -24,10 +24,16 @@ class AuthService {
 
     // Fetch new token from backend
     try {
+      // Create abort controller for timeout compatibility
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
       const response = await fetch(`${API_BASE_URL}/auth/token?client_id=demo_client`, {
         method: 'POST',
-        signal: AbortSignal.timeout(5000) // 5 second timeout for mobile/offline
+        signal: controller.signal
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error('Failed to obtain authentication token');
