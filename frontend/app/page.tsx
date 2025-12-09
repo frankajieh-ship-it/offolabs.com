@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { authService } from '@/lib/auth';
 import FloatingDemoCTA from '@/components/FloatingDemoCTA';
 
@@ -208,32 +208,34 @@ export default function Home() {
   };
 
   // PHASE 2 + MVP UPGRADE #6: Filter, Search, and Sort Logic
-  const filteredBusinesses = (businesses
-    .filter((business) => {
-      // Filter by category
-      const matchesCategory = filterCategory === 'ALL' || business.category === filterCategory;
+  const filteredBusinesses = useMemo(() => {
+    return businesses
+      .filter((business) => {
+        // Filter by category
+        const matchesCategory = filterCategory === 'ALL' || business.category === filterCategory;
 
-      // Filter by search query (name or ID)
-      const matchesSearch = searchQuery === '' ||
-        business.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        business.id.toLowerCase().includes(searchQuery.toLowerCase());
+        // Filter by search query (name or ID)
+        const matchesSearch = searchQuery === '' ||
+          business.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          business.id.toLowerCase().includes(searchQuery.toLowerCase());
 
-      return matchesCategory && matchesSearch;
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case 'HIGHEST_RISK':
-          return a.score - b.score; // Lower scores = higher risk
-        case 'LOWEST_RISK':
-          return b.score - a.score; // Higher scores = lower risk
-        case 'A_Z':
-          return a.name.localeCompare(b.name);
-        case 'Z_A':
-          return b.name.localeCompare(a.name);
-        default:
-          return 0;
-      }
-    }));
+        return matchesCategory && matchesSearch;
+      })
+      .sort((a, b) => {
+        switch (sortBy) {
+          case 'HIGHEST_RISK':
+            return a.score - b.score; // Lower scores = higher risk
+          case 'LOWEST_RISK':
+            return b.score - a.score; // Higher scores = lower risk
+          case 'A_Z':
+            return a.name.localeCompare(b.name);
+          case 'Z_A':
+            return b.name.localeCompare(a.name);
+          default:
+            return 0;
+        }
+      });
+  }, [businesses, searchQuery, filterCategory, sortBy]);
 
   const scrollToDashboard = () => {
     const dashboardSection = document.getElementById('dashboard-preview');
