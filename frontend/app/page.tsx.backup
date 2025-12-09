@@ -87,53 +87,13 @@ export default function Home() {
     fetchBusinessScores();
   }, []);
 
-  // Helper function for category styling (must be defined before use)
-  const getCategoryStyles = (category: string) => {
-    switch (category) {
-      case 'LOW':
-        return {
-          borderColor: 'border-l-[#4CAF50]',
-          badgeColor: 'bg-[#E8F5E9] text-[#2E7D32] border-[#4CAF50]',
-        };
-      case 'MODERATE':
-        return {
-          borderColor: 'border-l-[#F0B429]',
-          badgeColor: 'bg-[#FFF9E6] text-[#B8860B] border-[#F0B429]',
-        };
-      case 'HIGH':
-        return {
-          borderColor: 'border-l-[#E63946]',
-          badgeColor: 'bg-[#FFEBEE] text-[#C62828] border-[#E63946]',
-        };
-      default:
-        return {
-          borderColor: 'border-l-gray-500',
-          badgeColor: 'bg-gray-100 text-gray-700 border-gray-300',
-        };
-    }
-  };
-
-  // Static demo data fallback for when API is unavailable
-  const getDemoBusinessData = (): BusinessData[] => {
-    return [
-      { id: 'biz_excellent', name: 'Apex Manufacturing Co.', description: 'Manufacturing facility with exemplary safety record', industry: 'Manufacturing', staff: 78, score: 94, category: 'LOW', ...getCategoryStyles('LOW') },
-      { id: 'biz_healthy', name: 'Summit Logistics LLC', description: 'Logistics firm with 32 staff. Uses SafetySuite LMS', industry: 'Transportation & Logistics', staff: 32, score: 87, category: 'LOW', ...getCategoryStyles('LOW') },
-      { id: 'biz_mixed', name: 'Midpoint Construction Inc.', description: 'Mid-sized contractor with recent compliance gaps', industry: 'Construction', staff: 45, score: 68, category: 'MODERATE', ...getCategoryStyles('MODERATE') },
-      { id: 'biz_risky', name: 'Valley Food Processing', description: 'Food processing plant requiring training improvements', industry: 'Food Services', staff: 67, score: 52, category: 'MODERATE', ...getCategoryStyles('MODERATE') },
-      { id: 'biz_critical', name: 'Riverside Waste Services', description: 'Waste management with significant documentation issues', industry: 'Environmental Services', staff: 52, score: 38, category: 'HIGH', ...getCategoryStyles('HIGH') },
-    ];
-  };
-
   const fetchBusinessScores = async () => {
     setLoading(true);
     setError(null);
 
     try {
       // Fetch all business IDs
-      const idsResponse = await fetch(`${API_BASE_URL}/businesses`, {
-        signal: AbortSignal.timeout(5000) // 5 second timeout
-      });
-
+      const idsResponse = await fetch(`${API_BASE_URL}/businesses`);
       if (!idsResponse.ok) throw new Error('Failed to fetch business list');
       const { businesses: businessIds } = await idsResponse.json();
 
@@ -167,12 +127,7 @@ export default function Home() {
       setBusinesses(businessData);
       setLastUpdated(new Date());
     } catch (err) {
-      console.warn('[OFFO] API unavailable, using demo data:', err);
-      // Fallback to static demo data for mobile/offline access
-      const demoData = getDemoBusinessData();
-      setBusinesses(demoData);
-      setLastUpdated(new Date());
-      setError(null); // Clear error since we have fallback data
+      setError(err instanceof Error ? err.message : 'Failed to load data');
     } finally {
       setLoading(false);
     }
@@ -198,6 +153,30 @@ export default function Home() {
     });
   };
 
+  const getCategoryStyles = (category: string) => {
+    switch (category) {
+      case 'LOW':
+        return {
+          borderColor: 'border-l-[#4CAF50]',
+          badgeColor: 'bg-[#E8F5E9] text-[#2E7D32] border-[#4CAF50]',
+        };
+      case 'MODERATE':
+        return {
+          borderColor: 'border-l-[#F0B429]',
+          badgeColor: 'bg-[#FFF9E6] text-[#B8860B] border-[#F0B429]',
+        };
+      case 'HIGH':
+        return {
+          borderColor: 'border-l-[#E63946]',
+          badgeColor: 'bg-[#FFEBEE] text-[#C62828] border-[#E63946]',
+        };
+      default:
+        return {
+          borderColor: 'border-l-gray-500',
+          badgeColor: 'bg-gray-100 text-gray-700 border-gray-300',
+        };
+    }
+  };
 
   // MVP UPGRADE 1: Dismiss onboarding banner
   const dismissOnboarding = () => {
@@ -206,62 +185,29 @@ export default function Home() {
     setIsFirstVisit(false);
   };
 
-  // PHASE 2 + MVP UPGRADE #6: Filter, Search, and Sort Logic
-  const filteredBusinesses = businesses
-    .filter((business) => {
-      // Filter by category
-      const matchesCategory = filterCategory === 'ALL' || business.category === filterCategory;
+  // PHASE 2: Filter and Search Logic
+  const filteredBusinesses = businesses.filter((business) => {
+    // Filter by category
+    const matchesCategory = filterCategory === 'ALL' || business.category === filterCategory;
 
-      // Filter by search query (name or ID)
-      const matchesSearch = searchQuery === '' ||
-        business.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        business.id.toLowerCase().includes(searchQuery.toLowerCase());
+    // Filter by search query (name or ID)
+    const matchesSearch = searchQuery === '' ||
+      business.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      business.id.toLowerCase().includes(searchQuery.toLowerCase());
 
-      return matchesCategory && matchesSearch;
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case 'HIGHEST_RISK':
-          return a.score - b.score; // Lower scores = higher risk
-        case 'LOWEST_RISK':
-          return b.score - a.score; // Higher scores = lower risk
-        case 'A_Z':
-          return a.name.localeCompare(b.name);
-        case 'Z_A':
-          return b.name.localeCompare(a.name);
-        default:
-          return 0;
-      }
-    });
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <main className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-6xl mx-auto">
-        {/* MVP UPGRADE #9: Header with Logo and Timestamp */}
         <header className="mb-8">
-          <div className="flex flex-col sm:flex-row items-start justify-between gap-4 mb-4">
-            <div className="flex items-center gap-4 flex-1">
-              <Link href="/" className="flex-shrink-0">
-                <img
-                  src="/OFFO_LAB_logo.png"
-                  alt="OFFO LAB Consulting logo"
-                  className="h-16 sm:h-20 w-auto max-w-[100px] sm:max-w-[160px] cursor-pointer hover:opacity-80 transition-opacity"
-                />
-              </Link>
-              <div className="flex-1">
-                <h1 className="text-2xl sm:text-4xl font-bold text-gray-900">
-                  OFFO Risk Intelligence Dashboard
-                </h1>
-                <p className="text-gray-600 text-sm sm:text-lg">
-                  Comprehensive risk assessment powered by behavioral compliance data
-                </p>
-              </div>
-            </div>
-            <div className="text-sm text-gray-500 sm:text-right">
-              <div className="font-medium">Last updated:</div>
-              <div>Just now</div>
-            </div>
-          </div>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            OFFO Risk Intelligence Dashboard
+          </h1>
+          <p className="text-gray-600 text-lg">
+            Comprehensive risk assessment powered by behavioral compliance data
+          </p>
         </header>
 
         {/* MVP UPGRADE 1: Onboarding Banner - First-Time Visitors Only */}
@@ -496,20 +442,6 @@ export default function Home() {
                   <option value="HIGH">High Risk Only</option>
                 </select>
               </div>
-
-              {/* MVP UPGRADE #6: Sort Dropdown */}
-              <div className="sm:w-64">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                >
-                  <option value="HIGHEST_RISK">Sort: Highest Risk</option>
-                  <option value="LOWEST_RISK">Sort: Lowest Risk</option>
-                  <option value="A_Z">Sort: A-Z</option>
-                  <option value="Z_A">Sort: Z-A</option>
-                </select>
-              </div>
             </div>
           )}
 
@@ -734,30 +666,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-        {/* MVP UPGRADE #9: Sticky Footer with Branding */}
-        <footer className="mt-12 pt-6 border-t border-gray-300">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <img
-                src="/OFFO_LAB_logo.png"
-                alt="OFFO LAB"
-                className="h-8 w-auto opacity-60"
-              />
-              <p className="text-xs text-gray-600">
-                © 2025 <span className="font-semibold">OFFO LAB</span>
-              </p>
-            </div>
-            <div className="text-center sm:text-right">
-              <p className="text-sm text-gray-600 font-medium">
-                Powered by <span className="text-blue-600 font-bold">OFFO LAB</span> Risk Intelligence Engine · v1.0
-              </p>
-              <p className="text-xs text-red-600 font-semibold mt-1">
-                Confidential
-              </p>
-            </div>
-          </div>
-        </footer>
     </main>
   );
 }

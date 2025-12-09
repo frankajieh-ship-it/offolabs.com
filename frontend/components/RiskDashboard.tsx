@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import jsPDF from 'jspdf';
 import { authService } from '@/lib/auth';
@@ -43,14 +44,74 @@ interface RiskDashboardProps {
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
+// Industry-specific terminology mapping
+interface IndustryTerminology {
+  taskAdherence: string;
+  training: string;
+  documentation: string;
+  taskDescription: string;
+  trainingDescription: string;
+  documentationDescription: string;
+}
+
+const industryTerminology: Record<string, IndustryTerminology> = {
+  construction: {
+    taskAdherence: 'Site Checks',
+    training: 'Safety Protocols',
+    documentation: 'Documentation Accuracy',
+    taskDescription: 'Daily site inspection completion and hazard identification logs',
+    trainingDescription: 'OSHA safety training, equipment certifications, and toolbox talks',
+    documentationDescription: 'Incident reports, permits, and safety documentation',
+  },
+  healthcare: {
+    taskAdherence: 'Task Adherence',
+    training: 'Clinical Training',
+    documentation: 'Clinical Records',
+    taskDescription: 'Protocol compliance and care delivery consistency',
+    trainingDescription: 'Continuing education, certifications, and competency assessments',
+    documentationDescription: 'Patient records, treatment notes, and regulatory documentation',
+  },
+  manufacturing: {
+    taskAdherence: 'Process Compliance',
+    training: 'Safety Protocols',
+    documentation: 'Quality Documentation',
+    taskDescription: 'Standard operating procedure adherence and equipment logs',
+    trainingDescription: 'Machine operation training, safety protocols, and LOTO procedures',
+    documentationDescription: 'Quality control records, maintenance logs, and safety audits',
+  },
+  default: {
+    taskAdherence: 'Task Adherence',
+    training: 'Training Completion',
+    documentation: 'Documentation Accuracy',
+    taskDescription: 'Operational task completion and process adherence',
+    trainingDescription: 'Required training completion and competency development',
+    documentationDescription: 'Record accuracy and compliance documentation',
+  },
+};
+
 export default function RiskDashboard({ businessId }: RiskDashboardProps) {
   const [riskData, setRiskData] = useState<RiskScoreData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [industryTemplate, setIndustryTemplate] = useState<string>('default');
+  const searchParams = useSearchParams();
 
   // PRIORITY UX: Contextual Help State
   const [showHowItWorksModal, setShowHowItWorksModal] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
+
+  // Detect industry from URL parameter or business data
+  useEffect(() => {
+    const sector = searchParams.get('sector');
+    if (sector && industryTerminology[sector.toLowerCase()]) {
+      setIndustryTemplate(sector.toLowerCase());
+    } else if (riskData?.business_details?.industry) {
+      const industry = riskData.business_details.industry.toLowerCase();
+      if (industryTerminology[industry]) {
+        setIndustryTemplate(industry);
+      }
+    }
+  }, [searchParams, riskData]);
 
   useEffect(() => {
     fetchRiskScore();
@@ -103,6 +164,11 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
       console.error('PDF export failed:', err);
       alert('Failed to export PDF. Please try again.');
     }
+  };
+
+  // Get industry-specific terminology
+  const getTerminology = (): IndustryTerminology => {
+    return industryTerminology[industryTemplate] || industryTerminology.default;
   };
 
   // Old client-side PDF function (deprecated)
@@ -201,8 +267,7 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
     if (score >= 50) return '#f59e0b'; // yellow
     return '#ef4444'; // red
   };
-
-  // MVP UPGRADE #4: Generate micro-insights for metric scores
+  
   const getMetricInsight = (metricName: string, score: number): { icon: string; text: string; type: "success" | "warning" | "danger" } => {
     if (metricName === "Task Adherence") {
       if (score >= 90) return { icon: "✅", text: "Excellent execution discipline. Your team completes tasks on time 96% of the time.", type: "success" };
@@ -270,6 +335,53 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
 
   return (
     <div className="space-y-6">
+      {/* Industry Template Selector */}
+      {industryTemplate !== 'default' && (
+        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border-l-4 border-purple-600 rounded-lg p-4 shadow-sm">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <svg className="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              <div>
+                <p className="text-sm font-semibold text-gray-900">
+                  {industryTemplate.charAt(0).toUpperCase() + industryTemplate.slice(1)} Industry Template Active
+                </p>
+                <p className="text-xs text-gray-600">
+                  Terminology customized for {industryTemplate} sector compliance requirements
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setIndustryTemplate('construction')}
+                className={`px-3 py-1 rounded text-xs font-semibold transition ${industryTemplate === 'construction' ? 'bg-purple-600 text-white' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-600'}`}
+              >
+                Construction
+              </button>
+              <button
+                onClick={() => setIndustryTemplate('healthcare')}
+                className={`px-3 py-1 rounded text-xs font-semibold transition ${industryTemplate === 'healthcare' ? 'bg-purple-600 text-white' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-600'}`}
+              >
+                Healthcare
+              </button>
+              <button
+                onClick={() => setIndustryTemplate('manufacturing')}
+                className={`px-3 py-1 rounded text-xs font-semibold transition ${industryTemplate === 'manufacturing' ? 'bg-purple-600 text-white' : 'bg-white text-gray-700 border border-gray-300 hover:border-purple-600'}`}
+              >
+                Manufacturing
+              </button>
+              <button
+                onClick={() => setIndustryTemplate('default')}
+                className="px-3 py-1 rounded text-xs font-semibold bg-white text-gray-700 border border-gray-300 hover:border-red-600 hover:text-red-600"
+              >
+                Default
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Overall Score Card - PHASE 1: Prioritized Layout */}
       <div className={`risk-card border-2 shadow-md relative ${getRiskColor(riskData.category)}`}>
         {/* MVP UPGRADE #5: Sticky Export PDF CTA - Top Right */}
@@ -349,6 +461,64 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
                 >
                   {riskData.category} RISK
                 </span>
+              </div>
+            </div>
+
+            {/* Industry Benchmark Placeholder */}
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-sm font-semibold text-gray-700">Industry Benchmark:</span>
+                    <span className="text-2xl font-bold text-blue-600">88.7</span>
+                    <button
+                      className="text-blue-600 hover:text-blue-800"
+                      title="Industry benchmark represents the average risk score across similar businesses in your sector"
+                    >
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </button>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Your Position: <span className="font-semibold text-green-600">Top 12%</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* "What This Score Means" Interpretation Box */}
+            <div className="mt-6 p-5 bg-gradient-to-r from-gray-50 to-gray-100 border-l-4 border-blue-600 rounded-lg shadow-sm">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">What This Score Means</h3>
+              <div className="space-y-2 text-sm">
+                <p className="text-gray-700">
+                  <span className="font-semibold">Interpretation:</span>{' '}
+                  {riskData.category === 'LOW'
+                    ? 'This score indicates excellent operational compliance.'
+                    : riskData.category === 'MODERATE'
+                    ? 'This score indicates adequate compliance with room for improvement.'
+                    : 'This score indicates significant compliance gaps requiring immediate attention.'}
+                </p>
+                <p className="text-gray-700">
+                  <span className="font-semibold">Current strengths:</span>{' '}
+                  {riskData.components.documentation_score >= Math.max(riskData.components.task_adherence_score, riskData.components.training_score)
+                    ? 'Documentation accuracy'
+                    : riskData.components.task_adherence_score >= riskData.components.training_score
+                    ? 'Task adherence'
+                    : 'Training completion'}
+                </p>
+                <p className="text-gray-700">
+                  <span className="font-semibold">Highest risk driver:</span>{' '}
+                  {riskData.components.documentation_score <= Math.min(riskData.components.task_adherence_score, riskData.components.training_score)
+                    ? 'Documentation accuracy'
+                    : riskData.components.task_adherence_score <= riskData.components.training_score
+                    ? 'Task adherence'
+                    : 'Training completion'}
+                </p>
+                <p className="text-gray-700">
+                  <span className="font-semibold">Expected trend:</span>{' '}
+                  {riskData.overall_score >= 80 ? 'Stable' : riskData.overall_score >= 60 ? 'Improving' : 'Needs improvement'}
+                </p>
               </div>
             </div>
           </div>
@@ -567,10 +737,10 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
           {/* Task Adherence */}
           <div className="p-5 bg-white border-2 border-gray-200 rounded-lg shadow-sm">
             <div className="flex items-center mb-2">
-              <div className="text-base font-semibold text-gray-700">Task Adherence</div>
+              <div className="text-base font-semibold text-gray-700">{getTerminology().taskAdherence}</div>
               <Tooltip
                 id="task-adherence"
-                text="Measures task completion rates, overdue tasks, and adherence to safety protocols. Higher scores indicate better compliance."
+                text={getTerminology().taskDescription}
               />
             </div>
             <div className="flex items-baseline gap-2">
@@ -587,10 +757,10 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
           {/* Training Completion */}
           <div className="p-5 bg-white border-2 border-gray-200 rounded-lg shadow-sm">
             <div className="flex items-center mb-2">
-              <div className="text-base font-semibold text-gray-700">Training Completion</div>
+              <div className="text-base font-semibold text-gray-700">{getTerminology().training}</div>
               <Tooltip
                 id="training-completion"
-                text="Tracks employee training status, certification renewals, and mandatory compliance training completion. Complete training reduces incident risk."
+                text={getTerminology().trainingDescription}
               />
             </div>
             <div className="flex items-baseline gap-2">
@@ -607,10 +777,10 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
           {/* Documentation Accuracy */}
           <div className="p-5 bg-white border-2 border-gray-200 rounded-lg shadow-sm">
             <div className="flex items-center mb-2">
-              <div className="text-base font-semibold text-gray-700">Documentation Accuracy</div>
+              <div className="text-base font-semibold text-gray-700">{getTerminology().documentation}</div>
               <Tooltip
                 id="documentation-accuracy"
-                text="Evaluates completeness and timeliness of safety documentation, incident reports, and compliance records. Accurate documentation supports better risk management."
+                text={getTerminology().documentationDescription}
               />
             </div>
             <div className="flex items-baseline gap-2">
@@ -693,8 +863,433 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
               <span>Moderate Risk Threshold (50-79)</span>
             </div>
           </div>
+
+          {/* Trend Interpretation Panel */}
+          {riskData.trend_30d && riskData.trend_30d.length > 1 && (
+            <div className="mt-6 p-5 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg">
+              <h4 className="text-lg font-bold text-gray-900 mb-3">Past 30 Days:</h4>
+              <div className="space-y-2 text-sm text-gray-700">
+                <p>
+                  Score {
+                    riskData.trend_30d[riskData.trend_30d.length - 1].score - riskData.trend_30d[0].score > 0
+                      ? `increased by +${(riskData.trend_30d[riskData.trend_30d.length - 1].score - riskData.trend_30d[0].score).toFixed(1)}`
+                      : riskData.trend_30d[riskData.trend_30d.length - 1].score - riskData.trend_30d[0].score < 0
+                      ? `declined by ${(riskData.trend_30d[riskData.trend_30d.length - 1].score - riskData.trend_30d[0].score).toFixed(1)}`
+                      : 'remained stable'
+                  }.
+                </p>
+                <p>
+                  {riskData.components.documentation_score >= 85
+                    ? 'Documentation improvements contributed to gains.'
+                    : 'Documentation quality remains an area for improvement.'}
+                </p>
+                <p>
+                  {riskData.components.training_score < 80
+                    ? 'Training gaps remain the primary risk factor.'
+                    : 'Training completion is on track.'}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       )}
+
+      {/* Recommended Next Actions */}
+      <div className="risk-card">
+        <h3 className="text-xl font-bold mb-4">Recommended Next Actions</h3>
+        <div className="space-y-3">
+          {riskData.components.training_score < 80 && (
+            <div className="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+              <span className="text-2xl flex-shrink-0">✅</span>
+              <div>
+                <p className="font-semibold text-gray-900">Complete overdue trainings</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Training completion is below target. Prioritize outstanding training modules to reduce incident risk.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {riskData.components.documentation_score < 85 && (
+            <div className="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <span className="text-2xl flex-shrink-0">📄</span>
+              <div>
+                <p className="font-semibold text-gray-900">Audit documentation quality</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Documentation accuracy impacts claims defensibility. Review and improve record completeness.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {(riskData.trend_30d && riskData.trend_30d.length > 1 &&
+            riskData.trend_30d[riskData.trend_30d.length - 1].score < riskData.trend_30d[0].score) && (
+            <div className="flex items-start gap-3 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+              <span className="text-2xl flex-shrink-0">📋</span>
+              <div>
+                <p className="font-semibold text-gray-900">Assign task monitoring workflows</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Recent score decline detected. Implement closer monitoring of task adherence and compliance activities.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {riskData.components.training_score >= 80 &&
+           riskData.components.documentation_score >= 85 &&
+           (!riskData.trend_30d || riskData.trend_30d.length <= 1 ||
+            riskData.trend_30d[riskData.trend_30d.length - 1].score >= riskData.trend_30d[0].score) && (
+            <div className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+              <span className="text-2xl flex-shrink-0">🎯</span>
+              <div>
+                <p className="font-semibold text-gray-900">Maintain current practices</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  All key metrics are performing well. Continue current compliance monitoring and best practices.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Impact Projection (Beta) */}
+      <div className="risk-card bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <div className="flex items-center gap-2 mb-4">
+          <h3 className="text-xl font-bold">Impact Projection</h3>
+          <span className="px-2 py-1 bg-indigo-600 text-white text-xs font-bold rounded">BETA</span>
+        </div>
+        <p className="text-sm text-gray-600 mb-4">
+          Potential score improvements from targeted compliance actions:
+        </p>
+        <div className="space-y-3">
+          {riskData.components.training_score < 100 && (
+            <div className="p-4 bg-white border border-indigo-200 rounded-lg">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">📚</span>
+                <div className="flex-1">
+                  <p className="font-semibold text-gray-900">Training Completion</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Completing all overdue training tasks would improve score by{' '}
+                    <span className="font-bold text-green-600">
+                      +{((100 - riskData.components.training_score) * 0.05 * 0.30).toFixed(1)}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {riskData.components.documentation_score < 100 && (
+            <div className="p-4 bg-white border border-indigo-200 rounded-lg">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">📋</span>
+                <div className="flex-1">
+                  <p className="font-semibold text-gray-900">Documentation Quality</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Improving documentation accuracy by 5% would improve score by{' '}
+                    <span className="font-bold text-green-600">
+                      +{((100 - riskData.components.documentation_score) * 0.05 * 0.30).toFixed(1)}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {riskData.components.task_adherence_score < 100 && (
+            <div className="p-4 bg-white border border-indigo-200 rounded-lg">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">✓</span>
+                <div className="flex-1">
+                  <p className="font-semibold text-gray-900">Task Adherence</p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Improving task completion by 5% would improve score by{' '}
+                    <span className="font-bold text-green-600">
+                      +{((100 - riskData.components.task_adherence_score) * 0.05 * 0.40).toFixed(1)}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {riskData.components.training_score >= 100 &&
+           riskData.components.documentation_score >= 100 &&
+           riskData.components.task_adherence_score >= 100 && (
+            <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-center">
+              <p className="text-sm text-gray-700">
+                <span className="font-bold text-green-600">🎯 Perfect Score Achieved!</span>
+                <br />
+                All compliance metrics are at maximum. Continue maintaining these excellent practices.
+              </p>
+            </div>
+          )}
+        </div>
+        <p className="text-xs text-gray-500 mt-4 italic">
+          * Projections are estimates based on weighted scoring methodology. Actual results may vary.
+        </p>
+      </div>
+
+      {/* Integration Status Panel */}
+      <div className="risk-card bg-gray-50 border border-gray-300">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold">Integration Status</h3>
+          <button
+            className="text-gray-600 hover:text-gray-800"
+            title="These integrations provide real-time data feeds for continuous risk scoring. Production systems connect directly to your compliance infrastructure."
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">LMS (Learning Management System)</p>
+                <p className="text-xs text-gray-500">Last sync: 2 hours ago</p>
+              </div>
+            </div>
+            <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+              Connected
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">Task Manager</p>
+                <p className="text-xs text-gray-500">Last sync: 30 minutes ago</p>
+              </div>
+            </div>
+            <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+              Connected
+            </span>
+          </div>
+
+          <div className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-900">Document Control System</p>
+                <p className="text-xs text-gray-500">Last sync: 1 hour ago</p>
+              </div>
+            </div>
+            <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+              Connected
+            </span>
+          </div>
+        </div>
+        <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+          <p className="text-xs text-gray-700">
+            <span className="font-semibold">💡 Demo Mode:</span> Integration statuses shown here are simulated. Production deployments connect to your actual compliance systems via secure APIs.
+          </p>
+        </div>
+      </div>
+
+      {/* Audit Trail Placeholder */}
+      <div className="risk-card bg-gray-50 border border-gray-300">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold flex items-center gap-2">
+            <svg className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Audit Logs
+          </h3>
+          <span className="px-3 py-1 bg-gray-200 text-gray-600 text-xs font-semibold rounded-full">
+            Coming Soon
+          </span>
+        </div>
+
+        <div className="bg-white border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+          <svg className="w-16 h-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">Full Audit History</h4>
+          <p className="text-sm text-gray-600 mb-4 max-w-2xl mx-auto">
+            Production version will display comprehensive audit trails including:
+          </p>
+          <ul className="text-sm text-gray-600 space-y-2 text-left max-w-lg mx-auto mb-4">
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 flex-shrink-0">•</span>
+              <span>Score calculation history with timestamps</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 flex-shrink-0">•</span>
+              <span>Input data changes and sources</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 flex-shrink-0">•</span>
+              <span>User access logs and actions performed</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 flex-shrink-0">•</span>
+              <span>System integration events and API calls</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-blue-600 flex-shrink-0">•</span>
+              <span>Compliance checkpoint validations</span>
+            </li>
+          </ul>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            <span className="text-sm font-medium">Secure, tamper-proof audit logging</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Regulatory Mapping (Static) */}
+      <div className="risk-card bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-600">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold flex items-center gap-2">
+            <svg className="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+            Compliance Impact
+          </h3>
+          <button
+            className="text-amber-600 hover:text-amber-800"
+            title="Shows relevant regulatory standards that may be affected by this risk profile"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="bg-white border border-amber-200 rounded-lg p-5">
+          <p className="text-sm text-gray-700 mb-4">
+            This risk profile may affect compliance with the following regulatory standards:
+          </p>
+
+          {/* Industry-specific regulatory standards */}
+          <div className="space-y-3">
+            {industryTemplate === 'construction' && (
+              <>
+                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900 text-sm">OSHA 1926 - Construction Safety Standards</p>
+                    <p className="text-xs text-gray-600 mt-1">Subparts C (General Safety), E (Personal Protective Equipment), F (Fire Protection)</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900 text-sm">OSHA 1910.132 - PPE General Requirements</p>
+                    <p className="text-xs text-gray-600 mt-1">Hazard assessment and employee training documentation</p>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {industryTemplate === 'healthcare' && (
+              <>
+                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900 text-sm">HIPAA - Health Information Privacy</p>
+                    <p className="text-xs text-gray-600 mt-1">Protected Health Information (PHI) documentation and training requirements</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900 text-sm">Joint Commission Standards</p>
+                    <p className="text-xs text-gray-600 mt-1">Patient safety, infection control, and quality improvement</p>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {industryTemplate === 'manufacturing' && (
+              <>
+                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900 text-sm">OSHA 1910.147 - Lockout/Tagout (LOTO)</p>
+                    <p className="text-xs text-gray-600 mt-1">Machine-specific procedures and employee training documentation</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900 text-sm">ISO 9001 - Quality Management</p>
+                    <p className="text-xs text-gray-600 mt-1">Process documentation and continuous improvement records</p>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {industryTemplate === 'default' && (
+              <>
+                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900 text-sm">OSHA 1910.132 - Personal Protective Equipment</p>
+                    <p className="text-xs text-gray-600 mt-1">General industry PPE requirements and training</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                  <svg className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div className="flex-1">
+                    <p className="font-semibold text-gray-900 text-sm">OSHA 1910.138 - Hand Protection</p>
+                    <p className="text-xs text-gray-600 mt-1">Hazard assessment and protective glove requirements</p>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* View relevant standards link */}
+          <div className="mt-4 pt-4 border-t border-amber-200">
+            <a
+              href="#"
+              onClick={(e) => e.preventDefault()}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-900 transition"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              View relevant standards library
+              <span className="text-xs bg-amber-100 px-2 py-0.5 rounded">Coming Soon</span>
+            </a>
+          </div>
+        </div>
+      </div>
 
       {/* Risk Interpretation */}
       <div className="risk-card">

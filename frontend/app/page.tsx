@@ -257,9 +257,29 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="text-sm text-gray-500 sm:text-right">
-              <div className="font-medium">Last updated:</div>
-              <div>Just now</div>
+            <div className="flex flex-col gap-3 sm:text-right">
+              <Link
+                href="/insights/offorisk-whitepaper"
+                className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all shadow-md"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download White Paper
+              </Link>
+              <Link
+                href="/enterprise-dashboard"
+                className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                Enterprise Dashboard
+              </Link>
+              <div className="text-sm text-gray-500">
+                <div className="font-medium">Last updated:</div>
+                <div>Just now</div>
+              </div>
             </div>
           </div>
         </header>
@@ -320,13 +340,22 @@ export default function Home() {
             <div className="px-6 pb-6 border-t border-gray-200">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2 flex items-center">
-                    <span className="mr-2">📊</span> Inputs
+                  <h3 className="font-semibold text-gray-900 mb-3 flex items-center">
+                    <span className="mr-2">💡</span> Why These Inputs Matter
                   </h3>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Task completion & overdue rates</li>
-                    <li>• Training completion status</li>
-                    <li>• Documentation accuracy & completeness</li>
+                  <ul className="text-sm text-gray-700 space-y-3">
+                    <li className="flex items-start">
+                      <span className="text-blue-600 mr-2 flex-shrink-0">▸</span>
+                      <span><strong className="text-gray-900">Task Adherence</strong> → Predicts operational consistency</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-600 mr-2 flex-shrink-0">▸</span>
+                      <span><strong className="text-gray-900">Training Completion</strong> → Strong predictor of incident likelihood</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-600 mr-2 flex-shrink-0">▸</span>
+                      <span><strong className="text-gray-900">Documentation Accuracy</strong> → Critical for claims defensibility</span>
+                    </li>
                   </ul>
                 </div>
                 <div>
@@ -716,8 +745,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* MVP Demo Banner */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        {/* MVP Disclaimer Bar */}
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-6">
           <div className="flex items-start">
             <div className="flex-shrink-0">
               <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
@@ -725,10 +754,9 @@ export default function Home() {
               </svg>
             </div>
             <div className="ml-3">
-              <h3 className="text-sm font-semibold text-blue-900 mb-1">MVP Demo Mode</h3>
-              <p className="text-sm text-blue-700">
-                This is a demonstration version with simulated data. In production, data will be
-                sourced from your Compliance AI database with real-time metrics.
+              <h3 className="text-sm font-semibold text-gray-900 mb-1">MVP Demonstration Mode:</h3>
+              <p className="text-sm text-gray-700">
+                Data shown is simulated. Production version connects to your compliance systems for real-time behavioral metrics.
               </p>
             </div>
           </div>

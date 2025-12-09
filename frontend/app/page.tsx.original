@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { authService } from '@/lib/auth';
+import FloatingDemoCTA from '@/components/FloatingDemoCTA';
 
 interface BusinessData {
   id: string;
@@ -234,35 +235,252 @@ export default function Home() {
       }
     });
 
+  const scrollToDashboard = () => {
+    const dashboardSection = document.getElementById('dashboard-preview');
+    dashboardSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-6xl mx-auto">
-        {/* MVP UPGRADE #9: Header with Logo and Timestamp */}
-        <header className="mb-8">
-          <div className="flex flex-col sm:flex-row items-start justify-between gap-4 mb-4">
-            <div className="flex items-center gap-4 flex-1">
-              <Link href="/" className="flex-shrink-0">
-                <img
-                  src="/OFFO_LAB_logo.png"
-                  alt="OFFO LAB Consulting logo"
-                  className="h-16 sm:h-20 w-auto max-w-[100px] sm:max-w-[160px] cursor-pointer hover:opacity-80 transition-opacity"
-                />
-              </Link>
-              <div className="flex-1">
-                <h1 className="text-2xl sm:text-4xl font-bold text-gray-900">
-                  OFFO Risk Intelligence Dashboard
-                </h1>
-                <p className="text-gray-600 text-sm sm:text-lg">
-                  Comprehensive risk assessment powered by behavioral compliance data
-                </p>
+    <main className="min-h-screen bg-gray-50">
+      {/* Hero Section - Executive Summary */}
+      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white overflow-hidden">
+        {/* Geometric Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-8 py-16 sm:py-24">
+          {/* Logo */}
+          <Link href="/" className="inline-block mb-8">
+            <img
+              src="/OFFO_LAB_logo.png"
+              alt="OFFO LAB"
+              className="h-12 sm:h-16 w-auto brightness-0 invert"
+            />
+          </Link>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            OFFO Risk Score™ — Predict Risk Before It Hits Claims
+          </h1>
+          <p className="text-xl sm:text-2xl text-blue-100 mb-8 max-w-3xl">
+            A behavioral risk score for insurers, compliance teams, and investors. Real-time signals. Actionable insights. Zero guesswork.
+          </p>
+          <button
+            onClick={scrollToDashboard}
+            className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-bold text-lg rounded-lg hover:bg-blue-50 transition-all transform hover:scale-105 shadow-xl"
+          >
+            Explore the Score
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      {/* Audience Sections */}
+      <section className="bg-white py-16 border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center">
+            Built for Decision Makers
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* For Insurers */}
+            <div className="bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-xl p-8 hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
               </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">For Insurers</h3>
+              <p className="text-gray-600 mb-6">
+                Use early warning signals to reduce loss ratios.
+              </p>
+              <Link
+                href="/methodology"
+                className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700"
+              >
+                See How It Works
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
-            <div className="text-sm text-gray-500 sm:text-right">
-              <div className="font-medium">Last updated:</div>
-              <div>Just now</div>
+
+            {/* For Enterprise Risk Teams */}
+            <div className="bg-gradient-to-br from-green-50 to-white border border-green-200 rounded-xl p-8 hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">For Enterprise Risk Teams</h3>
+              <p className="text-gray-600 mb-6">
+                Turn daily behavior into measurable compliance.
+              </p>
+              <button
+                onClick={scrollToDashboard}
+                className="inline-flex items-center text-green-600 font-semibold hover:text-green-700"
+              >
+                Explore Score Engine
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* For Startup Investors */}
+            <div className="bg-gradient-to-br from-purple-50 to-white border border-purple-200 rounded-xl p-8 hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">For Startup Investors</h3>
+              <p className="text-gray-600 mb-6">
+                Back safer teams. Use risk score as diligence signal.
+              </p>
+              <Link
+                href="/pilot"
+                className="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700"
+              >
+                Pilot Program
+                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
           </div>
-        </header>
+        </div>
+      </section>
+
+      {/* Trust & Social Proof Section */}
+      <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-16 border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 text-center">
+            Trusted by Industry Leaders
+          </h2>
+          <p className="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">
+            Organizations across sectors are using behavioral risk intelligence to make smarter decisions.
+          </p>
+
+          {/* Testimonial Carousel/Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Testimonial 1 */}
+            <div className="bg-white rounded-xl shadow-md border border-gray-200 p-8">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-500">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-gray-700 mb-6 italic">
+                "This score changed how we view compliance risk. We're now identifying problem areas before they become claims — that's a game-changer for underwriting."
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                  A
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900">Anonymous</p>
+                  <p className="text-sm text-gray-600">Pilot User, Insurance Sector</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-white rounded-xl shadow-md border border-gray-200 p-8">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-500">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-gray-700 mb-6 italic">
+                "Real-time behavioral data gives us visibility into operational maturity that traditional audits can't provide. Essential for due diligence."
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                  B
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900">Anonymous</p>
+                  <p className="text-sm text-gray-600">Pilot User, Venture Capital</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Partner/Advisor Logos & Trust Badges */}
+          <div className="bg-white rounded-xl shadow-md border border-gray-200 p-8">
+            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
+              Advisors & Partners
+            </h3>
+
+            {/* Placeholder Logos */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-lg h-20 flex items-center justify-center border border-gray-200">
+                  <span className="text-gray-400 font-semibold text-sm">Partner Logo {i}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Trust Badges */}
+            <div className="flex flex-wrap justify-center gap-4">
+              <div className="inline-flex items-center px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg">
+                <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span className="text-sm font-semibold text-blue-900">SOC2 Planned</span>
+              </div>
+
+              <div className="inline-flex items-center px-4 py-2 bg-green-50 border border-green-200 rounded-lg">
+                <svg className="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span className="text-sm font-semibold text-green-900">GDPR Compliant (Q1 2026)</span>
+              </div>
+
+              <div className="inline-flex items-center px-4 py-2 bg-purple-50 border border-purple-200 rounded-lg">
+                <svg className="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-sm font-semibold text-purple-900">Enterprise Security</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dashboard Section */}
+      <div id="dashboard-preview" className="bg-gray-50 p-8">
+        <div className="max-w-6xl mx-auto">
+          {/* Compact Header for Dashboard Section */}
+          <header className="mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+                Live Dashboard
+              </h2>
+              <div className="text-sm text-gray-500">
+                <div className="font-medium">Last updated:</div>
+                <div>Just now</div>
+              </div>
+            </div>
+          </header>
 
         {/* MVP UPGRADE 1: Onboarding Banner - First-Time Visitors Only */}
         {showOnboardingBanner && (
@@ -735,29 +953,151 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Newsletter Signup Section */}
+      <section className="bg-gradient-to-br from-blue-600 to-blue-700 py-16">
+        <div className="max-w-4xl mx-auto px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Stay Ahead of Risk Trends
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Join 500+ leaders receiving OFFO insights monthly — compliance intelligence, scoring updates, and industry best practices.
+          </p>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const email = (e.target as HTMLFormElement).email.value;
+              console.log('[OFFO] Newsletter signup:', email);
+              // TODO: Connect to Mailchimp or backend
+              alert('Thank you for subscribing! You\'ll receive our next newsletter soon.');
+              (e.target as HTMLFormElement).reset();
+            }}
+            className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Enter your work email"
+              className="flex-1 px-6 py-4 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            />
+            <button
+              type="submit"
+              className="px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all transform hover:scale-105 shadow-xl"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          <p className="text-sm text-blue-200 mt-4">
+            No spam. Unsubscribe anytime. We respect your privacy.
+          </p>
+        </div>
+      </section>
+
         {/* MVP UPGRADE #9: Sticky Footer with Branding */}
-        <footer className="mt-12 pt-6 border-t border-gray-300">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <img
-                src="/OFFO_LAB_logo.png"
-                alt="OFFO LAB"
-                className="h-8 w-auto opacity-60"
-              />
-              <p className="text-xs text-gray-600">
-                © 2025 <span className="font-semibold">OFFO LAB</span>
-              </p>
+        <footer className="bg-white mt-12 pt-8 border-t border-gray-300">
+          <div className="max-w-6xl mx-auto px-8 pb-8">
+            {/* Footer Links */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+              <div>
+                <h4 className="text-sm font-bold text-gray-900 mb-3">Product</h4>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/methodology" className="text-sm text-gray-600 hover:text-blue-600">
+                      Methodology
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/upload" className="text-sm text-gray-600 hover:text-blue-600">
+                      Upload Data
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/articles" className="text-sm text-gray-600 hover:text-blue-600">
+                      Articles
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-bold text-gray-900 mb-3">Company</h4>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/pilot" className="text-sm text-gray-600 hover:text-blue-600">
+                      Pilot Program
+                    </Link>
+                  </li>
+                  <li>
+                    <a href="mailto:contact@offolab.com" className="text-sm text-gray-600 hover:text-blue-600">
+                      Contact Us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-bold text-gray-900 mb-3">Legal</h4>
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/privacy" className="text-sm text-gray-600 hover:text-blue-600">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/security" className="text-sm text-gray-600 hover:text-blue-600">
+                      Security
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/faq" className="text-sm text-gray-600 hover:text-blue-600">
+                      FAQ
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-bold text-gray-900 mb-3">Connect</h4>
+                <ul className="space-y-2">
+                  <li>
+                    <a href="mailto:contact@offolab.com" className="text-sm text-gray-600 hover:text-blue-600">
+                      contact@offolab.com
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className="text-center sm:text-right">
-              <p className="text-sm text-gray-600 font-medium">
-                Powered by <span className="text-blue-600 font-bold">OFFO LAB</span> Risk Intelligence Engine · v1.0
-              </p>
-              <p className="text-xs text-red-600 font-semibold mt-1">
-                Confidential
-              </p>
+
+            {/* Footer Bottom */}
+            <div className="pt-6 border-t border-gray-200">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/OFFO_LAB_logo.png"
+                    alt="OFFO LAB"
+                    className="h-8 w-auto opacity-60"
+                  />
+                  <p className="text-xs text-gray-600">
+                    © 2025 <span className="font-semibold">OFFO LAB</span>
+                  </p>
+                </div>
+                <div className="text-center sm:text-right">
+                  <p className="text-sm text-gray-600 font-medium">
+                    Powered by <span className="text-blue-600 font-bold">OFFO LAB</span> Risk Intelligence Engine · v1.0
+                  </p>
+                  <p className="text-xs text-red-600 font-semibold mt-1">
+                    Confidential
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </footer>
+
+      {/* Floating Demo CTA */}
+      <FloatingDemoCTA />
     </main>
   );
 }
