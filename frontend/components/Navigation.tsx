@@ -39,6 +39,13 @@ export default function Navigation() {
             >
               How It Works
             </Link>
+            <Link
+              href="/launch"
+              className="text-gray-800 font-medium hover:text-offo-blue transition-colors flex items-center gap-1"
+            >
+              Launch
+              <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
+            </Link>
 
             {/* Resources Dropdown */}
             <div className="relative group">
@@ -121,6 +128,14 @@ export default function Navigation() {
               onClick={() => setMobileMenuOpen(false)}
             >
               How It Works
+            </Link>
+            <Link
+              href="/launch"
+              className="block text-gray-800 font-medium hover:text-offo-blue transition-colors flex items-center gap-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Launch
+              <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
             </Link>
 
             {/* Mobile Resources Section */}
