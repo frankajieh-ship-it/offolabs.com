@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getLaunches } from '@/lib/data/launch-demo';
 import type { Launch } from '@/lib/types/launch';
 import { Calendar, MapPin, TrendingUp, AlertCircle, CheckCircle } from 'lucide-react';
+import DemoModeBanner from '@/components/launch/DemoModeBanner';
 
 export default function LaunchDashboard() {
   const [launches, setLaunches] = useState<Launch[]>([]);
@@ -215,6 +216,9 @@ export default function LaunchDashboard() {
           </div>
         </div>
       </footer>
+
+      {/* Demo Mode Banner */}
+      <DemoModeBanner />
     </div>
   );
 }

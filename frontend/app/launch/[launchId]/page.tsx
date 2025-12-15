@@ -19,7 +19,10 @@ import {
   TrendingUp,
   Filter,
   LayoutGrid,
-  ListTree
+  ListTree,
+  Phone,
+  Upload,
+  FileText
 } from 'lucide-react';
 
 type ViewMode = 'permits' | 'timeline';
@@ -190,11 +193,88 @@ export default function LaunchDetailPage() {
               </div>
             </div>
           </div>
+
+          {/* Action Buttons */}
+          <div className="mt-6 flex flex-wrap gap-3">
+            <button className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-md">
+              <Calendar className="w-4 h-4" />
+              Schedule Inspection
+            </button>
+            <button className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 hover:bg-gray-50 transition-colors">
+              <Upload className="w-4 h-4" />
+              Upload Documents
+            </button>
+            <button className="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 hover:bg-gray-50 transition-colors">
+              <Phone className="w-4 h-4" />
+              Contact Inspector
+            </button>
+          </div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Required Documents Section */}
+        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+          <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <FileText className="w-5 h-5" />
+            Required Documents
+          </h2>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-green-600" />
+                <div>
+                  <div className="font-medium text-gray-900">Floor Plans</div>
+                  <div className="text-xs text-gray-600">Uploaded 3 days ago</div>
+                </div>
+              </div>
+              <span className="text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded">
+                Uploaded
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="flex items-center gap-3">
+                <Clock className="w-5 h-5 text-yellow-600" />
+                <div>
+                  <div className="font-medium text-gray-900">Fire Suppression System Specs</div>
+                  <div className="text-xs text-gray-600">Due in 5 days</div>
+                </div>
+              </div>
+              <span className="text-xs font-semibold text-yellow-700 bg-yellow-100 px-2 py-1 rounded">
+                Pending
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-green-600" />
+                <div>
+                  <div className="font-medium text-gray-900">Health Department Application</div>
+                  <div className="text-xs text-gray-600">Uploaded 1 week ago</div>
+                </div>
+              </div>
+              <span className="text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded">
+                Uploaded
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="flex items-center gap-3">
+                <Clock className="w-5 h-5 text-yellow-600" />
+                <div>
+                  <div className="font-medium text-gray-900">ADA Compliance Documentation</div>
+                  <div className="text-xs text-gray-600">Required for final inspection</div>
+                </div>
+              </div>
+              <span className="text-xs font-semibold text-yellow-700 bg-yellow-100 px-2 py-1 rounded">
+                Pending
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* View Mode Toggle & Filter */}
         <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
