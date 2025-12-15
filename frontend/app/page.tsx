@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { authService } from '@/lib/auth';
 
 interface BusinessData {
@@ -26,8 +26,9 @@ export default function Home() {
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   // MVP UPGRADE 1: Onboarding State
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
-  const [showOnboardingBanner, setShowOnboardingBanner] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [showOnboardingBanner, setShowOnboardingBanner] = useState(false);
 
   // PHASE 2: Search and Filter State
   const [searchQuery, setSearchQuery] = useState('');
@@ -71,12 +72,9 @@ export default function Home() {
 
   // MVP UPGRADE 1: Check if this is first visit
   useEffect(() => {
+    setMounted(true);
     const hasVisited = localStorage.getItem('offoOnboarded');
-    if (hasVisited) {
-      setIsFirstVisit(false);
-      setShowOnboardingBanner(false);
-      setIsHowItWorksOpen(false);
-    } else {
+    if (!hasVisited) {
       setIsFirstVisit(true);
       setShowOnboardingBanner(true);
       setIsHowItWorksOpen(true); // Expand "How it Works" on first visit
@@ -129,10 +127,15 @@ export default function Home() {
     setError(null);
 
     try {
-      // Fetch all business IDs
+      // Fetch all business IDs with timeout (cross-environment compatible)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
       const idsResponse = await fetch(`${API_BASE_URL}/businesses`, {
-        signal: AbortSignal.timeout(5000) // 5 second timeout
+        signal: controller.signal
       });
+
+      clearTimeout(timeoutId);
 
       if (!idsResponse.ok) throw new Error('Failed to fetch business list');
       const { businesses: businessIds } = await idsResponse.json();
@@ -234,20 +237,19 @@ export default function Home() {
       }
     });
 
+  // Gate the entire page until mounted to prevent hydration mismatch
+  // Return null on server and initial client render to ensure perfect match
+  if (!mounted) {
+    return null;
+  }
+
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-6xl mx-auto">
-        {/* MVP UPGRADE #9: Header with Logo and Timestamp */}
-        <header className="mb-8">
+    <main className="min-h-screen bg-gray-50 p-8 animate-fadeIn">
+        <div className="max-w-6xl mx-auto">
+          {/* MVP UPGRADE #9: Header with Logo and Timestamp */}
+          <header className="mb-8">
           <div className="flex flex-col sm:flex-row items-start justify-between gap-4 mb-4">
             <div className="flex items-center gap-4 flex-1">
-              <Link href="/" className="flex-shrink-0">
-                <img
-                  src="/OFFO_LAB_logo.png"
-                  alt="OFFO LAB Consulting logo"
-                  className="h-16 sm:h-20 w-auto max-w-[100px] sm:max-w-[160px] cursor-pointer hover:opacity-80 transition-opacity"
-                />
-              </Link>
               <div className="flex-1">
                 <h1 className="text-2xl sm:text-4xl font-bold text-gray-900">
                   OFFO Risk Intelligence Dashboard
@@ -762,17 +764,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
 
         {/* MVP UPGRADE #9: Sticky Footer with Branding */}
         <footer className="mt-12 pt-6 border-t border-gray-300">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <img
-                src="/OFFO_LAB_logo.png"
-                alt="OFFO LAB"
-                className="h-8 w-auto opacity-60"
-              />
               <p className="text-xs text-gray-600">
                 © 2025 <span className="font-semibold">OFFO LAB</span>
               </p>
@@ -787,6 +783,7 @@ export default function Home() {
             </div>
           </div>
         </footer>
+      </div>
     </main>
   );
 }
