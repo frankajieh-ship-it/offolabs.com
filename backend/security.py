@@ -19,9 +19,10 @@ from pydantic import BaseModel
 
 
 # Security configuration
-SECRET_KEY = secrets.token_urlsafe(32)  # Generate secure random key
+import os
+SECRET_KEY = os.getenv("SECRET_KEY", secrets.token_urlsafe(32))  # Use env var in production
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
 
 # API Key rotation storage
 _api_keys: Dict[str, Dict[str, any]] = {}

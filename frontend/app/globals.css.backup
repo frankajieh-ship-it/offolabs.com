@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Typography scale */
+html {
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  color: #1B2A37; /* offo.slate */
+}
+
+h1 {
+  @apply text-4xl font-bold text-offo-navy;
+}
+h2 {
+  @apply text-3xl font-semibold text-offo-navy;
+}
+h3 {
+  @apply text-2xl font-medium text-offo-slate;
+}
+p, li {
+  @apply text-base leading-relaxed text-gray-700;
+}
+
+/* Link styling */
+a {
+  @apply text-offo-blue hover:underline;
+}
+
+/* Risk card components (preserve existing) */
+.risk-card {
+  @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+}
+
+.risk-high {
+  @apply text-red-600 bg-red-50 border-red-300;
+}
+
+.risk-moderate {
+  @apply text-yellow-600 bg-yellow-50 border-yellow-300;
+}
+
+.risk-low {
+  @apply text-green-600 bg-green-50 border-green-300;
+}

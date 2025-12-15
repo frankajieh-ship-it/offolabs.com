@@ -14,6 +14,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import Dict, Any, List
 from datetime import datetime, timedelta
+import os
 
 from scoring_algorithm import compute_offo_risk_score
 from data_layer import get_business_metrics, get_all_business_ids, get_30day_trend, get_risk_drivers, get_business_details
@@ -43,9 +44,11 @@ app = FastAPI(
 )
 
 # Enable CORS for frontend
+ALLOWED_ORIGINS = os.getenv("CORS_ORIGINS", "*").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origins=ALLOWED_ORIGINS,  # Production: set CORS_ORIGINS env var
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

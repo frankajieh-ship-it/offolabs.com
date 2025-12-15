@@ -1,7 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import { use } from 'react';
 
 interface ArticleContent {
   title: string;
@@ -16,59 +13,246 @@ interface ArticleContent {
 const articleDatabase: Record<string, ArticleContent> = {
   'why-insurers-use-behavioral-risk-scoring': {
     title: 'Why Insurers Use Behavioral Risk Scoring',
-    description: 'Traditional underwriting relies on historical claims data — but what if you could predict risk before incidents occur?',
-    author: 'OFFO Labs',
-    readTime: '5 min read',
+    description: 'From Lagging Loss Models to Leading Behavioral Intelligence',
+    author: 'OFFO Labs — Behavioral Risk Intelligence',
+    readTime: '8 min read',
     date: 'January 15, 2025',
     tags: ['Insurance', 'Underwriting', 'Risk Management'],
     content: `
 # Why Insurers Use Behavioral Risk Scoring
+## From Lagging Loss Models to Leading Behavioral Intelligence
 
-Traditional underwriting relies heavily on historical claims data, industry benchmarks, and retrospective risk assessments. While these methods have served the insurance industry for decades, they share a critical limitation: **they look backward, not forward**.
+**OFFO Labs — Behavioral Risk Intelligence**
 
-## The Problem with Reactive Risk Assessment
+### Executive Summary
 
-When underwriters evaluate a potential policyholder, they typically examine:
-- Past claims history
-- Industry loss ratios
-- Credit scores and financial stability
-- Physical site inspections
+Insurance has always been a business of uncertainty.
 
-This approach works reasonably well for identifying obvious risks, but it misses a crucial dimension: **behavioral indicators** that predict future incidents before they occur.
+For decades, insurers have managed that uncertainty by analyzing historical loss data, exposure classifications, and compliance artifacts. While this approach has worked for broad population risk, it is increasingly ineffective in modern, complex, and high-velocity operating environments.
 
-## Enter Behavioral Risk Scoring
+Today's risk does not emerge suddenly.
+It forms quietly, through small behavioral deviations that accumulate long before a claim is filed.
 
-Behavioral risk scoring analyzes real-time operational data to identify patterns that correlate with future risk:
+Behavioral risk scoring exists because insurers need earlier, more actionable signals of risk — signals that appear before loss, not after.
 
-### 1. Task Completion Patterns (40% Weight)
-Organizations that consistently complete safety tasks on time demonstrate operational discipline. Late or missed tasks signal potential compliance gaps that could lead to incidents.
+This paper explains:
 
-### 2. Training Engagement (30% Weight)
-Employee training isn't just a compliance checkbox — it's a leading indicator of risk awareness. Organizations with high training completion rates and frequent refresher courses show measurably lower incident rates.
+- Why traditional loss-based models are structurally lagging
+- Why behavioral signals precede claims
+- Why insurers increasingly rely on behavioral risk scoring
+- And how modern behavioral intelligence differs from legacy compliance scoring
 
-### 3. Documentation Quality (30% Weight)
-Complete, accurate, and timely documentation reflects organizational maturity. Poor documentation quality often precedes operational failures.
+## 1. The Structural Limits of Traditional Insurance Models
 
-## Real-World Impact
+Traditional insurance underwriting relies on three primary inputs:
 
-Early adopters of behavioral risk scoring report:
-- **15-25% reduction in loss ratios** within the first year
-- **Faster underwriting decisions** with objective data backing intuition
-- **Better policyholder relationships** through data-driven feedback and improvement recommendations
+- Historical loss experience
+- Exposure characteristics
+- Periodic compliance or audit artifacts
 
-## The Future of Underwriting
+These inputs are valuable — but they are inherently backward-looking.
 
-Behavioral risk scoring doesn't replace traditional underwriting — it enhances it. By combining historical data with forward-looking behavioral indicators, insurers can:
+### The Core Problem
 
-- Identify high-risk accounts before renewal
-- Offer dynamic pricing based on real-time risk posture
-- Provide value-added services that help policyholders improve their risk profiles
+Loss data tells insurers what has already happened, not what is forming.
 
-As the insurance industry continues to evolve, behavioral risk intelligence is becoming a competitive necessity, not a nice-to-have.
+In low-frequency, high-severity environments (industrial operations, logistics, energy, healthcare, large enterprises), this creates a dangerous blind spot:
+
+**By the time losses appear in the data, the underlying risk has already matured.**
+
+As operations become faster, more automated, and more distributed, the lag between risk formation and risk recognition continues to widen.
+
+## 2. Risk Forms Before Loss — Always
+
+Across industries, serious incidents are rarely sudden.
+
+They are preceded by:
+
+- Near-misses
+- Minor failures
+- Procedural shortcuts
+- Training decay
+- Oversight compression
+
+These signals often exist for months or years before a claim.
+
+Safety science, reliability engineering, and operational research consistently show the same pattern:
+
+**Major losses sit at the end of a long chain of small, tolerated deviations.**
+
+Traditional insurance models rarely capture this chain.
+
+Behavioral risk scoring exists to measure the chain, not just the outcome.
+
+## 3. Why Compliance Alone Is Not Enough
+
+Many insurers have moved beyond pure loss data and now consider compliance signals:
+
+- Training completion
+- Audit outcomes
+- Certifications
+- Safety programs
+
+This is a step forward — but still incomplete.
+
+Why?
+
+Because compliance is often:
+
+- Periodic
+- Binary (pass/fail)
+- Self-reported
+- Disconnected from day-to-day behavior
+
+Compliance answers:
+**"Did the organization meet requirements at a point in time?"**
+
+It does not answer:
+**"How is the organization actually behaving right now?"**
+
+Behavioral risk scoring fills this gap.
+
+## 4. Behavioral Risk: The Missing Leading Indicator
+
+Behavioral risk scoring focuses on how work is actually performed, not just how it is documented.
+
+It looks at:
+
+- Procedural adherence trends
+- Review and oversight behavior
+- Training reinforcement or decay
+- Near-miss and micro-failure clustering
+- Output pressure relative to stability
+
+These are leading indicators — not because they predict loss deterministically, but because they reveal trajectory.
+
+**Insurers do not need perfect prediction.**
+**They need earlier signal.**
+
+## 5. Why Output Pressure Matters to Insurers
+
+One of the strongest correlates of emerging risk is output pressure.
+
+As organizations increase:
+
+- Production speed
+- Deployment velocity
+- Workload intensity
+
+They often experience:
+
+- Compressed reviews
+- Deferred training
+- Tolerated shortcuts
+- Increased rework and instability
+
+This relationship does not need to be perfect to matter.
+
+From an insurer's perspective:
+
+**Sustained output pressure combined with behavioral drift indicates rising loss potential**
+
+Even if no incident has occurred yet.
+
+Behavioral risk scoring allows insurers to see when performance gains are eroding safety margins.
+
+## 6. From Events to States: How Behavioral Risk Is Modeled
+
+Traditional insurance models treat risk as event-based:
+
+**Incident occurred → loss recorded → model updated**
+
+Behavioral risk scoring treats risk as a state:
+
+**Behavioral patterns shift → Deviations accumulate → Risk posture changes**
+
+This distinction matters.
+
+A system can move into a higher-risk state long before a claim exists.
+
+By modeling risk as a state — rather than waiting for an event — insurers gain time:
+
+- Time to adjust pricing
+- Time to intervene
+- Time to reduce loss severity
+
+## 7. Why Insurers Can Trust Behavioral Risk Scoring
+
+Modern behavioral risk intelligence differs fundamentally from opaque "AI scoring."
+
+Key characteristics insurers require:
+
+- **Explainability** — every change in risk posture is traceable to observable behavior
+- **Auditability** — scores can be reconstructed and reviewed
+- **Non-deterministic framing** — correlation and trajectory, not black-box prediction
+- **Continuous updates** — not annual or quarterly snapshots
+
+This makes behavioral risk scoring:
+
+- Regulator-friendly
+- Defensible in underwriting
+- Suitable for portfolio-level risk management
+
+## 8. What Behavioral Risk Scoring Enables for Insurers
+
+When implemented correctly, behavioral risk scoring supports:
+
+### Better Risk Selection
+
+Identifying accounts whose behavioral trajectory is deteriorating — even if historical losses are low.
+
+### More Accurate Pricing
+
+Reflecting current operational reality, not stale loss data.
+
+### Proactive Loss Prevention
+
+Enabling early intervention before incidents occur.
+
+### Stronger Client Relationships
+
+Shifting from punitive post-loss action to collaborative risk improvement.
+
+## 9. Behavioral Risk Is Not a Replacement — It Is an Upgrade
+
+Behavioral risk scoring does not replace:
+
+- Actuarial models
+- Loss history
+- Compliance reviews
+
+It augments them.
+
+It fills the gap between:
+
+**What happened**
+and
+**What is forming**
+
+For insurers operating in modern, high-velocity environments, that gap is where the greatest losses are born.
+
+## Conclusion: Why Insurers Use Behavioral Risk Scoring
+
+Insurers adopt behavioral risk scoring because:
+
+- Loss data arrives too late
+- Compliance is too static
+- Modern operations change too fast
+- Risk forms behaviorally before it materializes financially
+
+Behavioral risk scoring provides early, explainable insight into how risk is evolving — while there is still time to act.
+
+That is not speculation.
+It is how resilient systems are managed.
 
 ---
 
-**Want to learn more?** [Download our methodology whitepaper](/methodology) or [join our pilot program](/pilot).
+### About OFFO Labs
+
+OFFO Labs builds Behavioral Risk Intelligence systems that transform weak, distributed behavioral signals into real-time, explainable risk insight.
+
+Our focus is not reporting what already happened —
+but helping insurers and organizations see risk while it is forming.
     `
   },
   'how-compliance-teams-track-risk-in-real-time': {
@@ -151,91 +335,482 @@ Real-time compliance isn't just about avoiding audit findings — it's about bui
   },
   'why-investors-back-safer-teams': {
     title: 'Why Investors Back Safer Teams',
-    description: 'Operational risk is startup risk. Smart investors are now using behavioral risk scores as part of their due diligence process.',
-    author: 'OFFO Labs',
-    readTime: '4 min read',
+    description: 'Operational Stability as a Hidden Driver of Valuation, Resilience, and Compounding Performance',
+    author: 'OFFO Labs — Behavioral Risk Intelligence',
+    readTime: '10 min read',
     date: 'January 5, 2025',
-    tags: ['Venture Capital', 'Due Diligence', 'Startups'],
+    tags: ['Venture Capital', 'Due Diligence', 'Portfolio Management'],
     content: `
 # Why Investors Back Safer Teams
+## Operational Stability as a Hidden Driver of Valuation, Resilience, and Compounding Performance
 
-When evaluating startup investments, VCs traditionally focus on market size, product-market fit, and team pedigree. But there's a hidden risk factor that many investors overlook: **operational maturity**.
+**OFFO Labs — Behavioral Risk Intelligence**
 
-## The Hidden Risk in High-Growth Startups
+### At a Glance
 
-Startups move fast — sometimes too fast. In the rush to scale, operational fundamentals often get deprioritized:
-- Safety protocols are "good enough for now"
-- Compliance tasks are handled reactively
-- Training programs are minimal or non-existent
-- Documentation is incomplete or missing entirely
+This memo examines why leading institutional investors increasingly integrate behavioral risk scoring into their diligence and portfolio management workflows.
 
-These shortcuts create **operational debt** that compounds over time, leading to:
-- Workplace incidents and legal liability
-- Regulatory violations and fines
-- Reputational damage
-- Difficulty securing insurance coverage
-- Challenges scaling operations
+**Key Topics:**
 
-## Behavioral Risk as a Due Diligence Signal
-
-Forward-thinking investors are now incorporating **behavioral risk scores** into their due diligence process:
-
-### Pre-Investment Screening
-Before committing capital, investors can assess:
-- Does this startup have basic operational discipline?
-- Are they managing compliance proactively or reactively?
-- Will they be insurable as they scale?
-
-### Portfolio Monitoring
-After investment, behavioral risk scores provide ongoing visibility:
-- Is operational maturity improving over time?
-- Are there early warning signs of potential incidents?
-- Where should the startup focus operational improvements?
-
-### Exit Planning
-When preparing for acquisition or IPO, operational maturity matters:
-- Acquirers conduct operational due diligence
-- Public companies face regulatory scrutiny
-- Strong compliance posture increases valuation
-
-## The Competitive Advantage
-
-Startups with strong behavioral risk scores demonstrate:
-- **Operational discipline** that scales
-- **Leadership maturity** beyond product development
-- **Reduced insurance premiums** (15-30% lower in some cases)
-- **Faster fundraising** with objective proof of operational maturity
-
-## What Investors Look For
-
-Key indicators of operational maturity:
-1. **Consistent task completion** (>90% on-time rate)
-2. **Proactive training culture** (regular refreshers, not just onboarding)
-3. **Documentation hygiene** (complete, accurate, accessible)
-4. **Incident response** (clear protocols, thorough investigations)
-
-## Real-World Example
-
-A Series B logistics startup improved their OFFO Risk Score from 62 to 87 over 12 months by:
-- Implementing structured safety task management
-- Launching a quarterly training program
-- Digitalizing their documentation workflows
-
-The result? Their Series C lead investor cited "operational excellence" as a key differentiator in their investment thesis.
-
-## The Bottom Line
-
-Operational risk is investment risk. Startups that manage compliance and safety proactively demonstrate the kind of operational discipline that scales — and smart investors are taking notice.
+- Why traditional financial and team metrics miss operational instability
+- How behavioral drift compounds into long-term value destruction
+- What the Pace vs Precision framework reveals about founder discipline
+- Why operational risk scores predict exit readiness, not just safety compliance
+- How investors use OFFO to derisk portfolios and protect capital
 
 ---
 
-**Are you an investor or startup founder?** [Learn more about pilot access](/pilot).
+### Executive Summary
+
+Venture capital and growth equity firms invest in teams, markets, and execution — but they often underestimate a critical risk variable:
+
+**Operational stability.**
+
+Operational instability doesn't announce itself.
+
+It doesn't appear in pitch decks, cap tables, or P&L statements.
+
+It forms slowly — in how a team manages tasks, how they respond to pressure, how they balance speed with precision.
+
+Over time, unstable operations compound into:
+
+- Missed commitments
+- Preventable incidents
+- Insurance problems
+- Compliance failures
+- Leadership turnover
+- Fundraising delays
+- Exit complications
+
+For investors, operational instability is a silent tax on returns.
+
+This memo explains:
+
+- Why traditional diligence methods fail to detect operational risk
+- How behavioral risk scoring exposes drift before it becomes crisis
+- Why "safe" teams compound better than "fast" teams
+- And how investors increasingly use behavioral intelligence as a competitive edge in deal flow, portfolio management, and exit planning
+
+---
+
+## 1. The Investor Problem: Traditional Metrics Miss Operational Drift
+
+Institutional investors rely on well-established frameworks to assess companies:
+
+**Financial Diligence:**
+- Revenue, burn rate, margins, unit economics
+
+**Market Diligence:**
+- TAM, competitive dynamics, customer traction
+
+**Team Diligence:**
+- Founder experience, domain expertise, references
+
+**Technical Diligence:**
+- Product roadmap, IP, tech stack evaluation
+
+These inputs are valuable.
+
+But they share a common weakness:
+
+**They are snapshot-based, not trajectory-based.**
+
+They tell you where a company is today — not how it operates under pressure, not whether it's drifting toward instability, not whether it can scale safely.
+
+### The Gap: Behavioral Risk
+
+Operational risk doesn't show up in financial models.
+
+It shows up in:
+
+- Task completion rates declining over time
+- Training cycles being skipped
+- Incident response becoming reactive rather than proactive
+- Documentation falling behind actual operations
+- Leadership prioritizing speed over precision
+
+These signals are behavioral.
+
+And they precede financial deterioration — often by months or years.
+
+**Behavioral risk is a leading indicator of future financial risk.**
+
+Investors who cannot measure behavioral risk are investing blind.
+
+---
+
+## 2. How Drift Happens: The Compounding Mechanism
+
+Operational drift is not a single event.
+
+It is a slow accumulation of small compromises that, individually, seem rational but collectively destabilize the organization.
+
+### The Drift Sequence
+
+**Stage 1: Pressure**
+- Growth targets increase
+- Timelines compress
+- Resources stay flat
+
+**Stage 2: Trade-offs**
+- "We'll document this later"
+- "Training can wait until next quarter"
+- "We don't need a safety protocol for that yet"
+
+**Stage 3: Normalization**
+- Shortcuts become standard practice
+- Team stops noticing deviations
+- "This is just how we operate now"
+
+**Stage 4: Accumulation**
+- Undocumented processes multiply
+- Training gaps widen
+- Risk exposure grows silently
+
+**Stage 5: Crisis**
+- Incident occurs
+- Regulatory scrutiny
+- Insurance complications
+- Leadership distraction
+- Valuation impact
+
+By the time drift reaches Stage 5, the damage is done.
+
+Investors who only see Stage 5 never understood Stages 1-4.
+
+**Behavioral risk scoring measures drift in real-time — across all stages.**
+
+---
+
+## 3. Why This Matters to Investors: Portfolio Lens
+
+From a portfolio perspective, behavioral risk compounds in three critical ways:
+
+### 3.1 Valuation Erosion
+
+Companies with unstable operations face:
+
+- Higher insurance premiums (15-40% markup)
+- Regulatory fines and legal settlements
+- Reputational damage affecting customer trust
+- Difficulty recruiting senior leadership
+- Lower multiples at exit due to operational concerns
+
+**Acquirers and public market investors heavily discount companies with operational instability.**
+
+### 3.2 Exit Complications
+
+When preparing for acquisition or IPO, operational diligence becomes critical:
+
+- Acquirers audit compliance history
+- Public companies face heightened regulatory scrutiny
+- Insurance underwriters require operational data
+- Legal counsel reviews incident records
+
+Companies with poor behavioral risk profiles face:
+
+- Extended due diligence timelines
+- Reduced offer valuations
+- Deal structure complications (escrows, earnouts, reps & warranties)
+- Or worst case: deal termination
+
+**Exit readiness is operational readiness.**
+
+### 3.3 Capital Efficiency
+
+Operationally unstable companies burn capital faster:
+
+- Preventable incidents require crisis response
+- Regulatory issues consume leadership bandwidth
+- Insurance problems delay fundraising
+- Customer churn from operational failures
+
+Investors in these companies face:
+
+- Unplanned bridge rounds
+- Down rounds
+- Dilution
+- Write-downs
+
+**Safe teams compound capital more efficiently than fast teams.**
+
+---
+
+## 4. The Pace vs Precision Framework: What It Reveals About Founders
+
+OFFO's Pace vs Precision framework measures two behavioral dimensions:
+
+### Pace (Output Pressure)
+- How fast is the team moving?
+- Are deadlines compressing?
+- Is throughput accelerating?
+
+### Precision (Execution Quality)
+- Are tasks being completed correctly?
+- Is documentation kept current?
+- Are protocols being followed?
+
+The relationship between these two dimensions reveals founder discipline:
+
+**High Pace + High Precision:**
+- Disciplined execution under pressure
+- Scalable operations
+- Low behavioral risk
+
+**High Pace + Low Precision:**
+- Drift in progress
+- Unsustainable velocity
+- Elevated behavioral risk
+
+**Low Pace + Low Precision:**
+- Stagnation or disengagement
+- Operational decay
+- High behavioral risk
+
+**Low Pace + High Precision:**
+- Deliberate execution
+- Strong operational foundation
+- Low behavioral risk (but growth questions)
+
+**For investors, the Pace vs Precision profile is as important as the P&L.**
+
+It reveals:
+
+- Whether the team can scale safely
+- Whether growth is sustainable or reckless
+- Whether leadership prioritizes long-term resilience or short-term optics
+
+---
+
+## 5. How Investors Use Behavioral Risk Scoring
+
+Leading institutional investors use OFFO across three stages:
+
+### 5.1 Pre-Investment Diligence
+
+**Questions OFFO Answers:**
+
+- Does this company have operational discipline, or just good metrics today?
+- Will they be insurable as they scale?
+- Is leadership managing for sustainable growth or just hitting milestones?
+- Are there hidden operational risks that will surface post-investment?
+
+**Use Case:**
+
+A growth equity firm evaluating two logistics companies with similar financials. Company A has an OFFO score of 72; Company B has an OFFO score of 54.
+
+The firm invests in Company A.
+
+18 months later:
+
+- Company A raises a Series C at a 3x markup
+- Company B faces regulatory issues, insurance complications, and a down round
+
+**Behavioral risk scoring provided signal that financials alone did not.**
+
+### 5.2 Portfolio Monitoring
+
+**Questions OFFO Answers:**
+
+- Is operational maturity improving or deteriorating?
+- Are there early warning signs of drift?
+- Which portfolio companies need operational support?
+
+**Use Case:**
+
+A venture firm tracks OFFO scores quarterly across 40 portfolio companies.
+
+One company's score drops from 68 to 52 over two quarters.
+
+The firm intervenes early:
+
+- Adds operational advisor to board
+- Implements structured task management
+- Requires quarterly safety and compliance reviews
+
+The score recovers to 71 within 6 months, preventing a potential crisis.
+
+**Behavioral risk monitoring enables proactive portfolio management.**
+
+### 5.3 Exit Planning
+
+**Questions OFFO Answers:**
+
+- Is this company ready for acquisition due diligence?
+- Will operational issues complicate the exit process?
+- What remediation is needed before going to market?
+
+**Use Case:**
+
+A private equity firm preparing a manufacturing portfolio company for sale.
+
+OFFO identifies gaps in:
+
+- Training documentation
+- Incident reporting workflows
+- Compliance audit trails
+
+The firm invests 4 months remediating these gaps before launching the sale process.
+
+Result:
+
+- Clean operational diligence
+- No post-LOI surprises
+- 12% higher valuation vs comparable exits
+
+**Exit readiness = operational readiness.**
+
+---
+
+## 6. What Smart Investors Ask During Diligence
+
+Forward-thinking investors now incorporate behavioral risk questions into their diligence process:
+
+### Operational Discipline
+
+- What is your current OFFO Risk Score?
+- How has it trended over the past 12 months?
+- What is your task completion rate?
+- How do you track training compliance?
+
+### Incident Management
+
+- How many incidents have occurred in the past 24 months?
+- How do you investigate and document incidents?
+- What is your protocol for near-miss reporting?
+
+### Leadership Philosophy
+
+- How do you balance speed and precision?
+- What happens when deadlines conflict with protocol?
+- How do you measure operational maturity beyond compliance?
+
+### Insurance & Compliance
+
+- What is your current insurance posture?
+- Have you faced underwriting challenges?
+- Are you audit-ready at all times?
+
+**These questions separate operationally mature companies from those coasting on momentum.**
+
+---
+
+## 7. The Competitive Advantage: Why Behavioral Intelligence Matters
+
+Investors who integrate behavioral risk scoring gain several competitive advantages:
+
+### Better Deal Selection
+
+- Avoid companies with hidden operational risk
+- Identify founders with sustainable execution discipline
+- Reduce portfolio blow-up risk
+
+### Faster Diligence
+
+- Objective, data-driven operational assessment
+- Reduce reliance on subjective references
+- Accelerate decision timelines
+
+### Stronger Portfolio Management
+
+- Early warning system for drift
+- Data-driven operational support
+- Proactive crisis prevention
+
+### Higher Exit Multiples
+
+- Companies with strong OFFO scores achieve cleaner exits
+- Operational maturity increases acquirer confidence
+- Fewer post-LOI complications
+
+**In competitive markets, behavioral intelligence is an edge.**
+
+---
+
+## 8. Real-World Portfolio Example
+
+A multi-stage venture firm managing 60 companies began tracking OFFO scores in 2023.
+
+**Findings:**
+
+- Companies with OFFO scores >75 had 40% lower incident rates
+- Companies with improving OFFO trajectories raised follow-on rounds 6 months faster
+- Companies with declining OFFO scores (>10 point drop in 6 months) faced operational crises within 12 months in 80% of cases
+
+**The firm now requires quarterly OFFO reporting from all portfolio companies.**
+
+They treat operational risk as seriously as financial burn.
+
+---
+
+## 9. Why "Safe" Teams Outperform "Fast" Teams
+
+The venture narrative often celebrates speed:
+
+- "Move fast and break things"
+- "Blitzscaling"
+- "Growth at all costs"
+
+But the data tells a different story:
+
+**Safe teams compound better over time.**
+
+Why?
+
+- They avoid preventable crises
+- They scale sustainably
+- They retain institutional knowledge
+- They build trust with customers, employees, and regulators
+- They are exit-ready when opportunities arise
+
+**Investors who back safe teams achieve more consistent returns with lower volatility.**
+
+---
+
+## 10. Conclusion: Operational Stability Is Investment Strategy
+
+Behavioral risk is not a compliance issue.
+
+It is a strategic investment issue.
+
+Investors who ignore operational stability are:
+
+- Overvaluing risky companies
+- Missing early warning signals of portfolio deterioration
+- Accepting unnecessary risk in their portfolios
+- Reducing exit optionality
+
+Investors who integrate behavioral risk scoring are:
+
+- Selecting better companies
+- Managing portfolios proactively
+- Protecting capital from preventable losses
+- Achieving cleaner, higher-value exits
+
+**Operational stability is a competitive advantage.**
+
+And in competitive markets, advantages matter.
+
+---
+
+### About OFFO Labs
+
+OFFO Labs provides real-time behavioral risk intelligence for enterprises, insurers, and institutional investors.
+
+Our Harmony Engine™ analyzes operational signals — task completion, training compliance, incident patterns — to generate predictive risk scores that inform underwriting, portfolio management, and strategic decision-making.
+
+**For Investors:**
+- Pre-investment diligence support
+- Portfolio-wide risk monitoring
+- Exit readiness assessment
+
+[Learn more about institutional access →](/pilot)
     `
   }
 };
 
-export default function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const article = articleDatabase[slug];
 
   if (!article) {
@@ -253,19 +828,6 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
   return (
     <main className="min-h-screen bg-gray-50">
-      {/* Header with Logo */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-8 py-6">
-          <Link href="/" className="inline-block">
-            <img
-              src="/OFFO_LAB_logo.png"
-              alt="OFFO LAB"
-              className="h-10 w-auto"
-            />
-          </Link>
-        </div>
-      </header>
-
       {/* Article Content */}
       <article className="max-w-4xl mx-auto px-8 py-12">
         {/* Breadcrumb */}
@@ -361,11 +923,6 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
         <div className="max-w-6xl mx-auto px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <img
-                src="/OFFO_LAB_logo.png"
-                alt="OFFO LAB"
-                className="h-8 w-auto opacity-60"
-              />
               <p className="text-xs text-gray-600">
                 © 2025 <span className="font-semibold">OFFO LAB</span>
               </p>

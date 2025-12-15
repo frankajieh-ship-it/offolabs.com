@@ -171,42 +171,20 @@ export default function WhitepaperPage() {
       </Head>
 
       <main className="min-h-screen bg-gray-50">
-        {/* Header with Logo */}
-        <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
-          <div className="max-w-7xl mx-auto px-8 py-6">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="inline-block">
-                <img
-                  src="/OFFO_LAB_logo.png"
-                  alt="OFFO LAB Logo"
-                  className="h-10 w-auto"
-                />
-              </Link>
-              <button
-                onClick={handleDownload}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl"
-                aria-label="Download OFFO Risk Score White Paper"
-              >
-                Download White Paper
-              </button>
-            </div>
-          </div>
-        </header>
-
         {/* Hero Banner */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-20">
+        <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white py-16">
           <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
           <div className="relative max-w-5xl mx-auto px-8 text-center">
-            <div className="inline-block px-4 py-2 bg-blue-600 bg-opacity-30 border border-blue-400 rounded-full text-sm font-semibold mb-6">
-              <span className="text-blue-200">Research Report</span>
+            <div className="inline-block px-4 py-2 bg-white bg-opacity-20 border-2 border-blue-300 rounded-full text-sm font-bold mb-5 backdrop-blur-sm">
+              <span className="text-white" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>Research Report</span>
             </div>
-            <h1 className="text-5xl sm:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-5xl sm:text-6xl font-bold mb-5 leading-tight text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}>
               OFFO Risk Score™ White Paper
             </h1>
-            <p className="text-2xl text-blue-100 font-light mb-8 max-w-3xl mx-auto">
+            <p className="text-2xl text-white font-light mb-6 max-w-3xl mx-auto" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}>
               Behavioral Risk Intelligence for Insurance & Safety Leaders
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-5">
               <button
                 onClick={handleDownload}
                 className="px-8 py-4 bg-white text-blue-900 font-bold rounded-lg hover:bg-blue-50 transition-all shadow-2xl text-lg flex items-center gap-3"
@@ -224,9 +202,19 @@ export default function WhitepaperPage() {
                 View Live Dashboard
               </Link>
             </div>
-            <p className="mt-6 text-sm text-blue-200">
+            <p className="text-sm text-white font-medium" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
               23-page report • Published January 2025 • Free access with email
             </p>
+
+            {/* Scroll Prompt */}
+            <div className="mt-8 flex flex-col items-center animate-bounce">
+              <p className="text-sm text-white font-medium mb-2" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                Scroll for Highlights
+              </p>
+              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
         </section>
 
@@ -297,9 +285,9 @@ export default function WhitepaperPage() {
 
         {/* What You'll Learn */}
         <section className="bg-white py-16">
-          <div className="max-w-4xl mx-auto px-8">
+          <div className="max-w-6xl mx-auto px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">What You'll Learn</h2>
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
                   title: 'The Science Behind Behavioral Risk',
@@ -326,13 +314,13 @@ export default function WhitepaperPage() {
                   description: 'Emerging trends in behavioral analytics, AI-driven predictions, and regulatory compliance'
                 }
               ].map((item, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                <div key={index} className="flex items-start gap-4 p-6 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all">
                   <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
                     {index + 1}
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -341,9 +329,9 @@ export default function WhitepaperPage() {
         </section>
 
         {/* Who Should Read This */}
-        <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
+        <section className="bg-gray-50 py-16">
           <div className="max-w-5xl mx-auto px-8">
-            <h2 className="text-3xl font-bold mb-10 text-center">Who Should Read This</h2>
+            <h2 className="text-3xl font-bold mb-10 text-center text-gray-900">Who Should Read This</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
@@ -367,10 +355,10 @@ export default function WhitepaperPage() {
                   description: 'Assess portfolio company maturity and operational resilience with quantified risk metrics'
                 }
               ].map((audience, index) => (
-                <div key={index} className="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg border border-white border-opacity-20">
+                <div key={index} className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-md hover:shadow-lg hover:border-blue-300 transition-all">
                   <div className="text-4xl mb-3">{audience.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{audience.title}</h3>
-                  <p className="text-blue-100">{audience.description}</p>
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">{audience.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{audience.description}</p>
                 </div>
               ))}
             </div>
@@ -389,7 +377,7 @@ export default function WhitepaperPage() {
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">OFFO LAB Research Team</h3>
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    This white paper was developed by OFFO LAB's interdisciplinary research team, combining expertise in behavioral science, actuarial analysis, and safety engineering. Our team has partnered with leading insurers, Fortune 500 companies, and academic institutions to validate the OFFO Risk Score methodology.
+                    This white paper was developed by OFFO LAB's interdisciplinary research team, combining expertise in behavioral science, actuarial analysis, and safety engineering. Our team is looking to partner with insurers, Fortune 500 companies, and academic institutions to validate the OFFO Risk Score methodology.
                   </p>
                   <div className="flex gap-2 flex-wrap">
                     <span className="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">Risk Analytics</span>
@@ -405,7 +393,7 @@ export default function WhitepaperPage() {
         {/* Final CTA */}
         <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16">
           <div className="max-w-4xl mx-auto px-8 text-center">
-            <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Risk Strategy?</h2>
+            <h2 className="text-4xl font-bold mb-6 text-white">Ready to Transform Your Risk Strategy?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Download the full OFFO Risk Score™ White Paper and discover how behavioral risk intelligence can revolutionize your approach to safety, underwriting, and operational excellence.
             </p>
@@ -422,23 +410,18 @@ export default function WhitepaperPage() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-white border-t border-gray-200 py-8">
+        <footer className="bg-gray-50 border-t border-gray-200 py-8">
           <div className="max-w-7xl mx-auto px-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <img
-                  src="/OFFO_LAB_logo.png"
-                  alt="OFFO LAB Logo"
-                  className="h-8 w-auto opacity-60"
-                />
-                <p className="text-xs text-gray-600">
+              <div>
+                <p className="text-sm text-gray-600">
                   © 2025 <span className="font-semibold">OFFO LAB</span>
                 </p>
               </div>
               <div className="flex gap-6 text-sm">
-                <Link href="/privacy" className="text-gray-600 hover:text-blue-600">Privacy Policy</Link>
-                <Link href="/security" className="text-gray-600 hover:text-blue-600">Security</Link>
-                <Link href="/faq" className="text-gray-600 hover:text-blue-600">FAQ</Link>
+                <Link href="/privacy" className="text-gray-600 hover:text-blue-600 transition-colors">Privacy Policy</Link>
+                <Link href="/security" className="text-gray-600 hover:text-blue-600 transition-colors">Security</Link>
+                <Link href="/faq" className="text-gray-600 hover:text-blue-600 transition-colors">FAQ</Link>
               </div>
             </div>
           </div>
