@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import jsPDF from 'jspdf';
@@ -113,11 +113,7 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
     }
   }, [searchParams, riskData]);
 
-  useEffect(() => {
-    fetchRiskScore();
-  }, [businessId]);
-
-  const fetchRiskScore = async () => {
+  const fetchRiskScore = useCallback(async () => {
     setLoading(true);
     setError(null);
 
@@ -135,7 +131,11 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [businessId]);
+
+  useEffect(() => {
+    fetchRiskScore();
+  }, [fetchRiskScore]);
 
   const exportToPDF = async () => {
     if (!businessId) return;
