@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
+import { Providers } from '@/src/components/Providers'
+import { Analytics } from '@/src/components/Analytics'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -10,8 +12,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'OFFO Risk Intelligence Dashboard',
-  description: 'Business risk assessment powered by compliance data',
+  title: 'OFFO Launch Platform',
+  description: 'Permit & inspection management for restaurant launches',
   icons: {
     icon: '/favicon.png',
     apple: '/OFFO_LAB_logo.png',
@@ -26,8 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body>
-        <Navigation />
-        {children}
+        <Providers>
+          <Navigation />
+          {children}
+          <Analytics />
+        </Providers>
       </body>
     </html>
   )

@@ -3,11 +3,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [resourcesOpen, setResourcesOpen] = useState(false)
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -28,74 +27,30 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="/harmony"
-              className="text-gray-800 font-medium hover:text-offo-blue transition-colors"
-            >
-              Harmony Engine
-            </Link>
-            <Link
-              href="/approach"
-              className="text-gray-800 font-medium hover:text-offo-blue transition-colors"
-            >
-              How It Works
-            </Link>
-            <Link
-              href="/launch"
-              className="text-gray-800 font-medium hover:text-offo-blue transition-colors flex items-center gap-1"
-            >
-              Launch
-              <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
-            </Link>
-
-            {/* Resources Dropdown */}
-            <div className="relative group">
-              <button
-                className="text-gray-800 font-medium hover:text-offo-blue transition-colors flex items-center gap-1"
-                onMouseEnter={() => setResourcesOpen(true)}
-                onMouseLeave={() => setResourcesOpen(false)}
-              >
-                Resources
-                <ChevronDownIcon className="h-4 w-4" />
-              </button>
-              <div
-                className={`absolute top-full left-0 mt-2 w-48 bg-white shadow-lg rounded-lg border border-gray-200 py-2 transition-all ${
-                  resourcesOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-                }`}
-                onMouseEnter={() => setResourcesOpen(true)}
-                onMouseLeave={() => setResourcesOpen(false)}
-              >
-                <Link
-                  href="/insights/offorisk-whitepaper"
-                  className="block px-4 py-2 text-gray-700 hover:bg-offo-light hover:text-offo-blue transition-colors"
-                >
-                  White Paper
-                </Link>
-                <Link
-                  href="/articles"
-                  className="block px-4 py-2 text-gray-700 hover:bg-offo-light hover:text-offo-blue transition-colors"
-                >
-                  Articles
-                </Link>
-                <Link
-                  href="/faq"
-                  className="block px-4 py-2 text-gray-700 hover:bg-offo-light hover:text-offo-blue transition-colors"
-                >
-                  FAQ
-                </Link>
-              </div>
-            </div>
-
-            <Link
-              href="/pilot"
-              className="text-gray-800 font-medium hover:text-offo-blue transition-colors"
-            >
-              Pilot Program
-            </Link>
-            <Link
-              href="/pilot"
+              href="/demo"
               className="bg-offo-blue text-white px-6 py-2 rounded-lg font-semibold hover:bg-offo-navy transition-colors shadow-sm"
             >
-              Apply Now
+              Try Demo
+            </Link>
+
+            {/* Divider */}
+            <div className="h-8 w-px bg-gray-300"></div>
+
+            {/* Other Products Section */}
+            <Link
+              href="/harmony"
+              className="text-gray-600 font-medium hover:text-offo-blue transition-colors relative"
+            >
+              <span className="flex items-center gap-2">
+                Harmony
+                <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
+              </span>
+            </Link>
+            <Link
+              href="/pilot"
+              className="text-gray-600 font-medium hover:text-offo-blue transition-colors"
+            >
+              Pilot Program
             </Link>
           </div>
 
@@ -116,68 +71,31 @@ export default function Navigation() {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-4 space-y-4">
             <Link
-              href="/harmony"
-              className="block text-gray-800 font-medium hover:text-offo-blue transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Harmony Engine
-            </Link>
-            <Link
-              href="/approach"
-              className="block text-gray-800 font-medium hover:text-offo-blue transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              How It Works
-            </Link>
-            <Link
-              href="/launch"
-              className="block text-gray-800 font-medium hover:text-offo-blue transition-colors flex items-center gap-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Launch
-              <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
-            </Link>
-
-            {/* Mobile Resources Section */}
-            <div className="space-y-2">
-              <div className="text-gray-800 font-medium">Resources</div>
-              <Link
-                href="/insights/offorisk-whitepaper"
-                className="block pl-4 text-gray-700 hover:text-offo-blue transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                White Paper
-              </Link>
-              <Link
-                href="/articles"
-                className="block pl-4 text-gray-700 hover:text-offo-blue transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Articles
-              </Link>
-              <Link
-                href="/faq"
-                className="block pl-4 text-gray-700 hover:text-offo-blue transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                FAQ
-              </Link>
-            </div>
-
-            <Link
-              href="/pilot"
-              className="block text-gray-800 font-medium hover:text-offo-blue transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Pilot Program
-            </Link>
-            <Link
-              href="/pilot"
+              href="/demo"
               className="block bg-offo-blue text-white px-6 py-2 rounded-lg font-semibold hover:bg-offo-navy transition-colors shadow-sm text-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Apply Now
+              Try Demo
             </Link>
+
+            <div className="border-t border-gray-200 pt-4 mt-4">
+              <div className="text-xs text-gray-500 font-semibold mb-2 px-2">OTHER PRODUCTS</div>
+              <Link
+                href="/harmony"
+                className="block text-gray-600 font-medium hover:text-offo-blue transition-colors flex items-center gap-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Harmony
+                <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
+              </Link>
+              <Link
+                href="/pilot"
+                className="block text-gray-600 font-medium hover:text-offo-blue transition-colors mt-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Pilot Program
+              </Link>
+            </div>
           </div>
         )}
       </div>

@@ -1,12 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function LaunchInfoPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-16 md:py-20 px-4">
+      <section className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-block mb-4">
@@ -17,61 +18,33 @@ export default function LaunchInfoPage() {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               OFFO Launch™
             </h1>
-            <p className="text-2xl md:text-3xl mb-6 max-w-4xl mx-auto font-bold leading-tight text-white">
-              Never Miss an Opening Date Again.
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+              Streamline Your Restaurant Opening With Confidence
             </p>
-            <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto leading-relaxed text-white">
-              OFFO Launch™ tracks permits, inspections, training, and approvals in one place — so your location opens when it's supposed to.
+            <p className="text-lg mb-12 max-w-2xl mx-auto">
+              Track permits, manage compliance, and hit your opening date with precision.
+              OFFO Launch™ simplifies the complex process of opening restaurants and businesses.
             </p>
-            <p className="text-base md:text-lg mb-8 max-w-3xl mx-auto text-blue-100">
-              Built for restaurant operators managing multiple openings.
-            </p>
-
-            {/* 3-Bullet Strip */}
-            <div className="max-w-3xl mx-auto mb-10 space-y-3 text-left">
-              <div className="flex items-start gap-3 bg-white/15 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <span className="text-green-400 text-2xl flex-shrink-0 font-bold">✓</span>
-                <p className="text-base md:text-lg text-white">
-                  <strong className="font-bold text-white">Health, fire & ADA permits</strong> — tracked with deadlines
-                </p>
-              </div>
-              <div className="flex items-start gap-3 bg-white/15 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <span className="text-green-400 text-2xl flex-shrink-0 font-bold">✓</span>
-                <p className="text-base md:text-lg text-white">
-                  <strong className="font-bold text-white">Inspection readiness checklist</strong> — no surprises
-                </p>
-              </div>
-              <div className="flex items-start gap-3 bg-white/15 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <span className="text-green-400 text-2xl flex-shrink-0 font-bold">✓</span>
-                <p className="text-base md:text-lg text-white">
-                  <strong className="font-bold text-white">Opening risk score</strong> — know if you're actually ready
-                </p>
-              </div>
-            </div>
-            <div className="flex justify-center mb-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/demo"
-                className="bg-white text-blue-900 px-10 py-4 rounded-lg font-semibold text-xl hover:bg-gray-100 transition-colors shadow-lg"
+                href="/"
+                className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
-                Try Interactive Demo
+                Try Live Demo
+              </Link>
+              <Link
+                href="#features"
+                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors"
+              >
+                Learn More
               </Link>
             </div>
-
-            {/* Trust Copy */}
-            <p className="text-sm md:text-base text-blue-100 max-w-2xl mx-auto mb-6">
-              Takes 2 minutes • No credit card • Built for operators
-            </p>
-
-            {/* Social Proof */}
-            <p className="text-sm md:text-base text-blue-100 italic max-w-2xl mx-auto border-t border-white/30 pt-6">
-              Designed with multi-location restaurant operators
-            </p>
           </div>
         </div>
       </section>
 
-      {/* ARCHIVED: Problem Statement */}
-      {/* <section className="py-20 px-4 bg-white">
+      {/* Problem Statement */}
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -107,10 +80,10 @@ export default function LaunchInfoPage() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* ARCHIVED: Features Section (Everything You Need to Launch) */}
-      {/* <section id="features" className="py-20 px-4 bg-gray-50">
+      {/* Features Section */}
+      <section id="features" className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -122,6 +95,7 @@ export default function LaunchInfoPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Feature Cards */}
             <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
               <div className="text-4xl mb-4">✅</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Permit Tracking</h3>
@@ -171,10 +145,10 @@ export default function LaunchInfoPage() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Demo Preview Section */}
-      <section className="py-16 md:py-24 px-4 bg-white">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -209,7 +183,7 @@ export default function LaunchInfoPage() {
                 </div>
               </div>
               <Link
-                href="/demo"
+                href="/"
                 className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
               >
                 Try Interactive Demo →
@@ -254,7 +228,7 @@ export default function LaunchInfoPage() {
       </section>
 
       {/* Supported Cities Section */}
-      <section className="py-16 md:py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Municipal API Integration
@@ -298,36 +272,36 @@ export default function LaunchInfoPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 px-4 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <h2 className="text-4xl font-bold mb-6">
             Ready to Streamline Your Launch Process?
           </h2>
-          <p className="text-xl md:text-2xl mb-8 text-white">
+          <p className="text-xl mb-8 opacity-90">
             Join restaurants and businesses that are opening on time and within budget using OFFO Launch™.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/demo"
-              className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+              href="/"
+              className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors"
             >
               Start Free Trial
             </Link>
             <Link
-              href="/schedule-demo"
-              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors"
+              href="/pilot"
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors"
             >
               Schedule a Demo
             </Link>
           </div>
-          <p className="mt-8 text-sm md:text-base text-blue-100">
+          <p className="mt-8 text-sm opacity-75">
             No credit card required • 14-day free trial • Full feature access
           </p>
         </div>
       </section>
 
       {/* Technical Details */}
-      <section className="py-16 md:py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">

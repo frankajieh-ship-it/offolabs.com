@@ -187,7 +187,7 @@ export default function NewLaunchPage() {
       saveLaunches([...launches, newLaunch]);
 
       // Redirect to the new launch detail page
-      router.push(`/launch/${newLaunchId}`);
+      router.push(`/${newLaunchId}`);
     } catch (error) {
       console.error('Failed to create launch:', error);
       setErrors({ submit: 'Failed to create launch. Please try again.' });
@@ -205,11 +205,11 @@ export default function NewLaunchPage() {
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Link
-            href="/launch"
+            href="/"
             className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 mb-4 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Launches
+            Back to Dashboard
           </Link>
 
           <div className="flex items-center gap-3">
@@ -535,7 +535,7 @@ export default function NewLaunchPage() {
           {/* Actions */}
           <div className="flex items-center justify-end gap-4 pt-6 border-t border-gray-200">
             <Link
-              href="/launch"
+              href="/"
               className="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
             >
               Cancel
