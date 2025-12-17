@@ -1,213 +1,156 @@
-'use client'
+import Link from "next/link";
 
-import Link from 'next/link'
-
-export default function LaunchInfoPage() {
+export default function Page() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-16 md:py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-block mb-4">
-              <span className="bg-green-500 text-white text-sm px-4 py-1.5 rounded-full font-bold">
-                NEW LAUNCH
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      {/* HERO */}
+      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 text-white py-16 md:py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white" />
+          <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative">
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 bg-green-500 text-white text-xs md:text-sm px-4 py-1.5 rounded-full font-bold">
+              NEW LAUNCH
+            </span>
+
+            <h1 className="mt-6 text-5xl md:text-6xl font-extrabold tracking-tight">
               OFFO Launch™
             </h1>
-            <p className="text-2xl md:text-3xl mb-6 max-w-4xl mx-auto font-bold leading-tight text-white">
-              Never Miss an Opening Date Again.
-            </p>
-            <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto leading-relaxed text-white">
-              OFFO Launch™ tracks permits, inspections, training, and approvals in one place — so your location opens when it's supposed to.
-            </p>
-            <p className="text-base md:text-lg mb-8 max-w-3xl mx-auto text-blue-100">
-              Built for restaurant operators managing multiple openings.
+
+            <p className="mt-4 text-xl md:text-2xl font-semibold text-white">
+              A “control tower” for opening restaurants and medical facilities — on time.
             </p>
 
-            {/* 3-Bullet Strip */}
-            <div className="max-w-3xl mx-auto mb-10 space-y-3 text-left">
-              <div className="flex items-start gap-3 bg-white/15 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <span className="text-green-400 text-2xl flex-shrink-0 font-bold">✓</span>
-                <p className="text-base md:text-lg text-white">
-                  <strong className="font-bold text-white">Health, fire & ADA permits</strong> — tracked with deadlines
+            <p className="mt-4 text-base md:text-lg max-w-3xl mx-auto text-blue-100 leading-relaxed">
+              Track permits, inspections, training, and approvals in one place, with a readiness signal that
+              highlights what’s most likely to delay your opening.
+            </p>
+
+            {/* 3 bullets */}
+            <div className="max-w-3xl mx-auto mt-10 space-y-3 text-left">
+              <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/15">
+                <span className="text-green-300 text-xl font-bold leading-none">✓</span>
+                <p className="text-white">
+                  <span className="font-bold">Permits & licenses</span> — deadlines, owners, and status in one view
                 </p>
               </div>
-              <div className="flex items-start gap-3 bg-white/15 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <span className="text-green-400 text-2xl flex-shrink-0 font-bold">✓</span>
-                <p className="text-base md:text-lg text-white">
-                  <strong className="font-bold text-white">Inspection readiness checklist</strong> — no surprises
+              <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/15">
+                <span className="text-green-300 text-xl font-bold leading-none">✓</span>
+                <p className="text-white">
+                  <span className="font-bold">Inspection readiness</span> — checklists + notes so teams don’t guess
                 </p>
               </div>
-              <div className="flex items-start gap-3 bg-white/15 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <span className="text-green-400 text-2xl flex-shrink-0 font-bold">✓</span>
-                <p className="text-base md:text-lg text-white">
-                  <strong className="font-bold text-white">Opening risk score</strong> — know if you're actually ready
+              <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/15">
+                <span className="text-green-300 text-xl font-bold leading-none">✓</span>
+                <p className="text-white">
+                  <span className="font-bold">Launch readiness signal</span> — see risk early, before the date slips
                 </p>
               </div>
             </div>
-            <div className="flex justify-center mb-4">
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/demo"
-                className="bg-white text-blue-900 px-10 py-4 rounded-lg font-semibold text-xl hover:bg-gray-100 transition-colors shadow-lg"
+                className="bg-white text-blue-950 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
-                Try Interactive Demo
+                Try Live Demo
+              </Link>
+              <Link
+                href="/pilot"
+                className="bg-transparent border-2 border-white/80 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors"
+              >
+                Pilot Program
               </Link>
             </div>
 
-            {/* Trust Copy */}
-            <p className="text-sm md:text-base text-blue-100 max-w-2xl mx-auto mb-6">
+            <p className="mt-5 text-sm text-blue-100">
               Takes 2 minutes • No credit card • Built for operators
             </p>
 
-            {/* Social Proof */}
-            <p className="text-sm md:text-base text-blue-100 italic max-w-2xl mx-auto border-t border-white/30 pt-6">
-              Designed with multi-location restaurant operators
+            <p className="mt-6 text-sm md:text-base text-blue-100 italic border-t border-white/20 pt-6 max-w-2xl mx-auto">
+              Designed for multi-location openings where delays cost real money.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ARCHIVED: Problem Statement */}
-      {/* <section className="py-20 px-4 bg-white">
+      {/* WHO IT'S FOR */}
+      <section className="py-14 md:py-18 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Opening a Restaurant is Complex
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Built for Restaurants + Medical Facilities
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Navigate dozens of permits, inspections, and compliance requirements across multiple agencies.
-              Miss a deadline, and your opening could be delayed by weeks or months.
+            <p className="mt-3 text-lg text-gray-600 max-w-3xl mx-auto">
+              Different industries — same launch reality: permits, inspections, training, documentation, and deadlines.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="text-5xl mb-4">📋</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">20+ Permits</h3>
-              <p className="text-gray-600">
-                Health, fire, building, zoning, business licenses, and more across multiple agencies
-              </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Restaurants</h3>
+              <ul className="text-gray-700 space-y-2">
+                <li>• Health department & food safety readiness</li>
+                <li>• Fire marshal and occupancy coordination</li>
+                <li>• Staff training acknowledgements and documentation</li>
+              </ul>
             </div>
-            <div className="text-center p-6">
-              <div className="text-5xl mb-4">📅</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">6-12 Months</h3>
-              <p className="text-gray-600">
-                Average timeline from concept to opening, with many moving parts to coordinate
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-5xl mb-4">💰</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">$50K+ in Delays</h3>
-              <p className="text-gray-600">
-                Average cost of a 30-day opening delay in lost revenue and carrying costs
-              </p>
+
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Medical Facilities</h3>
+              <ul className="text-gray-700 space-y-2">
+                <li>• Licensing, inspections, and compliance readiness</li>
+                <li>• Documentation & staff onboarding requirements</li>
+                <li>• Opening coordination across vendors + build-out</li>
+              </ul>
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* ARCHIVED: Features Section (Everything You Need to Launch) */}
-      {/* <section id="features" className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Everything You Need to Launch
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              OFFO Launch™ provides a comprehensive platform to manage every aspect of your restaurant opening
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-4xl mb-4">✅</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Permit Tracking</h3>
-              <p className="text-gray-600">
-                Centralized dashboard to track all required permits with real-time status updates and automated reminders.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-4xl mb-4">📊</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Timeline Management</h3>
-              <p className="text-gray-600">
-                Visual timeline to monitor your opening progress and identify critical path items.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-4xl mb-4">🏛️</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Government API Integration</h3>
-              <p className="text-gray-600">
-                Sync with 5 major US city databases for real-time permit status updates. More cities coming soon.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-4xl mb-4">📁</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Document Management</h3>
-              <p className="text-gray-600">
-                Upload, organize, and share all required documents with your team and inspectors.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-4xl mb-4">🔔</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Notifications</h3>
-              <p className="text-gray-600">
-                Email, SMS, and in-app alerts for upcoming inspections, expiring permits, and status changes.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-4xl mb-4">👥</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Team Collaboration</h3>
-              <p className="text-gray-600">
-                Real-time collaboration tools to coordinate with contractors, inspectors, and your team.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Demo Preview Section */}
+      {/* DEMO PREVIEW */}
       <section className="py-16 md:py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                See OFFO Launch™ in Action
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-5">
+                See OFFO Launch™ in action
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Our interactive demo shows you how OFFO Launch™ simplifies the complex process of opening a restaurant.
-                Track permits, manage timelines, and ensure compliance all in one place.
+                Walk through a realistic opening workflow: permit tracking, inspection readiness, training matrix,
+                and an audit binder generator — in one place.
               </p>
+
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3">
-                  <div className="text-green-500 text-xl mt-1">✓</div>
+                  <div className="text-green-600 text-xl mt-1">✓</div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Real-Time Dashboard</h4>
-                    <p className="text-gray-600">See all your permits and their status at a glance</p>
+                    <h4 className="font-semibold text-gray-900">Permit & Inspection Tracker</h4>
+                    <p className="text-gray-600">Deadlines, owners, status, and inspector notes</p>
                   </div>
                 </div>
+
                 <div className="flex items-start gap-3">
-                  <div className="text-green-500 text-xl mt-1">✓</div>
+                  <div className="text-green-600 text-xl mt-1">✓</div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Timeline Visualization</h4>
-                    <p className="text-gray-600">Track progress with beautiful charts and calendars</p>
+                    <h4 className="font-semibold text-gray-900">Training Matrix</h4>
+                    <p className="text-gray-600">Role-based requirements with acknowledgements + uploads</p>
                   </div>
                 </div>
+
                 <div className="flex items-start gap-3">
-                  <div className="text-green-500 text-xl mt-1">✓</div>
+                  <div className="text-green-600 text-xl mt-1">✓</div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Document Upload</h4>
-                    <p className="text-gray-600">Drag & drop files with automatic organization</p>
+                    <h4 className="font-semibold text-gray-900">Audit Binder Generator</h4>
+                    <p className="text-gray-600">One-click binder output for inspections and internal reviews</p>
                   </div>
                 </div>
               </div>
+
               <Link
                 href="/demo"
                 className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
@@ -216,147 +159,84 @@ export default function LaunchInfoPage() {
               </Link>
             </div>
 
+            {/* Preview Card */}
             <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100">
               <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div className="bg-blue-900 text-white p-6">
-                  <h3 className="text-xl font-bold mb-1">Ember & Oak Restaurant</h3>
-                  <p className="text-blue-200">Downtown San Francisco • Target: 1/31/2026</p>
+                <div className="bg-blue-950 text-white p-6">
+                  <h3 className="text-xl font-bold mb-1">Flight REST001 — Ember & Oak</h3>
+                  <p className="text-blue-200">Target takeoff (open): 1/31/2026 • Status: Delayed risk</p>
                 </div>
                 <div className="p-6">
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="bg-gray-50 p-4 rounded-lg text-center">
-                      <div className="text-3xl font-bold text-blue-900">45</div>
-                      <div className="text-sm text-gray-600">Days Until Open</div>
+                      <div className="text-3xl font-bold text-blue-950">45</div>
+                      <div className="text-sm text-gray-600">Days to Open</div>
                     </div>
                     <div className="bg-gray-50 p-4 rounded-lg text-center">
-                      <div className="text-3xl font-bold text-blue-900">2 / 6</div>
-                      <div className="text-sm text-gray-600">Permits Approved</div>
+                      <div className="text-3xl font-bold text-blue-950">2 / 6</div>
+                      <div className="text-sm text-gray-600">Critical Checks</div>
                     </div>
                   </div>
 
                   <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg mb-4">
                     <h4 className="font-bold text-red-900 mb-2 flex items-center gap-2">
-                      <span>⚠️</span> Critical Pending
+                      <span>⚠️</span> Blockers
                     </h4>
                     <p className="text-sm text-red-800">
-                      Health Department Inspection • Fire Safety Certificate • Liquor License
+                      Health inspection • Fire sign-off • Final occupancy documentation
                     </p>
                   </div>
 
                   <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg text-sm text-gray-700">
-                    <p><strong>MVP Demo Mode</strong> - This is a demonstration. Production version syncs with government databases.</p>
+                    <p>
+                      <strong>Demo mode:</strong> Example data only. Production uses your real tasks, owners, and uploads.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
+            {/* end preview */}
           </div>
         </div>
       </section>
 
-      {/* Supported Cities Section */}
-      <section className="py-16 md:py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Municipal API Integration
-          </h2>
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Real-time permit status syncing with major US cities. More jurisdictions coming soon.
-          </p>
-
-          <div className="grid md:grid-cols-5 gap-6 mb-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-3xl mb-2">🌉</div>
-              <h3 className="font-bold text-gray-900">San Francisco</h3>
-              <p className="text-sm text-gray-600">Health Dept API</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-3xl mb-2">🏙️</div>
-              <h3 className="font-bold text-gray-900">Chicago</h3>
-              <p className="text-sm text-gray-600">Business Licenses</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-3xl mb-2">🌴</div>
-              <h3 className="font-bold text-gray-900">Los Angeles</h3>
-              <p className="text-sm text-gray-600">Food Facilities</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-3xl mb-2">🤠</div>
-              <h3 className="font-bold text-gray-900">Houston</h3>
-              <p className="text-sm text-gray-600">Building Permits</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm">
-              <div className="text-3xl mb-2">🗽</div>
-              <h3 className="font-bold text-gray-900">New York</h3>
-              <p className="text-sm text-gray-600">Restaurant Grades</p>
-            </div>
-          </div>
-
-          <p className="text-gray-600">
-            + More cities coming soon. Request your city integration →
-          </p>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 md:py-20 px-4 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+      {/* CTA */}
+      <section className="py-16 md:py-20 px-4 bg-gradient-to-r from-blue-950 to-blue-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Ready to Streamline Your Launch Process?
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Make “opening day” a certainty, not a gamble.
           </h2>
-          <p className="text-xl md:text-2xl mb-8 text-white">
-            Join restaurants and businesses that are opening on time and within budget using OFFO Launch™.
+          <p className="text-xl md:text-2xl mb-8 text-blue-100">
+            Start with the workflow that causes most delays: permits + inspections + training + binder.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/demo"
-              className="bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+              className="bg-white text-blue-950 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              Start Free Trial
+              Start Demo
             </Link>
             <Link
               href="/schedule-demo"
-              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors"
+              className="bg-transparent border-2 border-white/80 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-colors"
             >
-              Schedule a Demo
+              Schedule a Call
             </Link>
           </div>
+
           <p className="mt-8 text-sm md:text-base text-blue-100">
-            No credit card required • 14-day free trial • Full feature access
+            No credit card required • Pilot-ready • Operator-first
           </p>
         </div>
       </section>
 
-      {/* Technical Details */}
-      <section className="py-16 md:py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Built for Scale & Reliability
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Production-ready platform with enterprise-grade features
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl mb-4">⚡</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">&lt;100ms Response</h3>
-              <p className="text-gray-600">Lightning-fast API performance for instant updates</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🔒</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Bank-Level Security</h3>
-              <p className="text-gray-600">JWT authentication, encrypted data, SOC 2 compliant</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">📱</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Mobile-First Design</h3>
-              <p className="text-gray-600">Access from any device, anywhere, anytime</p>
-            </div>
-          </div>
+      {/* FOOTER NOTE */}
+      <section className="py-10 px-4 bg-white">
+        <div className="max-w-7xl mx-auto text-center text-sm text-gray-500">
+          OFFO Launch™ — Site Launch Compliance → Launch Intelligence
         </div>
       </section>
-    </div>
-  )
+    </main>
+  );
 }
