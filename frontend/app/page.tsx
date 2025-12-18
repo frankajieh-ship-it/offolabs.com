@@ -4,47 +4,8 @@ import Link from "next/link";
 export default function Page() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Top Nav */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-3">
-            <div className="grid h-9 w-9 place-items-center rounded-lg bg-blue-900 text-white font-bold">
-              O
-            </div>
-            <div className="leading-tight">
-              <div className="text-sm font-semibold text-gray-900">OFFO LAB</div>
-              <div className="text-[11px] text-gray-500">CONSULTING</div>
-            </div>
-          </div>
-
-          <nav className="hidden items-center gap-7 md:flex">
-            <Link href="/harmony" className="text-sm font-medium text-gray-700 hover:text-gray-900">
-              Harmony Engine
-            </Link>
-            <Link href="/how-it-works" className="text-sm font-medium text-gray-700 hover:text-gray-900">
-              How It Works
-            </Link>
-            <Link href="/resources" className="text-sm font-medium text-gray-700 hover:text-gray-900">
-              Resources
-            </Link>
-            <Link href="/pilot" className="text-sm font-medium text-gray-700 hover:text-gray-900">
-              Pilot Program
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/apply"
-              className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
-            >
-              Apply Now
-            </Link>
-          </div>
-        </div>
-      </header>
-
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-800 to-blue-950 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-800 to-blue-950 text-white pt-8">
         <div className="absolute inset-0 opacity-15">
           {/* simple geometric pattern */}
           <div className="h-full w-full bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.25)_0,transparent_45%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.18)_0,transparent_50%)]" />
