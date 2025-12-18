@@ -39,7 +39,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const verifyToken = async (tokenToVerify: string) => {
     try {
-      const userData = await api.getUserProfile();
+      const response = await api.getUserProfile();
+      const userData = 'data' in response ? response.data : response;
       setUser(userData);
       setIsLoading(false);
     } catch (error) {
