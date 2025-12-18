@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Page() {
+export default function HomePage(): JSX.Element {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* HERO */}
