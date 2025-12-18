@@ -31,7 +31,7 @@ type FilterStatus = PermitStatus | 'all';
 export default function LaunchDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const launchId = params.launchId as string;
+  const launchId = params?.launchId as string;
 
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [launch, setLaunch] = useState<Launch | null>(null);

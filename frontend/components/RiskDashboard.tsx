@@ -102,7 +102,7 @@ export default function RiskDashboard({ businessId }: RiskDashboardProps) {
 
   // Detect industry from URL parameter or business data
   useEffect(() => {
-    const sector = searchParams.get('sector');
+    const sector = searchParams?.get('sector');
     if (sector && industryTerminology[sector.toLowerCase()]) {
       setIndustryTemplate(sector.toLowerCase());
     } else if (riskData?.business_details?.industry) {

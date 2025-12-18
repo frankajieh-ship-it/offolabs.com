@@ -47,11 +47,12 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({ projectId, permitId }) 
       const fileIndex = uploadedFiles.findIndex(f => f.file === variables.file);
       if (fileIndex !== -1) {
         const newFiles = [...uploadedFiles];
+        const responseData = 'data' in data ? data.data : data;
         newFiles[fileIndex] = {
           ...newFiles[fileIndex],
           status: 'success',
           progress: 100,
-          url: data.url
+          url: responseData?.url || ''
         };
         setUploadedFiles(newFiles);
       }
