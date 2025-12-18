@@ -21,12 +21,12 @@ export default function Page() {
             </h1>
 
             <p className="mt-4 text-xl md:text-2xl font-semibold text-white">
-              A “control tower” for opening restaurants and medical facilities — on time.
+              A "control tower" for opening restaurants and medical facilities — on time.
             </p>
 
             <p className="mt-4 text-base md:text-lg max-w-3xl mx-auto text-blue-100 leading-relaxed">
               Track permits, inspections, training, and approvals in one place, with a readiness signal that
-              highlights what’s most likely to delay your opening.
+              highlights what's most likely to delay your opening.
             </p>
 
             {/* 3 bullets */}
@@ -40,7 +40,7 @@ export default function Page() {
               <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/15">
                 <span className="text-green-300 text-xl font-bold leading-none">✓</span>
                 <p className="text-white">
-                  <span className="font-bold">Inspection readiness</span> — checklists + notes so teams don’t guess
+                  <span className="font-bold">Inspection readiness</span> — checklists + notes so teams don't guess
                 </p>
               </div>
               <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/15">
@@ -195,7 +195,6 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            {/* end preview */}
           </div>
         </div>
       </section>
@@ -204,7 +203,7 @@ export default function Page() {
       <section className="py-16 md:py-20 px-4 bg-gradient-to-r from-blue-950 to-blue-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Make “opening day” a certainty, not a gamble.
+            Make "opening day" a certainty, not a gamble.
           </h2>
           <p className="text-xl md:text-2xl mb-8 text-blue-100">
             Start with the workflow that causes most delays: permits + inspections + training + binder.
