@@ -27,12 +27,12 @@ li {
 
 /* Callout text for emphasis */
 .callout {
-  @apply text-xl font-semibold text-offo-blue;
+  @apply text-xl font-semibold text-offo-blue-700;
 }
 
 /* Link styling */
 a {
-  @apply text-offo-blue hover:underline transition-colors;
+  @apply text-offo-blue-700 hover:underline transition-colors;
 }
 
 /* Risk card components (preserve existing) */
