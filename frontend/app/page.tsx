@@ -1,4 +1,7 @@
 // app/page.tsx
+'use client'
+
+import { useState } from "react";
 import Link from "next/link";
 import {
   CheckCircleIcon,
@@ -8,10 +11,14 @@ import {
   LockClosedIcon,
   DocumentCheckIcon
 } from '@heroicons/react/24/outline';
+import DemoModal from '@/components/DemoModal';
 
 export default function Page() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-surface">
+      <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
       {/* Hero - Premium Pattern */}
       <section className="relative overflow-hidden bg-gradient-to-br from-offo-blue-900 via-offo-blue-700 to-offo-navy">
         {/* Background Pattern */}
@@ -63,12 +70,12 @@ export default function Page() {
 
             {/* CTAs */}
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/demo"
+              <button
+                onClick={() => setIsDemoModalOpen(true)}
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-semibold text-offo-blue-900 shadow-xl hover:shadow-2xl hover:bg-blue-50 transition-all duration-200"
               >
-                Try Live Demo
-              </Link>
+                Experience OFFO Launch
+              </button>
               <Link
                 href="/pilot"
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border-2 border-white/60 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 hover:border-white transition-all duration-200"
@@ -324,12 +331,12 @@ export default function Page() {
               >
                 Join Pilot Program
               </Link>
-              <Link
-                href="/demo"
+              <button
+                onClick={() => setIsDemoModalOpen(true)}
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border-2 border-white/60 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 hover:border-white transition-all duration-200"
               >
-                Try Demo First
-              </Link>
+                Experience the Platform
+              </button>
             </div>
           </div>
         </div>
