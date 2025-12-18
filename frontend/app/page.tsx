@@ -216,6 +216,335 @@ export default function Page() {
         </div>
       </section>
 
+      {/* What OFFO Launch Does - Product Storytelling */}
+      <section className="bg-white border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-offo-blue-100 text-offo-blue-700 text-sm font-semibold rounded-full mb-4">
+              THE PLATFORM
+            </span>
+            <h2 className="text-h2 text-ink">What OFFO Launch Does</h2>
+            <p className="mt-4 text-body-xl text-ink-muted max-w-3xl mx-auto">
+              Three interconnected systems that eliminate launch chaos
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {/* Permits & Inspections Tracker */}
+            <div className="group bg-surface-muted rounded-2xl p-8 border border-border-subtle hover:border-offo-blue-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center justify-between mb-6">
+                <div className="p-3 bg-offo-blue-700 rounded-xl">
+                  <ClipboardDocumentCheckIcon className="w-8 h-8 text-white" />
+                </div>
+                <span className="text-2xl font-bold text-offo-blue-700">01</span>
+              </div>
+              <h3 className="text-xl font-bold text-ink mb-3">Permits & Inspections Tracker</h3>
+              <p className="text-body text-ink-muted mb-6">
+                Real-time status on every permit (health, fire, ADA, liquor) with inspector contact history and automated deadline tracking.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>Track 15+ permit types per jurisdiction</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>Inspection scheduling with inspector notes</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>Automated reminders 7/3/1 days before expiration</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Training & Certification Matrix */}
+            <div className="group bg-surface-muted rounded-2xl p-8 border border-border-subtle hover:border-offo-blue-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center justify-between mb-6">
+                <div className="p-3 bg-offo-blue-700 rounded-xl">
+                  <UserGroupIcon className="w-8 h-8 text-white" />
+                </div>
+                <span className="text-2xl font-bold text-offo-blue-700">02</span>
+              </div>
+              <h3 className="text-xl font-bold text-ink mb-3">Training & Certification Matrix</h3>
+              <p className="text-body text-ink-muted mb-6">
+                Staff-level tracking of food safety, fire codes, equipment operation certifications—with expiration alerts.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>Per-employee certification tracking</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>Bulk upload training records</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>Opening-day readiness scorecard</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Launch Audit Binder */}
+            <div className="group bg-surface-muted rounded-2xl p-8 border border-border-subtle hover:border-offo-blue-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="flex items-center justify-between mb-6">
+                <div className="p-3 bg-offo-blue-700 rounded-xl">
+                  <DocumentCheckIcon className="w-8 h-8 text-white" />
+                </div>
+                <span className="text-2xl font-bold text-offo-blue-700">03</span>
+              </div>
+              <h3 className="text-xl font-bold text-ink mb-3">Launch Audit Binder</h3>
+              <p className="text-body text-ink-muted mb-6">
+                Auto-generated PDF binder with all permits, inspections, training records—ready for final health department walk-through.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>One-click PDF export with cover page</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>Custom branding with your logo</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-ink-muted">
+                  <div className="w-1.5 h-1.5 rounded-full bg-offo-blue-700 mt-2 flex-shrink-0" />
+                  <span>Shareable link for inspectors/investors</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works - 4-Step Workflow */}
+      <section className="bg-gradient-to-br from-surface-muted to-white border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-h2 text-ink">How It Works</h2>
+            <p className="mt-4 text-body-xl text-ink-muted max-w-2xl mx-auto">
+              From day one to opening day—in four simple steps
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connection Line */}
+            <div className="absolute top-20 left-0 right-0 h-0.5 bg-gradient-to-r from-offo-blue-100 via-offo-blue-700 to-offo-blue-100 hidden lg:block" />
+
+            <div className="grid gap-8 lg:grid-cols-4">
+              {/* Step 1 */}
+              <div className="relative text-center">
+                <div className="relative inline-flex items-center justify-center w-16 h-16 bg-offo-blue-700 rounded-full text-white font-bold text-xl mb-6 shadow-lg z-10">
+                  1
+                </div>
+                <h3 className="text-lg font-bold text-ink mb-3">Import Your Launch</h3>
+                <p className="text-sm text-ink-muted">
+                  Upload jurisdiction requirements or use our templates for restaurants and medical facilities. Setup takes 5 minutes.
+                </p>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative text-center">
+                <div className="relative inline-flex items-center justify-center w-16 h-16 bg-offo-blue-700 rounded-full text-white font-bold text-xl mb-6 shadow-lg z-10">
+                  2
+                </div>
+                <h3 className="text-lg font-bold text-ink mb-3">Track in Real-Time</h3>
+                <p className="text-sm text-ink-muted">
+                  Update permit statuses, log inspector calls, upload training certificates. One dashboard for the whole team.
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative text-center">
+                <div className="relative inline-flex items-center justify-center w-16 h-16 bg-offo-blue-700 rounded-full text-white font-bold text-xl mb-6 shadow-lg z-10">
+                  3
+                </div>
+                <h3 className="text-lg font-bold text-ink mb-3">See What's Blocking</h3>
+                <p className="text-sm text-ink-muted">
+                  Launch Readiness Score shows exactly what's delaying your opening—permits, inspections, or training gaps.
+                </p>
+              </div>
+
+              {/* Step 4 */}
+              <div className="relative text-center">
+                <div className="relative inline-flex items-center justify-center w-16 h-16 bg-offo-success rounded-full text-white font-bold text-xl mb-6 shadow-lg z-10">
+                  ✓
+                </div>
+                <h3 className="text-lg font-bold text-ink mb-3">Open with Confidence</h3>
+                <p className="text-sm text-ink-muted">
+                  Export your audit binder, show inspectors complete compliance, and open on schedule—every time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 14-Day Pilot Timeline */}
+      <section className="bg-white border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-offo-success/10 text-offo-success text-sm font-semibold rounded-full mb-4">
+              PILOT PROGRAM
+            </span>
+            <h2 className="text-h2 text-ink">What You Get in 14 Days</h2>
+            <p className="mt-4 text-body-xl text-ink-muted max-w-3xl mx-auto">
+              White-glove onboarding to launch intelligence in two weeks
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6">
+              {/* Days 1-3 */}
+              <div className="flex gap-6 group hover:bg-surface-muted p-6 rounded-xl transition-colors">
+                <div className="flex-shrink-0">
+                  <div className="w-20 text-center">
+                    <div className="font-bold text-offo-blue-700 text-lg">Days 1-3</div>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-ink mb-2">Kickoff & Jurisdiction Setup</h3>
+                  <p className="text-sm text-ink-muted mb-3">
+                    Your compliance advisor configures OFFO for your city/county permit requirements, health department workflows, and fire marshal protocols.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">Compliance call (30 min)</span>
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">Custom workflow</span>
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">Team invites</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Days 4-7 */}
+              <div className="flex gap-6 group hover:bg-surface-muted p-6 rounded-xl transition-colors">
+                <div className="flex-shrink-0">
+                  <div className="w-20 text-center">
+                    <div className="font-bold text-offo-blue-700 text-lg">Days 4-7</div>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-ink mb-2">Data Import & Training</h3>
+                  <p className="text-sm text-ink-muted mb-3">
+                    Bulk upload existing permits, training records, contractor info. Your team gets trained on the dashboard in a 15-minute video walkthrough.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">CSV import</span>
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">Team training</span>
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">Mobile access</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Days 8-11 */}
+              <div className="flex gap-6 group hover:bg-surface-muted p-6 rounded-xl transition-colors">
+                <div className="flex-shrink-0">
+                  <div className="w-20 text-center">
+                    <div className="font-bold text-offo-blue-700 text-lg">Days 8-11</div>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-ink mb-2">Live Tracking & Alerts</h3>
+                  <p className="text-sm text-ink-muted mb-3">
+                    Start logging permit updates, inspection notes, and training completions. Automated alerts keep critical items on track.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">Slack integration</span>
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">Email digests</span>
+                    <span className="text-xs px-3 py-1 bg-offo-blue-100 text-offo-blue-700 rounded-full font-medium">Critical path view</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Days 12-14 */}
+              <div className="flex gap-6 group hover:bg-surface-muted p-6 rounded-xl transition-colors border-2 border-offo-success/30">
+                <div className="flex-shrink-0">
+                  <div className="w-20 text-center">
+                    <div className="font-bold text-offo-success text-lg">Days 12-14</div>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-ink mb-2">First Launch Readiness Report</h3>
+                  <p className="text-sm text-ink-muted mb-3">
+                    Export your first audit binder, see your Launch Readiness Score, and get advisor recommendations for any gaps.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs px-3 py-1 bg-offo-success/10 text-offo-success rounded-full font-medium">PDF export</span>
+                    <span className="text-xs px-3 py-1 bg-offo-success/10 text-offo-success rounded-full font-medium">Readiness score</span>
+                    <span className="text-xs px-3 py-1 bg-offo-success/10 text-offo-success rounded-full font-medium">Advisor review</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 text-center">
+              <button
+                onClick={() => setIsDemoModalOpen(true)}
+                className="inline-flex items-center justify-center rounded-xl bg-offo-blue-700 px-8 py-4 text-base font-semibold text-white hover:bg-offo-blue-900 shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                Start Your 14-Day Pilot
+              </button>
+              <p className="mt-4 text-sm text-ink-muted">No credit card • Cancel anytime • White-glove support</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why It Wins - Differentiators */}
+      <section className="bg-surface-muted border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-h2 text-ink">Why OFFO Launch Wins</h2>
+            <p className="mt-4 text-body-xl text-ink-muted max-w-3xl mx-auto">
+              What makes us different from spreadsheets, project management tools, and generic compliance software
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <div className="font-bold text-ink mb-2">⚡ Built for Launch, Not Generic PM</div>
+              <p className="text-sm text-ink-muted">
+                Not adapted from Asana or Monday. Purpose-built for permit/inspection workflows restaurants and medical facilities actually face.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <div className="font-bold text-ink mb-2">📍 Jurisdiction-Specific Intelligence</div>
+              <p className="text-sm text-ink-muted">
+                Pre-loaded requirements for 500+ cities. Knows Dallas health permits ≠ Austin health permits.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <div className="font-bold text-ink mb-2">🎯 Single Source of Truth</div>
+              <p className="text-sm text-ink-muted">
+                No more "where's the fire inspection report?" Permits, inspections, training—one dashboard, not 12 Google Drive folders.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <div className="font-bold text-ink mb-2">🔐 Audit-Ready from Day One</div>
+              <p className="text-sm text-ink-muted">
+                One-click PDF export for health departments, investors, landlords. Show complete compliance in seconds.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <div className="font-bold text-ink mb-2">👥 Real Compliance Advisors</div>
+              <p className="text-sm text-ink-muted">
+                Not just software. Pilot includes advisor access for "Should we expedite this permit?" questions.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-border">
+              <div className="font-bold text-ink mb-2">📊 Launch Readiness Score</div>
+              <p className="text-sm text-ink-muted">
+                One number that tells owners, investors, and contractors: "Are we ready to open or not?"
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="bg-white border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
@@ -310,6 +639,97 @@ export default function Page() {
                 A single dashboard to align owners, managers, contractors, and compliance teams on exactly what's needed to open.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white border-b border-border">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-h2 text-ink">Frequently Asked Questions</h2>
+          </div>
+
+          <div className="space-y-6">
+            <details className="group bg-surface-muted rounded-xl p-6 border border-border-subtle hover:border-offo-blue-700 transition-colors">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-ink">Is OFFO Launch only for restaurants and medical facilities?</span>
+                <span className="text-offo-blue-700 text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-sm text-ink-muted leading-relaxed">
+                Currently, yes. We're purpose-built for the permit/inspection workflows restaurants and medical facilities face (health department, fire marshal, ADA, liquor licensing, etc.). We may expand to other regulated industries in the future, but right now our compliance advisors specialize in food service and healthcare.
+              </p>
+            </details>
+
+            <details className="group bg-surface-muted rounded-xl p-6 border border-border-subtle hover:border-offo-blue-700 transition-colors">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-ink">How is this different from using Asana or Monday.com?</span>
+                <span className="text-offo-blue-700 text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-sm text-ink-muted leading-relaxed">
+                Generic project management tools don't know that Dallas requires a separate grease trap permit or that medical facilities need FDA registration before state licensing. OFFO Launch has jurisdiction-specific checklists, inspector contact tracking, training matrix templates, and auto-generated audit binders. Plus, you get compliance advisor access—not just software.
+              </p>
+            </details>
+
+            <details className="group bg-surface-muted rounded-xl p-6 border border-border-subtle hover:border-offo-blue-700 transition-colors">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-ink">What happens after the 14-day pilot?</span>
+                <span className="text-offo-blue-700 text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-sm text-ink-muted leading-relaxed">
+                Pilot operators get locked-in early pricing and priority access to new features. If you decide not to continue, we'll export your data (permits, inspections, training records) as a PDF or CSV. No lock-in, no hostage data. Most pilots convert because they've already invested the setup time and see the value.
+              </p>
+            </details>
+
+            <details className="group bg-surface-muted rounded-xl p-6 border border-border-subtle hover:border-offo-blue-700 transition-colors">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-ink">Do you integrate with our existing systems?</span>
+                <span className="text-offo-blue-700 text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-sm text-ink-muted leading-relaxed">
+                Yes. We integrate with Slack (alerts), Google Drive (document storage), and Calendly (inspection scheduling). API access coming Q2 2025 for custom integrations. We also support CSV import/export for bulk data transfer.
+              </p>
+            </details>
+
+            <details className="group bg-surface-muted rounded-xl p-6 border border-border-subtle hover:border-offo-blue-700 transition-colors">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-ink">What if my jurisdiction isn't in your database?</span>
+                <span className="text-offo-blue-700 text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-sm text-ink-muted leading-relaxed">
+                We have 500+ cities pre-loaded, but if yours isn't there, your compliance advisor will build a custom checklist during pilot onboarding (Days 1-3). Takes about 2 hours of research. Once built, it's saved for future operators in that jurisdiction.
+              </p>
+            </details>
+
+            <details className="group bg-surface-muted rounded-xl p-6 border border-border-subtle hover:border-offo-blue-700 transition-colors">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-ink">How much does it cost after the pilot?</span>
+                <span className="text-offo-blue-700 text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-sm text-ink-muted leading-relaxed">
+                Pilot pricing starts at $299/month for single-location operators, $799/month for 2-10 locations, and custom pricing for larger rollouts. Early pilot operators get 20% off for 12 months. Price includes compliance advisor access, unlimited users, and all features (no tiered plans).
+              </p>
+            </details>
+
+            <details className="group bg-surface-muted rounded-xl p-6 border border-border-subtle hover:border-offo-blue-700 transition-colors">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-ink">Is my data secure?</span>
+                <span className="text-offo-blue-700 text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-sm text-ink-muted leading-relaxed">
+                Yes. SOC 2 Type II certification in progress (Q2 2025), end-to-end encryption for documents, HIPAA-ready infrastructure for medical facilities. Your permits, training records, and inspector notes are encrypted at rest and in transit. We don't sell data or share with third parties.
+              </p>
+            </details>
+
+            <details className="group bg-surface-muted rounded-xl p-6 border border-border-subtle hover:border-offo-blue-700 transition-colors">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-ink">Can I use this for multiple locations simultaneously?</span>
+                <span className="text-offo-blue-700 text-2xl group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p className="mt-4 text-sm text-ink-muted leading-relaxed">
+                Absolutely. Multi-location operators see a portfolio view showing Launch Readiness Scores across all sites. Great for franchise rollouts or medical groups opening multiple clinics. Each location gets its own dashboard, but leadership sees consolidated reporting.
+              </p>
+            </details>
           </div>
         </div>
       </section>
