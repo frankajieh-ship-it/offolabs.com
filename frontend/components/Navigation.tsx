@@ -27,6 +27,16 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <Link
+              href="/demo"
+              className="bg-offo-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-offo-blue-900 transition-colors shadow-md hover:shadow-lg"
+            >
+              Try Demo
+            </Link>
+
+            {/* Divider */}
+            <div className="h-8 w-px bg-border"></div>
+
+            <Link
               href="/harmony"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors"
             >
@@ -37,16 +47,6 @@ export default function Navigation() {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors"
             >
               Pilot Program
-            </Link>
-
-            {/* Divider */}
-            <div className="h-8 w-px bg-border"></div>
-
-            <Link
-              href="/demo"
-              className="bg-offo-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-offo-blue-900 transition-colors shadow-md hover:shadow-lg"
-            >
-              Try Demo
             </Link>
           </div>
 
@@ -67,27 +67,27 @@ export default function Navigation() {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-4 space-y-3">
             <Link
-              href="/harmony"
-              className="block px-3 py-2 rounded-lg bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors text-center"
+              href="/demo"
+              className="block bg-offo-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-offo-blue-900 transition-colors shadow-md text-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Harmony
-            </Link>
-            <Link
-              href="/pilot"
-              className="block px-3 py-2 rounded-lg bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors text-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Pilot Program
+              Try Demo
             </Link>
 
-            <div className="pt-3">
+            <div className="pt-3 space-y-3">
               <Link
-                href="/demo"
-                className="block bg-offo-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-offo-blue-900 transition-colors shadow-md text-center"
+                href="/harmony"
+                className="block px-3 py-2 rounded-lg bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Try Demo
+                Harmony
+              </Link>
+              <Link
+                href="/pilot"
+                className="block px-3 py-2 rounded-lg bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors text-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Pilot Program
               </Link>
             </div>
           </div>

@@ -24,6 +24,7 @@ const formSchema = z.object({
   primaryChallenge: z.string().min(10, 'Please describe your challenge'),
   timeline: z.string().min(1, 'Please select timeline'),
   agreeTerms: z.boolean().refine(val => val === true, 'You must agree to the terms'),
+  website: z.string().optional(), // Honeypot field
 })
 
 type FormData = z.infer<typeof formSchema>
@@ -87,30 +88,45 @@ export default function EligibilityForm() {
       primaryChallenge: '',
       timeline: '',
       agreeTerms: false,
+      website: '', // Honeypot field
     },
   })
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('/api/pilot/application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
 
-    // In production, this would be:
-    // await fetch('/api/pilot/application', {
-    //   method: 'POST',
-    //   body: JSON.stringify(data),
-    // });
+      const result = await response.json()
 
-    console.log('Form submitted:', data)
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit application')
+      }
 
-    // Reset form after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      form.reset()
-    }, 5000)
+      console.log('Application submitted:', result.applicationId)
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false)
+        form.reset()
+      }, 5000)
+
+    } catch (error) {
+      console.error('Submission error:', error)
+      setIsSubmitting(false)
+
+      // Show error to user
+      alert(error instanceof Error ? error.message : 'Failed to submit application')
+    }
   }
 
   if (isSubmitted) {
@@ -400,6 +416,16 @@ export default function EligibilityForm() {
             share it with third parties without your consent.
           </p>
         </div>
+
+        {/* Honeypot Field (hidden from users, visible to bots) */}
+        <input
+          type="text"
+          {...form.register('website')}
+          style={{ display: 'none' }}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
 
         {/* Submit */}
         <div className="pt-6 border-t border-gray-200">

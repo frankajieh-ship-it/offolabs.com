@@ -16,8 +16,10 @@
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.2.2",
+    "@supabase/supabase-js": "^2.89.0",
     "@tanstack/react-query": "^5.90.12",
     "axios": "^1.13.2",
+    "crypto": "^1.0.1",
     "framer-motion": "^12.23.26",
     "jspdf": "^2.5.1",
     "lucide-react": "^0.561.0",
@@ -29,7 +31,7 @@
     "react-hot-toast": "^2.6.0",
     "recharts": "^2.15.4",
     "socket.io-client": "^4.8.1",
-    "zod": "^4.1.13"
+    "zod": "^4.2.1"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
