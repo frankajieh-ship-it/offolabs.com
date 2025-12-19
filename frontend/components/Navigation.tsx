@@ -25,32 +25,28 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link
-              href="/demo"
-              className="bg-offo-blue text-white px-6 py-2 rounded-lg font-semibold hover:bg-offo-navy transition-colors shadow-sm"
-            >
-              Try Demo
-            </Link>
-
-            {/* Divider */}
-            <div className="h-8 w-px bg-gray-300"></div>
-
-            {/* Other Products Section */}
+          <div className="hidden md:flex items-center gap-6">
             <Link
               href="/harmony"
-              className="text-gray-600 font-medium hover:text-offo-blue transition-colors relative"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors"
             >
-              <span className="flex items-center gap-2">
-                Harmony
-                <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
-              </span>
+              Harmony
             </Link>
             <Link
               href="/pilot"
-              className="text-gray-600 font-medium hover:text-offo-blue transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors"
             >
               Pilot Program
+            </Link>
+
+            {/* Divider */}
+            <div className="h-8 w-px bg-border"></div>
+
+            <Link
+              href="/demo"
+              className="bg-offo-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-offo-blue-900 transition-colors shadow-md hover:shadow-lg"
+            >
+              Try Demo
             </Link>
           </div>
 
@@ -69,31 +65,29 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-4 space-y-4">
+          <div className="md:hidden border-t border-gray-200 py-4 space-y-3">
             <Link
-              href="/demo"
-              className="block bg-offo-blue text-white px-6 py-2 rounded-lg font-semibold hover:bg-offo-navy transition-colors shadow-sm text-center"
+              href="/harmony"
+              className="block px-3 py-2 rounded-lg bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors text-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Try Demo
+              Harmony
+            </Link>
+            <Link
+              href="/pilot"
+              className="block px-3 py-2 rounded-lg bg-surface-muted border border-border-subtle text-sm font-medium text-ink-muted hover:border-offo-blue-700 hover:text-offo-blue-700 transition-colors text-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Pilot Program
             </Link>
 
-            <div className="border-t border-gray-200 pt-4 mt-4">
-              <div className="text-xs text-gray-500 font-semibold mb-2 px-2">OTHER PRODUCTS</div>
+            <div className="pt-3">
               <Link
-                href="/harmony"
-                className="block text-gray-600 font-medium hover:text-offo-blue transition-colors flex items-center gap-2"
+                href="/demo"
+                className="block bg-offo-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-offo-blue-900 transition-colors shadow-md text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Harmony
-                <span className="bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">NEW</span>
-              </Link>
-              <Link
-                href="/pilot"
-                className="block text-gray-600 font-medium hover:text-offo-blue transition-colors mt-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Pilot Program
+                Try Demo
               </Link>
             </div>
           </div>

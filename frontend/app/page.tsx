@@ -20,50 +20,48 @@ export default function Page() {
     <main className="min-h-screen bg-surface">
       <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
       {/* Hero - Premium Pattern */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-offo-blue-900 via-offo-blue-700 to-offo-navy">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.3)_0,transparent_50%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.2)_0,transparent_55%)]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-offo-blue-900/95 via-offo-blue-700/90 to-offo-navy/95">
+        {/* Background Pattern with subtle noise */}
+        <div className="absolute inset-0 opacity-[0.15]">
+          <div className="h-full w-full bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.2)_0,transparent_50%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.15)_0,transparent_55%)]" />
         </div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=')]" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
           <div className="mx-auto max-w-4xl text-center">
-            {/* Badge */}
-            <span className="inline-flex items-center rounded-full bg-offo-success/90 px-4 py-1.5 text-xs font-bold tracking-wide text-white shadow-lg">
-              NOW IN PILOT
+            {/* Badge - smaller, less saturated */}
+            <span className="inline-flex items-center rounded-full bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-1 text-xs font-semibold tracking-wide text-blue-200/90">
+              NEW LAUNCH
             </span>
 
-            {/* H1 - Outcome focused */}
-            <h1 className="mt-8 text-h1-mobile md:text-h1 text-white">
+            {/* H1 - Increased weight and spacing */}
+            <h1 className="mt-10 text-h1-mobile md:text-h1 text-white font-extrabold tracking-tight leading-[1.08]">
               Launch Your Restaurant or Medical Facility with Complete Compliance Confidence
             </h1>
 
-            {/* One-sentence value prop */}
-            <p className="mt-6 text-body-xl text-blue-100 max-w-3xl mx-auto">
-              OFFO Launch™ eliminates permit chaos and inspection delays so operators can open on time, every time.
+            {/* New subhead */}
+            <p className="mt-8 text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed">
+              Open new locations on time, pass inspections, and generate a launch readiness score—before you take off.
             </p>
 
-            {/* 3 Concrete Capabilities */}
-            <div className="mt-10 grid gap-4 text-left md:grid-cols-3 max-w-4xl mx-auto">
-              <div className="flex gap-3 items-start bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                <CheckCircleIcon className="w-6 h-6 text-offo-success flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-semibold text-white text-sm">Real-time Permit Tracking</div>
-                  <div className="text-sm text-blue-100 mt-1">Health, fire, ADA, liquor—all in one timeline</div>
+            {/* 3 Feature Bullets */}
+            <div className="mt-10 flex flex-col items-center gap-3 text-left max-w-2xl mx-auto">
+              <div className="flex gap-3 items-start w-full">
+                <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                <div className="text-blue-50/95 text-base">
+                  <span className="font-semibold">Permit & inspection tracker</span> <span className="text-blue-100/70">(deadlines + notes)</span>
                 </div>
               </div>
-              <div className="flex gap-3 items-start bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                <CheckCircleIcon className="w-6 h-6 text-offo-success flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-semibold text-white text-sm">Launch Readiness Dashboard</div>
-                  <div className="text-sm text-blue-100 mt-1">Know exactly what's blocking your opening</div>
+              <div className="flex gap-3 items-start w-full">
+                <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                <div className="text-blue-50/95 text-base">
+                  <span className="font-semibold">Training matrix</span> <span className="text-blue-100/70">(roles + certificates)</span>
                 </div>
               </div>
-              <div className="flex gap-3 items-start bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                <CheckCircleIcon className="w-6 h-6 text-offo-success flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-semibold text-white text-sm">Inspection Coordination</div>
-                  <div className="text-sm text-blue-100 mt-1">Automated scheduling with inspector notes</div>
+              <div className="flex gap-3 items-start w-full">
+                <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                <div className="text-blue-50/95 text-base">
+                  <span className="font-semibold">Audit binder generator</span> <span className="text-blue-100/70">(one-click PDFs)</span>
                 </div>
               </div>
             </div>
@@ -85,19 +83,12 @@ export default function Page() {
             </div>
 
             {/* Trust Row */}
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-blue-100">
-              <div className="flex items-center gap-2">
-                <CheckCircleIcon className="w-5 h-5 text-offo-success" />
-                <span>No credit card required</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircleIcon className="w-5 h-5 text-offo-success" />
-                <span>SOC 2 Type II in progress</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircleIcon className="w-5 h-5 text-offo-success" />
-                <span>Used by operators nationwide</span>
-              </div>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-blue-100/80">
+              <span>Pilot-ready</span>
+              <span className="text-blue-200/40">•</span>
+              <span>Built for operators</span>
+              <span className="text-blue-200/40">•</span>
+              <span>Secure-by-design</span>
             </div>
           </div>
         </div>
