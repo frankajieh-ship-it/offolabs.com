@@ -29,66 +29,183 @@ export default function Page() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
           <div className="mx-auto max-w-4xl text-center">
-            {/* Badge - smaller, less saturated */}
+            {/* Badge - Behavioral Risk Intelligence */}
             <span className="inline-flex items-center rounded-full bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-1 text-xs font-semibold tracking-wide text-blue-200/90">
-              NEW LAUNCH
+              BEHAVIORAL RISK INTELLIGENCE
             </span>
 
-            {/* H1 - Increased weight and spacing */}
+            {/* H1 - Risk-first positioning */}
             <h1 className="mt-10 text-h1-mobile md:text-h1 text-white font-extrabold tracking-tight leading-[1.08]">
-              Launch Your Restaurant or Medical Facility with Complete Compliance Confidence
+              See Risk Before It Becomes Loss
             </h1>
 
-            {/* New subhead */}
+            {/* Subhead - Early signals value prop */}
             <p className="mt-8 text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed">
-              Open new locations on time, pass inspections, and generate a launch readiness score—before you take off.
+              OFFO Launch™ turns operational behavior patterns into real-time risk signals—so teams can act early, not react late.
             </p>
 
-            {/* 3 Feature Bullets */}
+            {/* 3 Core Capabilities */}
             <div className="mt-10 flex flex-col items-center gap-3 text-left max-w-2xl mx-auto">
               <div className="flex gap-3 items-start w-full">
                 <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
                 <div className="text-blue-50/95 text-base">
-                  <span className="font-semibold">Permit & inspection tracker</span> <span className="text-blue-100/70">(deadlines + notes)</span>
+                  <span className="font-semibold">Predict behavioral drift before impact</span>
                 </div>
               </div>
               <div className="flex gap-3 items-start w-full">
                 <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
                 <div className="text-blue-50/95 text-base">
-                  <span className="font-semibold">Training matrix</span> <span className="text-blue-100/70">(roles + certificates)</span>
+                  <span className="font-semibold">Real-time operational + safety alignment</span>
                 </div>
               </div>
               <div className="flex gap-3 items-start w-full">
                 <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
                 <div className="text-blue-50/95 text-base">
-                  <span className="font-semibold">Audit binder generator</span> <span className="text-blue-100/70">(one-click PDFs)</span>
+                  <span className="font-semibold">Explainable risk scoring for leaders & insurers</span>
                 </div>
               </div>
             </div>
 
             {/* CTAs */}
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                onClick={() => setIsDemoModalOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-semibold text-offo-blue-900 shadow-xl hover:shadow-2xl hover:bg-blue-50 transition-all duration-200"
-              >
-                Experience OFFO Launch
-              </button>
               <Link
                 href="/pilot"
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-semibold text-offo-blue-900 shadow-xl hover:shadow-2xl hover:bg-blue-50 transition-all duration-200"
+              >
+                Start Pilot →
+              </Link>
+              <button
+                onClick={() => setIsDemoModalOpen(true)}
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border-2 border-white/60 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 hover:border-white transition-all duration-200"
               >
-                Join Pilot Program
-              </Link>
+                Watch Demo
+              </button>
             </div>
 
-            {/* Trust Row */}
+            {/* Trust Row - Updated positioning */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-blue-100/80">
+              <span>Built for enterprise risk</span>
+              <span className="text-blue-200/40">•</span>
               <span>Pilot-ready</span>
               <span className="text-blue-200/40">•</span>
-              <span>Built for operators</span>
+              <span>Explainable</span>
               <span className="text-blue-200/40">•</span>
-              <span>Secure-by-design</span>
+              <span>Secure by design</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Behavioral Risk Matters - Problem Statement */}
+      <section className="bg-white border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-h2 text-ink">Why Behavioral Risk Matters</h2>
+              <p className="mt-4 text-body-xl text-ink-muted">
+                Risk forms in behavior long before loss forms in data
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3 mb-12">
+              {/* Problem: Reactive Tools */}
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-offo-danger/10 flex items-center justify-center">
+                  <span className="text-3xl">📊</span>
+                </div>
+                <h3 className="font-bold text-ink mb-2">Most Tools Are Reactive</h3>
+                <p className="text-sm text-ink-muted">
+                  Traditional systems track incidents after they happen—when it's too late to prevent loss.
+                </p>
+              </div>
+
+              {/* Consequence: Hidden Drift */}
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-offo-warning/10 flex items-center justify-center">
+                  <span className="text-3xl">⚠️</span>
+                </div>
+                <h3 className="font-bold text-ink mb-2">Risk Forms Before Impact</h3>
+                <p className="text-sm text-ink-muted">
+                  Behavioral drift—missed trainings, skipped checks, operational shortcuts—accumulates silently.
+                </p>
+              </div>
+
+              {/* Solution: Early Signals */}
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-offo-success/10 flex items-center justify-center">
+                  <span className="text-3xl">🎯</span>
+                </div>
+                <h3 className="font-bold text-ink mb-2">Behavior Is the Early Signal</h3>
+                <p className="text-sm text-ink-muted">
+                  Measure drift, not just incidents—and act before weak signals become costly losses.
+                </p>
+              </div>
+            </div>
+
+            {/* Risk Trajectory Visualization */}
+            <div className="bg-gradient-to-r from-surface-muted to-white rounded-2xl p-8 border border-border-subtle">
+              <div className="flex items-center justify-between mb-6">
+                <div className="text-sm font-semibold text-ink-muted">RISK TRAJECTORY</div>
+                <div className="text-xs text-ink-muted">Traditional vs. Behavioral Intelligence</div>
+              </div>
+
+              <div className="relative h-24">
+                {/* Timeline */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border" />
+
+                {/* Weak Signals */}
+                <div className="absolute left-[10%] bottom-0">
+                  <div className="flex flex-col items-center">
+                    <div className="w-3 h-3 rounded-full bg-offo-success mb-2" />
+                    <div className="text-xs text-center">
+                      <div className="font-semibold text-offo-success">Weak Signals</div>
+                      <div className="text-ink-muted text-[10px]">OFFO detects</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Drift */}
+                <div className="absolute left-[35%] bottom-0">
+                  <div className="flex flex-col items-center">
+                    <div className="w-3 h-3 rounded-full bg-offo-warning mb-2" />
+                    <div className="text-xs text-center">
+                      <div className="font-semibold text-offo-warning">Drift</div>
+                      <div className="text-ink-muted text-[10px]">Accumulates</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Incident */}
+                <div className="absolute left-[65%] bottom-0">
+                  <div className="flex flex-col items-center">
+                    <div className="w-3 h-3 rounded-full bg-offo-danger mb-2" />
+                    <div className="text-xs text-center">
+                      <div className="font-semibold text-offo-danger">Incident</div>
+                      <div className="text-ink-muted text-[10px]">Traditional detects</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Loss */}
+                <div className="absolute left-[90%] bottom-0">
+                  <div className="flex flex-col items-center">
+                    <div className="w-3 h-3 rounded-full bg-ink mb-2" />
+                    <div className="text-xs text-center">
+                      <div className="font-semibold text-ink">Loss</div>
+                      <div className="text-ink-muted text-[10px]">Lagging</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Connecting line */}
+                <div className="absolute left-[10%] right-[10%] bottom-[6px] h-0.5 bg-gradient-to-r from-offo-success via-offo-warning via-offo-danger to-ink opacity-30" />
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-border-subtle">
+                <p className="text-sm text-ink-muted text-center italic">
+                  "Early signals, early action"—OFFO catches drift before it compounds into loss.
+                </p>
+              </div>
             </div>
           </div>
         </div>
