@@ -211,114 +211,235 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Trust Band - Enterprise Decision Architecture */}
+      {/* How OFFO Works - 3-Pillar System */}
       <section className="border-b border-border bg-surface-muted">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="text-center mb-12">
-            <h2 className="text-h2 text-ink">Built for Operators, Trusted by Compliance</h2>
+            <span className="inline-block px-4 py-1.5 bg-offo-blue-100 text-offo-blue-700 text-sm font-semibold rounded-full mb-4">
+              HOW IT WORKS
+            </span>
+            <h2 className="text-h2 text-ink">How OFFO Works</h2>
             <p className="mt-4 text-body-lg text-ink-muted max-w-2xl mx-auto">
-              Enterprise-grade launch management backed by regulatory intelligence
+              Three pillars that turn operational behavior into predictive risk intelligence
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Pilot Program Card */}
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Pillar 1: Signal Ingestion */}
             <div className="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-shadow border border-border">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-offo-blue-100 rounded-lg">
-                  <UserGroupIcon className="w-6 h-6 text-offo-blue-700" />
+                  <svg className="w-6 h-6 text-offo-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
                 </div>
-                <h3 className="text-h3 text-ink">Pilot Program</h3>
+                <h3 className="text-h3 text-ink">Signal Ingestion</h3>
               </div>
               <p className="text-body text-ink-muted mb-6">
-                Join early operators getting white-glove onboarding, dedicated support, and priority feature access.
+                Collect behavioral signals across permits, inspections, training, and operational activity—not just incident reports.
               </p>
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">Custom workflow setup for your jurisdiction</span>
+                  <span className="text-sm text-ink-muted">Multi-source data ingestion (permits, certs, inspections)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">Direct access to compliance advisors</span>
+                  <span className="text-sm text-ink-muted">Real-time operational behavior tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">Locked-in early adopter pricing</span>
+                  <span className="text-sm text-ink-muted">API integrations for continuous monitoring</span>
                 </li>
               </ul>
-              <Link
-                href="/pilot"
-                className="inline-flex items-center text-offo-blue-700 font-semibold hover:text-offo-blue-900 transition-colors"
-              >
-                Learn about pilot →
-              </Link>
             </div>
 
-            {/* Security & Privacy Card */}
+            {/* Pillar 2: Normalization & Drift Detection */}
             <div className="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-shadow border border-border">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-offo-blue-100 rounded-lg">
-                  <ShieldCheckIcon className="w-6 h-6 text-offo-blue-700" />
+                  <svg className="w-6 h-6 text-offo-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
                 </div>
-                <h3 className="text-h3 text-ink">Security & Privacy</h3>
+                <h3 className="text-h3 text-ink">Drift Detection</h3>
               </div>
               <p className="text-body text-ink-muted mb-6">
-                Enterprise-grade security controls protecting your launch data and compliance documentation.
+                Normalize fragmented data sources and identify behavioral drift patterns before they compound into incidents.
               </p>
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <LockClosedIcon className="w-5 h-5 text-offo-blue-700 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">SOC 2 Type II certification (Q2 2025)</span>
+                  <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-ink-muted">Cross-source normalization engine</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <LockClosedIcon className="w-5 h-5 text-offo-blue-700 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">End-to-end encryption for documents</span>
+                  <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-ink-muted">Pattern recognition for weak signals</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <LockClosedIcon className="w-5 h-5 text-offo-blue-700 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">HIPAA-ready infrastructure for medical facilities</span>
+                  <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-ink-muted">Behavioral baseline + deviation alerts</span>
                 </li>
               </ul>
-              <Link
-                href="/security"
-                className="inline-flex items-center text-offo-blue-700 font-semibold hover:text-offo-blue-900 transition-colors"
-              >
-                View security details →
-              </Link>
             </div>
 
-            {/* Compliance Alignment Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-shadow border border-border md:col-span-2 lg:col-span-1">
+            {/* Pillar 3: Risk Scoring + Guidance */}
+            <div className="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover transition-shadow border border-border">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-offo-blue-100 rounded-lg">
-                  <ClipboardDocumentCheckIcon className="w-6 h-6 text-offo-blue-700" />
+                  <svg className="w-6 h-6 text-offo-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
-                <h3 className="text-h3 text-ink">Compliance Ready</h3>
+                <h3 className="text-h3 text-ink">Risk Scoring</h3>
               </div>
               <p className="text-body text-ink-muted mb-6">
-                Built-in workflows for FDA, health departments, fire marshals, and ADA requirements.
+                Generate explainable risk scores and actionable guidance—trusted by operators, insurers, and regulators alike.
               </p>
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <DocumentCheckIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">Health department permit checklists</span>
+                  <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-ink-muted">Transparent, explainable risk algorithms</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <DocumentCheckIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">Fire safety inspection coordination</span>
+                  <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-ink-muted">Prioritized action recommendations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <DocumentCheckIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-ink-muted">ADA compliance documentation</span>
+                  <CheckCircleIcon className="w-5 h-5 text-offo-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-ink-muted">Stakeholder-ready reporting (ops, EHS, insurers)</span>
                 </li>
               </ul>
-              <Link
-                href="/compliance"
-                className="inline-flex items-center text-offo-blue-700 font-semibold hover:text-offo-blue-900 transition-colors"
-              >
-                Explore compliance features →
-              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Harmony Engine - 2x2 Matrix Visualization */}
+      <section className="bg-white border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-offo-blue-700 to-offo-blue-500 text-white text-sm font-semibold rounded-full mb-4">
+              HARMONY ENGINE™
+            </span>
+            <h2 className="text-h2 text-ink">The Harmony Engine™</h2>
+            <p className="mt-4 text-body-xl text-ink-muted max-w-3xl mx-auto">
+              Where operational behavior meets risk visibility—measure drift, not just incidents
+            </p>
+          </div>
+
+          {/* 2x2 Matrix Visualization */}
+          <div className="max-w-5xl mx-auto">
+            <div className="relative">
+              {/* Axis Labels */}
+              <div className="absolute -left-24 top-1/2 -translate-y-1/2 -rotate-90 text-sm font-semibold text-ink-muted">
+                RISK LEVEL
+              </div>
+              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-sm font-semibold text-ink-muted">
+                OPERATIONAL PERFORMANCE
+              </div>
+
+              {/* Grid Container */}
+              <div className="grid grid-cols-2 gap-1 bg-border p-1 rounded-2xl">
+                {/* Top Left: High Risk, Low Performance - RED ZONE */}
+                <div className="bg-gradient-to-br from-offo-danger/20 to-offo-danger/10 border-2 border-offo-danger/30 rounded-tl-xl p-8 relative overflow-hidden">
+                  <div className="absolute top-3 right-3 text-xs font-bold text-offo-danger/60 bg-white/80 px-2 py-1 rounded">
+                    CRITICAL
+                  </div>
+                  <h3 className="text-lg font-bold text-offo-danger mb-2">Red Zone</h3>
+                  <p className="text-sm text-ink-muted mb-4">
+                    High behavioral drift + low operational compliance
+                  </p>
+                  <ul className="space-y-2 text-xs text-ink-muted">
+                    <li className="flex items-start gap-1.5">
+                      <span className="text-offo-danger">▲</span>
+                      <span>Immediate intervention required</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="text-offo-danger">▲</span>
+                      <span>Insurability risk</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Top Right: High Risk, High Performance - YELLOW ZONE */}
+                <div className="bg-gradient-to-br from-offo-warning/20 to-offo-warning/10 border-2 border-offo-warning/30 rounded-tr-xl p-8 relative overflow-hidden">
+                  <div className="absolute top-3 right-3 text-xs font-bold text-offo-warning/80 bg-white/80 px-2 py-1 rounded">
+                    MONITOR
+                  </div>
+                  <h3 className="text-lg font-bold text-offo-warning mb-2">Yellow Zone</h3>
+                  <p className="text-sm text-ink-muted mb-4">
+                    Good operations, but drift signals emerging
+                  </p>
+                  <ul className="space-y-2 text-xs text-ink-muted">
+                    <li className="flex items-start gap-1.5">
+                      <span className="text-offo-warning">●</span>
+                      <span>Early warning—act before red</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="text-offo-warning">●</span>
+                      <span>Targeted corrective actions</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Bottom Left: Low Risk, Low Performance - BLUE ZONE */}
+                <div className="bg-gradient-to-br from-offo-blue-100 to-offo-blue-50 border-2 border-offo-blue-700/20 rounded-bl-xl p-8 relative overflow-hidden">
+                  <div className="absolute top-3 right-3 text-xs font-bold text-offo-blue-700/60 bg-white/80 px-2 py-1 rounded">
+                    BUILDING
+                  </div>
+                  <h3 className="text-lg font-bold text-offo-blue-700 mb-2">Blue Zone</h3>
+                  <p className="text-sm text-ink-muted mb-4">
+                    Early-stage operations—low risk, building baseline
+                  </p>
+                  <ul className="space-y-2 text-xs text-ink-muted">
+                    <li className="flex items-start gap-1.5">
+                      <span className="text-offo-blue-700">◆</span>
+                      <span>Establish operational baselines</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="text-offo-blue-700">◆</span>
+                      <span>Training & certification focus</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Bottom Right: Low Risk, High Performance - GREEN ZONE */}
+                <div className="bg-gradient-to-br from-offo-success/20 to-offo-success/10 border-2 border-offo-success/30 rounded-br-xl p-8 relative overflow-hidden">
+                  <div className="absolute top-3 right-3 text-xs font-bold text-offo-success/80 bg-white/80 px-2 py-1 rounded">
+                    OPTIMAL
+                  </div>
+                  <h3 className="text-lg font-bold text-offo-success mb-2">Green Zone</h3>
+                  <p className="text-sm text-ink-muted mb-4">
+                    Strong operations + low behavioral drift
+                  </p>
+                  <ul className="space-y-2 text-xs text-ink-muted">
+                    <li className="flex items-start gap-1.5">
+                      <span className="text-offo-success">✓</span>
+                      <span>Maintain excellence</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="text-offo-success">✓</span>
+                      <span>Insurance premium optimization</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Harmony Concept Explanation */}
+            <div className="mt-12 bg-gradient-to-r from-surface-muted to-white rounded-2xl p-8 border border-border-subtle">
+              <div className="max-w-3xl mx-auto text-center">
+                <h3 className="text-xl font-bold text-ink mb-4">What is "Harmony"?</h3>
+                <p className="text-body text-ink-muted mb-6">
+                  Harmony is the alignment between <span className="font-semibold text-ink">operational behavior</span> (what teams actually do) and <span className="font-semibold text-ink">compliance requirements</span> (what regulators expect). When behavior drifts from standards, risk forms—before incidents appear in data.
+                </p>
+                <div className="inline-flex items-center gap-3 text-sm text-ink-muted">
+                  <span className="px-3 py-1.5 bg-white rounded-full border border-border">Early signals, early action</span>
+                  <span className="text-border">•</span>
+                  <span className="px-3 py-1.5 bg-white rounded-full border border-border">Measure drift, not just incidents</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -333,7 +454,7 @@ export default function Page() {
             </span>
             <h2 className="text-h2 text-ink">What OFFO Launch Does</h2>
             <p className="mt-4 text-body-xl text-ink-muted max-w-3xl mx-auto">
-              Three interconnected systems that eliminate launch chaos
+              Track behavior signals across permits, training, and operations—so you see drift before it becomes risk
             </p>
           </div>
 
@@ -421,6 +542,149 @@ export default function Page() {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases & Outcomes - Tailored by Stakeholder */}
+      <section className="bg-gradient-to-br from-surface-muted to-white border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 bg-offo-blue-100 text-offo-blue-700 text-sm font-semibold rounded-full mb-4">
+              USE CASES & OUTCOMES
+            </span>
+            <h2 className="text-h2 text-ink">Built for Every Stakeholder</h2>
+            <p className="mt-4 text-body-xl text-ink-muted max-w-3xl mx-auto">
+              From operators to insurers—behavioral risk intelligence that aligns incentives across the value chain
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {/* Operators & GMs */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-border-subtle hover:border-offo-blue-700 transition-all duration-300 hover:shadow-2xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-offo-blue-700 rounded-xl">
+                  <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-ink">Operators & GMs</h3>
+              </div>
+              <p className="text-body text-ink-muted mb-6">
+                Run sites with confidence—see risk forming before it impacts operations, inspections, or team safety.
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-sm font-semibold text-ink mb-2">Key Outcomes:</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Prevent inspection failures with early drift alerts</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Reduce operational blind spots across locations</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Demonstrate readiness to investors/regulators</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-4 border-t border-border-subtle">
+                  <div className="text-xs font-semibold text-offo-blue-700 mb-1">Primary Value</div>
+                  <div className="text-sm text-ink-muted italic">"See risk before it becomes loss"</div>
+                </div>
+              </div>
+            </div>
+
+            {/* EHS & Safety Leaders */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-border-subtle hover:border-offo-blue-700 transition-all duration-300 hover:shadow-2xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-offo-blue-700 rounded-xl">
+                  <ShieldCheckIcon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-ink">EHS & Safety</h3>
+              </div>
+              <p className="text-body text-ink-muted mb-6">
+                Move from reactive incident reporting to proactive risk management—measure drift, not just outcomes.
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-sm font-semibold text-ink mb-2">Key Outcomes:</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Track leading indicators (training, audits) not just lagging (incidents)</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Identify high-risk sites before regulatory action</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Align safety + compliance + operations data</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-4 border-t border-border-subtle">
+                  <div className="text-xs font-semibold text-offo-blue-700 mb-1">Primary Value</div>
+                  <div className="text-sm text-ink-muted italic">"Measure drift, not just incidents"</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Insurers & Investors */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-border-subtle hover:border-offo-blue-700 transition-all duration-300 hover:shadow-2xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-offo-blue-700 rounded-xl">
+                  <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-ink">Insurers & Investors</h3>
+              </div>
+              <p className="text-body text-ink-muted mb-6">
+                Underwrite and monitor portfolio risk with explainable, behavior-based signals—not just claims history.
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-sm font-semibold text-ink mb-2">Key Outcomes:</h4>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Price premiums based on behavioral risk, not just claims</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Monitor portfolio risk across locations in real-time</span>
+                    </li>
+                    <li className="flex items-start gap-2 text-sm text-ink-muted">
+                      <CheckCircleIcon className="w-4 h-4 text-offo-success flex-shrink-0 mt-0.5" />
+                      <span>Transparent, auditable risk scoring for underwriting</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="pt-4 border-t border-border-subtle">
+                  <div className="text-xs font-semibold text-offo-blue-700 mb-1">Primary Value</div>
+                  <div className="text-sm text-ink-muted italic">"Explainable risk that stakeholders trust"</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Value Alignment CTA */}
+          <div className="mt-12 bg-white rounded-2xl p-8 border-2 border-offo-blue-700/20 max-w-3xl mx-auto text-center">
+            <h3 className="text-xl font-bold text-ink mb-3">Aligned Incentives, Shared Language</h3>
+            <p className="text-body text-ink-muted mb-6">
+              When operators, safety teams, and capital providers all see the same behavioral risk signals, everyone wins—fewer incidents, lower costs, better outcomes.
+            </p>
+            <Link
+              href="/pilot"
+              className="inline-flex items-center gap-2 bg-offo-blue-700 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-offo-blue-900 transition-colors shadow-md hover:shadow-lg"
+            >
+              Join the Pilot Program →
+            </Link>
           </div>
         </div>
       </section>
@@ -847,10 +1111,10 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="bg-gradient-to-br from-offo-blue-900 to-offo-blue-700 rounded-3xl p-10 md:p-16 text-center shadow-xl">
             <h2 className="text-h1-mobile md:text-h2 text-white mb-4">
-              Ready to Launch with Confidence?
+              See Risk Before It Becomes Loss
             </h2>
             <p className="text-body-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join operators using OFFO Launch to open on time with complete compliance.
+              Join the pilot program and turn operational behavior into predictive risk intelligence.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
@@ -875,7 +1139,7 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <p className="text-sm text-ink-muted">
-              OFFO Launch™ — Site Launch Compliance → Launch Intelligence
+              OFFO Launch™ — Behavioral Risk Intelligence for Operations
             </p>
             <p className="text-xs text-ink-muted mt-2">
               © 2025 OFFO Lab Consulting. All rights reserved.

@@ -14,10 +14,12 @@ import { Loader2, Send, CheckCircle } from 'lucide-react'
 const formSchema = z.object({
   companyName: z.string().min(2, 'Company name is required'),
   industry: z.string().min(1, 'Please select an industry'),
+  locationCount: z.string().min(1, 'Please select number of locations'),
   teamSize: z.string().min(1, 'Please select team size'),
   contactName: z.string().min(2, 'Contact name is required'),
   contactEmail: z.string().email('Valid email is required'),
   contactRole: z.string().min(2, 'Role is required'),
+  currentTools: z.string().optional(),
   dataSources: z.array(z.string()).min(1, 'Select at least one data source'),
   primaryChallenge: z.string().min(10, 'Please describe your challenge'),
   timeline: z.string().min(1, 'Please select timeline'),
@@ -27,14 +29,22 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>
 
 const industries = [
-  'Software / SaaS / Tech',
+  'Restaurant / Food Service',
+  'Medical Facility / Healthcare',
   'Manufacturing / Industrial',
-  'Field Services / Utilities',
-  'Healthcare / Medical',
-  'Financial Services',
+  'Multi-unit Retail / Franchise',
+  'Hospitality / Hotels',
   'Construction',
-  'Logistics / Transportation',
+  'Field Services / Utilities',
   'Other'
+]
+
+const locationCounts = [
+  '1 location',
+  '2-5 locations',
+  '6-20 locations',
+  '21-50 locations',
+  '50+ locations'
 ]
 
 const teamSizes = [
@@ -46,14 +56,16 @@ const teamSizes = [
 ]
 
 const dataSources = [
-  'Jira / Asana / Project Management',
-  'GitHub / GitLab / Version Control',
-  'CI/CD Pipeline Tools',
-  'Safety Incident Reporting',
-  'Training Management System (LMS)',
-  'Quality Control / QA Systems',
+  'Permit & Inspection Records (paper or digital)',
+  'Training & Certification Records',
+  'Safety Incident Reports',
+  'Health Department Inspection History',
+  'Fire Marshal / Building Inspection Records',
+  'Equipment Maintenance Logs',
+  'Staff Scheduling / HR Systems',
+  'Quality Assurance / Compliance Audits',
   'Equipment Sensors / IoT',
-  'HR / People Systems'
+  'Other (will specify in challenge description)'
 ]
 
 export default function EligibilityForm() {
@@ -65,10 +77,12 @@ export default function EligibilityForm() {
     defaultValues: {
       companyName: '',
       industry: '',
+      locationCount: '',
       teamSize: '',
       contactName: '',
       contactEmail: '',
       contactRole: '',
+      currentTools: '',
       dataSources: [],
       primaryChallenge: '',
       timeline: '',
@@ -169,6 +183,32 @@ export default function EligibilityForm() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Number of Locations *
+                </label>
+                <Select
+                  onValueChange={(value) => form.setValue('locationCount', value)}
+                  value={form.watch('locationCount')}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select location count" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {locationCounts.map((count) => (
+                      <SelectItem key={count} value={count}>
+                        {count}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {form.formState.errors.locationCount && (
+                  <p className="text-sm text-red-600 mt-1">
+                    {form.formState.errors.locationCount.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Team Size *
                 </label>
                 <Select
@@ -234,6 +274,23 @@ export default function EligibilityForm() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Current Tools */}
+        <div className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Current Compliance/Risk Tools (Optional)
+            </label>
+            <Input
+              {...form.register('currentTools')}
+              placeholder="e.g., Excel spreadsheets, ComplianceBridge, SafetyCulture, etc."
+              error={form.formState.errors.currentTools?.message}
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              List any tools you currently use for permit tracking, compliance management, or risk monitoring
+            </p>
           </div>
         </div>
 
