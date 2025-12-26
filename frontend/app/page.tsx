@@ -68,15 +68,9 @@ export default function Page() {
 
             {/* CTAs */}
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/pilot"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-semibold text-offo-blue-900 shadow-xl hover:shadow-2xl hover:bg-blue-50 transition-all duration-200"
-              >
-                Start Pilot →
-              </Link>
               <button
                 onClick={() => setIsDemoModalOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border-2 border-white/60 px-8 py-4 text-base font-semibold text-white hover:bg-white/10 hover:border-white transition-all duration-200"
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-semibold text-offo-blue-900 shadow-xl hover:shadow-2xl hover:bg-blue-50 transition-all duration-200"
               >
                 Watch Demo
               </button>
@@ -310,136 +304,6 @@ export default function Page() {
                   <span className="text-sm text-ink-muted">Stakeholder-ready reporting (ops, EHS, insurers)</span>
                 </li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Harmony Engine - 2x2 Matrix Visualization */}
-      <section className="bg-white border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-offo-blue-700 to-offo-blue-500 text-white text-sm font-semibold rounded-full mb-4">
-              HARMONY ENGINE™
-            </span>
-            <h2 className="text-h2 text-ink">The Harmony Engine™</h2>
-            <p className="mt-4 text-body-xl text-ink-muted max-w-3xl mx-auto">
-              Where operational behavior meets risk visibility—measure drift, not just incidents
-            </p>
-          </div>
-
-          {/* 2x2 Matrix Visualization */}
-          <div className="max-w-5xl mx-auto">
-            <div className="relative">
-              {/* Axis Labels */}
-              <div className="absolute -left-24 top-1/2 -translate-y-1/2 -rotate-90 text-sm font-semibold text-ink-muted">
-                RISK LEVEL
-              </div>
-              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-sm font-semibold text-ink-muted">
-                OPERATIONAL PERFORMANCE
-              </div>
-
-              {/* Grid Container */}
-              <div className="grid grid-cols-2 gap-1 bg-border p-1 rounded-2xl">
-                {/* Top Left: High Risk, Low Performance - RED ZONE */}
-                <div className="bg-gradient-to-br from-offo-danger/20 to-offo-danger/10 border-2 border-offo-danger/30 rounded-tl-xl p-8 relative overflow-hidden">
-                  <div className="absolute top-3 right-3 text-xs font-bold text-offo-danger/60 bg-white/80 px-2 py-1 rounded">
-                    CRITICAL
-                  </div>
-                  <h3 className="text-lg font-bold text-offo-danger mb-2">Red Zone</h3>
-                  <p className="text-sm text-ink-muted mb-4">
-                    High behavioral drift + low operational compliance
-                  </p>
-                  <ul className="space-y-2 text-xs text-ink-muted">
-                    <li className="flex items-start gap-1.5">
-                      <span className="text-offo-danger">▲</span>
-                      <span>Immediate intervention required</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <span className="text-offo-danger">▲</span>
-                      <span>Insurability risk</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Top Right: High Risk, High Performance - YELLOW ZONE */}
-                <div className="bg-gradient-to-br from-offo-warning/20 to-offo-warning/10 border-2 border-offo-warning/30 rounded-tr-xl p-8 relative overflow-hidden">
-                  <div className="absolute top-3 right-3 text-xs font-bold text-offo-warning/80 bg-white/80 px-2 py-1 rounded">
-                    MONITOR
-                  </div>
-                  <h3 className="text-lg font-bold text-offo-warning mb-2">Yellow Zone</h3>
-                  <p className="text-sm text-ink-muted mb-4">
-                    Good operations, but drift signals emerging
-                  </p>
-                  <ul className="space-y-2 text-xs text-ink-muted">
-                    <li className="flex items-start gap-1.5">
-                      <span className="text-offo-warning">●</span>
-                      <span>Early warning—act before red</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <span className="text-offo-warning">●</span>
-                      <span>Targeted corrective actions</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Bottom Left: Low Risk, Low Performance - BLUE ZONE */}
-                <div className="bg-gradient-to-br from-offo-blue-100 to-offo-blue-50 border-2 border-offo-blue-700/20 rounded-bl-xl p-8 relative overflow-hidden">
-                  <div className="absolute top-3 right-3 text-xs font-bold text-offo-blue-700/60 bg-white/80 px-2 py-1 rounded">
-                    BUILDING
-                  </div>
-                  <h3 className="text-lg font-bold text-offo-blue-700 mb-2">Blue Zone</h3>
-                  <p className="text-sm text-ink-muted mb-4">
-                    Early-stage operations—low risk, building baseline
-                  </p>
-                  <ul className="space-y-2 text-xs text-ink-muted">
-                    <li className="flex items-start gap-1.5">
-                      <span className="text-offo-blue-700">◆</span>
-                      <span>Establish operational baselines</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <span className="text-offo-blue-700">◆</span>
-                      <span>Training & certification focus</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Bottom Right: Low Risk, High Performance - GREEN ZONE */}
-                <div className="bg-gradient-to-br from-offo-success/20 to-offo-success/10 border-2 border-offo-success/30 rounded-br-xl p-8 relative overflow-hidden">
-                  <div className="absolute top-3 right-3 text-xs font-bold text-offo-success/80 bg-white/80 px-2 py-1 rounded">
-                    OPTIMAL
-                  </div>
-                  <h3 className="text-lg font-bold text-offo-success mb-2">Green Zone</h3>
-                  <p className="text-sm text-ink-muted mb-4">
-                    Strong operations + low behavioral drift
-                  </p>
-                  <ul className="space-y-2 text-xs text-ink-muted">
-                    <li className="flex items-start gap-1.5">
-                      <span className="text-offo-success">✓</span>
-                      <span>Maintain excellence</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <span className="text-offo-success">✓</span>
-                      <span>Insurance premium optimization</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Harmony Concept Explanation */}
-            <div className="mt-12 bg-gradient-to-r from-surface-muted to-white rounded-2xl p-8 border border-border-subtle">
-              <div className="max-w-3xl mx-auto text-center">
-                <h3 className="text-xl font-bold text-ink mb-4">What is "Harmony"?</h3>
-                <p className="text-body text-ink-muted mb-6">
-                  Harmony is the alignment between <span className="font-semibold text-ink">operational behavior</span> (what teams actually do) and <span className="font-semibold text-ink">compliance requirements</span> (what regulators expect). When behavior drifts from standards, risk forms—before incidents appear in data.
-                </p>
-                <div className="inline-flex items-center gap-3 text-sm text-ink-muted">
-                  <span className="px-3 py-1.5 bg-white rounded-full border border-border">Early signals, early action</span>
-                  <span className="text-border">•</span>
-                  <span className="px-3 py-1.5 bg-white rounded-full border border-border">Measure drift, not just incidents</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -680,10 +544,12 @@ export default function Page() {
               When operators, safety teams, and capital providers all see the same behavioral risk signals, everyone wins—fewer incidents, lower costs, better outcomes.
             </p>
             <Link
-              href="/pilot"
+              href="http://localhost:3001"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-offo-blue-700 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-offo-blue-900 transition-colors shadow-md hover:shadow-lg"
             >
-              Join the Pilot Program →
+              Explore OFFO Sim →
             </Link>
           </div>
         </div>
@@ -1114,14 +980,16 @@ export default function Page() {
               See Risk Before It Becomes Loss
             </h2>
             <p className="text-body-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join the pilot program and turn operational behavior into predictive risk intelligence.
+              Experience behavioral drift visualization and turn operational behavior into predictive risk intelligence.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/pilot"
+                href="http://localhost:3001"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-base font-semibold text-offo-blue-900 shadow-xl hover:shadow-2xl hover:bg-blue-50 transition-all duration-200"
               >
-                Join Pilot Program
+                Explore OFFO Sim
               </Link>
               <button
                 onClick={() => setIsDemoModalOpen(true)}
